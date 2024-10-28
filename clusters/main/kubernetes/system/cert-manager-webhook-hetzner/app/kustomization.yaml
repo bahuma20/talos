@@ -6,3 +6,4 @@ resources:
   - hetzner-secret.secret.yaml
   - serviceaccount.yaml
   - rbac.yaml
+  - test-certificate.yaml
