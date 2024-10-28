@@ -25,3 +25,5 @@ spec:
             retries: 3
     values:
       groupName: "base.noitl.space"
+      certManager:
+        serviceAccountName: cert-manager-certmanager
