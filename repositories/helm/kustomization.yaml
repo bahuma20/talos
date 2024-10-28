@@ -5,6 +5,7 @@ metadata:
     namespace: flux-system
 resources:
   - bjw-s.yaml
+  - cert-manager-webhook-hetzner.yaml
   - cilium.yaml
   - cloudnative-pg.yaml
   - coredns.yaml
