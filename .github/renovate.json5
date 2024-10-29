@@ -26,7 +26,8 @@
   "ignorePaths": ["**/*.sops.*", "**/.archive/**", "**/resources/**"],
   "flux": {
     "fileMatch": [
-      "(^|/)clusters/main/kubernetes/.+\\.ya?ml$"
+      "(^|/)clusters/main/kubernetes/.+\\.ya?ml$",
+      "(^|/)repositories/.+\\.ya?ml$",
     ]
   },
   "helm-values": {
