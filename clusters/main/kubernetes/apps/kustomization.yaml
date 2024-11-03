@@ -3,4 +3,18 @@ kind: Kustomization
 resources:
   - kubernetes-dashboard/ks.yaml
   - ciao/ks.yaml
-  - audiobookshelf/ks.yaml
+  - audiobookshelf/ks.yaml  - bahuma-abrechnung
+  - bahuma-abrechnung/ks.yaml
+  - cert-manager/ks.yaml
+  - cert-manager-hetzner/ks.yaml
+  - cloudnative-pg/ks.yaml
+  - jellyfin/ks.yaml
+  - minecraft-java/ks.yaml
+  - nextcloud/ks.yaml
+  - openebs/ks.yaml
+  - paperless-ngx/ks.yaml
+  - tailscale/ks.yaml
+  - traefik/ks.yaml
+  - truenas/ks.yaml
+  - vaultwarden/ks.yaml
+  - volsync/ks.yaml
