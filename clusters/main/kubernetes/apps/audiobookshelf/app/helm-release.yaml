@@ -119,6 +119,7 @@ spec:
                     containers:
                         main:
                             env:
+                                TEST: "1"
                                 AUDIOBOOKSHELF_GID: '{{ .Values.securityContext.pod.fsGroup }}'
                                 AUDIOBOOKSHELF_UID: '{{ .Values.securityContext.container.PUID }}'
                                 PORT: '{{ .Values.service.main.ports.main.port }}'
