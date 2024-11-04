@@ -1,0 +1,60 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: bahuma-abrechnung
+  namespace: bahuma-abrechnung
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: custom-app
+      version: 13.0.8
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  releaseName: bahuma-abrechnung
+  values:
+    TZ: Europe/Berlin
+    ingress:
+      main:
+        enabled: true
+        hosts:
+          - host: bahuma-abrechnung.${BASE_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+        integrations:
+          certManager:
+            enabled: true
+            certificateIssuer: ${CERTMANAGER_ISSUER}
+          traefik:
+            enabled: true
+    resources: { }
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                CUSTOM_FIELD_BETRAG:
+                  name: CUSTOM_FIELD_BETRAG
+                  value: "4"
+                CUSTOM_FIELD_RECHNUNGSNUMMER:
+                  name: CUSTOM_FIELD_RECHNUNGSNUMMER
+                  value: "3"
+                DOCUMENT_TYPE_AUSGANGSRECHNUNG:
+                  name: DOCUMENT_TYPE_AUSGANGSRECHNUNG
+                  value: "26"
+                DOCUMENT_TYPE_EINGANGSRECHNUNG:
+                  name: DOCUMENT_TYPE_EINGANGSRECHNUNG
+                  value: "25"
+                PAPERLESS_PASSWORD:
+                  name: PAPERLESS_PASSWORD
+                  value: ${BAHUMA_ABRECHNUNG_PAPERLESS_PASSWORD}
+                PAPERLESS_URL:
+                  name: PAPERLESS_URL
+                  value: https://dok.base.noitl.space
+                PAPERLESS_USERNAME:
+                  name: PAPERLESS_USERNAME
+                  value: bahuma
