@@ -16,6 +16,10 @@ spec:
   releaseName: bahuma-abrechnung
   values:
     TZ: Europe/Berlin
+    image:
+      pullPolicy: Always
+      repository: ghcr.io/bahuma20/bahuma-abrechnung
+      tag: latest
     securityContext:
       container:
         UMASK: "0022"
@@ -27,7 +31,7 @@ spec:
       main:
         ports:
           main:
-            port: 9117
+            port: 80
     ingress:
       main:
         enabled: true
