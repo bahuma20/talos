@@ -27,7 +27,7 @@ spec:
       main:
         ports:
           main:
-            port: 9123
+            port: 80
     ingress:
       main:
         enabled: true
