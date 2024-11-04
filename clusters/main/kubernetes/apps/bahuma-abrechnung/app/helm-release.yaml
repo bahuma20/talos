@@ -16,6 +16,11 @@ spec:
   releaseName: bahuma-abrechnung
   values:
     TZ: Europe/Berlin
+    service:
+      main:
+        ports:
+          main:
+            port: 9123
     ingress:
       main:
         enabled: true
