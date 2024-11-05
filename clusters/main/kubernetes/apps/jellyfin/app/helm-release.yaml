@@ -58,6 +58,24 @@ spec:
               enabled: true
             dest:
               enabled: true
+      library-filme:
+        enabled: true
+        type: nfs
+        server: ${NFS_HOST}
+        path: /mnt/pool1/Medien/Filme
+        mountPath: /mnt/nas/filme
+        readOnly: true
+        autoPermissions:
+          enabled: false
+      library-serien:
+        enabled: true
+        type: nfs
+        server: ${NFS_HOST}
+        path: /mnt/pool1/Medien/Serien
+        mountPath: /mnt/nas/serien
+        readOnly: true
+        autoPermissions:
+          enabled: false
     resources: {}
     securityContext:
       container:
