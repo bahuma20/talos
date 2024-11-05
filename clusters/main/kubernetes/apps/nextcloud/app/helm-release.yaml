@@ -61,7 +61,7 @@ spec:
           - en_GB
           - en_US
         interface_mode: default
-        password: ${NEXTCLOUD_COLLABORA_PASSWORD}
+        password: "${NEXTCLOUD_COLLABORA_PASSWORD}"
       general:
         accessIP: ${TRAEFIK_IP}
         default_phone_region: DE
