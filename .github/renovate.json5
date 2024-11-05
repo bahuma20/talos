@@ -9,7 +9,7 @@
     ":dependencyDashboard",
     ":semanticCommits",
     ":skipStatusChecks",
-    ":timezone(America/New_York)",
+    ":timezone(Europe/Berlin)",
     "github>bahuma20/talos//.github/renovate/allowedVersions.json5",
     "github>bahuma20/talos//.github/renovate/autoMerge.json5",
     "github>bahuma20/talos//.github/renovate/commitMessage.json5",
