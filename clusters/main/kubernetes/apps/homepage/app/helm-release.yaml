@@ -29,3 +29,10 @@ spec:
             certificateIssuer: ${CERTMANAGER_ISSUER}
           traefik:
             enabled: true
+    forceConfigFromValues: true
+    configmap:
+      config:
+        data:
+          services.yaml: |
+            ---
+            # No services
