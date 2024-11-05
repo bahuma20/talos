@@ -33,6 +33,45 @@ spec:
     configmap:
       config:
         data:
+          settings.yaml: |
+            ---
+            # For configuration options and examples, please see:
+            # https://gethomepage.dev/latest/configs/settings
+
+            title: Noitl.Base
+            color: stone
+            layout:
+              Medien:
+                icon: mdi-multimedia
+              Dateien:
+                icon: mdi-file-multiple
+              Sonstiges:
+                icon: mdi-dots-hexagon
+              System:
+                icon: mdi-cog-outline
+            headerStyle: boxedWidgets
+            language: de
+            showStatus: true
+            statusStyle: dot
+
+          widgets.yaml: |
+            ---
+            # For configuration options and examples, please see:
+            # https://gethomepage.dev/latest/configs/widgets
+
+            - resources:
+                cpu: true
+                memory: true
+                disk: /
           services.yaml: |
             ---
+            # For configuration options and examples, please see:
+            # https://gethomepage.dev/latest/configs/services
+
             # No services
+          bookmarks.yaml: |
+            ---
+            # For configuration options and examples, please see:
+            # https://gethomepage.dev/latest/configs/bookmarks
+
+            # No bookmarks
