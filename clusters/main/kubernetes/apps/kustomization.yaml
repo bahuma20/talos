@@ -7,7 +7,7 @@ resources:
   - jellyfin/ks.yaml
   - homepage/ks.yaml
 #  - minecraft-java/ks.yaml
-#  - nextcloud/ks.yaml
+  - nextcloud/ks.yaml
 #  - paperless-ngx/ks.yaml
 #  - tailscale/ks.yaml
 #  - truenas/ks.yaml

@@ -1,0 +1,102 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: nextcloud
+  namespace: nextcloud
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: nextcloud
+      version: 30.1.24
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  releaseName: nextcloud
+  values:
+    TZ: Europe/Berlin
+    credentials:
+      storj:
+        type: s3
+        name: storj
+        url: https://gateway.storjshare.io
+        accessKey: ${STORJ_ACCESS_KEY}
+        secretKey: ${STORJ_SECRET_KEY}
+        bucket: ${STORJ_BUCKET}
+        encrKey: ${STORJ_VOLSYNC_ENCRYPTION_KEY}
+        path: ""
+    cnpg:
+      main:
+        mode: recovery #standalone
+        backups:
+          enabled: true
+          credentials: storj
+          revision: 1
+        recovery:
+          method: object_store
+          credentials: storj
+    ingress:
+      main:
+        enabled: true
+        hosts:
+          - host: cloud.${BASE_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+        integrations:
+          certManager:
+            enabled: true
+            certificateIssuer: ${CERTMANAGER_ISSUER}
+          traefik:
+            enabled: true
+          homepage:
+            enabled: true
+            group: Dateien
+    nextcloud:
+      collabora:
+        enabled: true
+        dictionaries:
+          - de_DE
+          - en_GB
+          - en_US
+        interface_mode: default
+        password: ${NEXTCLOUD_COLLABORA_PASSWORD}
+      general:
+        accessIP: ${TRAEFIK_IP}
+        default_phone_region: DE
+        run_optimize: false
+    persistence:
+      config:
+        volsync:
+          - name: app-config
+            type: restic
+            credentials: storj
+            src:
+              enabled: true
+            dest:
+              enabled: true
+      data:
+        type: nfs
+        server: ${NFS_HOST}
+        path: /mnt/pool1/Nextcloud
+        readOnly: false
+        autoPermissions:
+          enabled: false
+      html:
+        volsync:
+          - name: app-html
+            type: restic
+            credentials: storj
+            src:
+              enabled: true
+            dest:
+              enabled: true
+    resources: {}
+    securityContext:
+      container:
+        UMASK: "0022"
+        runAsGroup: 568
+        runAsUser: 568
+      pod:
+        fsGroupChangePolicy: OnRootMismatch
