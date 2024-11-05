@@ -28,6 +28,7 @@ spec:
         path: ""
     cnpg:
       main:
+        password: "${NEXTCLOUD_POSTGRES_PASSWORD}"
         mode: recovery #standalone
         backups:
           enabled: true
