@@ -4,7 +4,7 @@ resources:
   - kubernetes-dashboard/ks.yaml
   - audiobookshelf/ks.yaml
   - bahuma-abrechnung/ks.yaml
-#  - jellyfin/ks.yaml
+  - jellyfin/ks.yaml
 #  - minecraft-java/ks.yaml
 #  - nextcloud/ks.yaml
 #  - openebs/ks.yaml
