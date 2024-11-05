@@ -41,11 +41,14 @@ spec:
       main:
         enabled: true
         integrations:
-          traefik:
-            enabled: true
           certManager:
             enabled: true
             certificateIssuer: ${CERTMANAGER_ISSUER}
+          traefik:
+            enabled: true
+          homepage:
+            enabled: true
+            group: System
         hosts:
           - host: kubernetes.${BASE_DOMAIN}
             paths:

@@ -40,6 +40,9 @@ spec:
             certificateIssuer: ${CERTMANAGER_ISSUER}
           traefik:
             enabled: true
+          homepage:
+            enabled: true
+            group: Medien
     persistence:
       audiobooks:
         autoPermissions:

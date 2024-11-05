@@ -5,12 +5,10 @@ resources:
   - audiobookshelf/ks.yaml
   - bahuma-abrechnung/ks.yaml
   - jellyfin/ks.yaml
+  - homepage/ks.yaml
 #  - minecraft-java/ks.yaml
 #  - nextcloud/ks.yaml
-#  - openebs/ks.yaml
 #  - paperless-ngx/ks.yaml
 #  - tailscale/ks.yaml
-#  - traefik/ks.yaml
 #  - truenas/ks.yaml
 #  - vaultwarden/ks.yaml
-#  - volsync/ks.yaml

@@ -75,6 +75,9 @@ spec:
                     certManager:
                         enabled: true
                         certificateIssuer: ${CERTMANAGER_ISSUER}
+                    homepage:
+                        enabled: true
+                        group: System
                 hosts:
                     - host: traefik.${BASE_DOMAIN}
                       paths:

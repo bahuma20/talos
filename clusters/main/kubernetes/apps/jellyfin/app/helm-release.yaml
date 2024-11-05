@@ -49,6 +49,9 @@ spec:
             certificateIssuer: ${CERTMANAGER_ISSUER}
           traefik:
             enabled: true
+          homepage:
+            enabled: true
+            group: Medien
     persistence:
       config:
         volsync:
