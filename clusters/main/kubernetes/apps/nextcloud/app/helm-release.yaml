@@ -54,6 +54,8 @@ spec:
           homepage:
             enabled: true
             group: Dateien
+            widget:
+              key: "${NEXTCLOUD_NC_TOKEN}"
     nextcloud:
       collabora:
         enabled: true
