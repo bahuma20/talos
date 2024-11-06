@@ -71,7 +71,7 @@ spec:
             - Sonstiges:
               - Home Assistant:
                   href: https://home.noitl.space
-                  icon: homeassistant
+                  icon: home-assistant
                   description: Smart Home Automatisierungs- und Analyse-Plattform
                   ping: "192.168.188.30"
           bookmarks.yaml: |
