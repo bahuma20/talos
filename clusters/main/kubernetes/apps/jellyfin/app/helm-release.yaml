@@ -53,6 +53,11 @@ spec:
             enabled: true
             group: Medien
             description: "Filme und Serien streamen"
+            widget:
+              custom:
+                key: "${JELLYFIN_HOMEPAGE_API_KEY}"
+                enableBlocks: true
+                fields: '["movies", "series", "episodes"]'
     persistence:
       config:
         volsync:
