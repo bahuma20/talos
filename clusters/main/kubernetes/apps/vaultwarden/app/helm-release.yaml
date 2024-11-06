@@ -1,19 +1,19 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: paperless-ngx
-  namespace: paperless-ngx
+  name: vaultwarden
+  namespace: vaultwarden
 spec:
   interval: 15m
   chart:
     spec:
-      chart: paperless-ngx
-      version: 8.2.12
+      chart: vaultwarden
+      version: 27.1.2
       sourceRef:
         kind: HelmRepository
         name: truecharts
         namespace: flux-system
-  releaseName: paperless-ngx
+  releaseName: vaultwarden
   values:
     TZ: Europe/Berlin
     credentials:
@@ -43,7 +43,7 @@ spec:
       main:
         enabled: true
         hosts:
-          - host: dok.${BASE_DOMAIN}
+          - host: pass.${BASE_DOMAIN}
             paths:
               - path: /
                 pathType: Prefix
@@ -55,10 +55,9 @@ spec:
             enabled: true
           homepage:
             enabled: true
-            group: Dateien
+            group: Sonstiges
             widget:
-              custom:
-                key: "${PAPERLESS_HOMEPAGE_API_KEY}"
+              enabled: false
     persistence:
       data:
         volsync:
@@ -69,33 +68,23 @@ spec:
               enabled: true
             dest:
               enabled: true
-      media:
-        type: nfs
-        server: ${NFS_HOST}
-        path: /mnt/pool1/Paperless/documents
-        mountPath: /media
-        autoPermissions:
-          enabled: false
-        readOnly: false
     resources: {}
-    securityContext:
-      container:
-        UMASK: "0022"
-        readOnlyRootFilesystem: false
-        runAsGroup: 0
-        runAsNonRoot: false
-        runAsUser: 0
-      pod:
-        fsGroupChangePolicy: OnRootMismatch
-    workload:
-      main:
-        podSpec:
-          containers:
-            main:
-              env:
-                PAPERLESS_ADMIN_MAIL: max.bachhuber@bahuma.io
-                PAPERLESS_ADMIN_PASSWORD: admin
-                PAPERLESS_ADMIN_USER: admin
-                PAPERLESS_OCR_LANGUAGE: deu
-                PAPERLESS_OCR_LANGUAGES: eng deu
-                PAPERLESS_URL: https://dok.${BASE_DOMAIN}
+    vaultwarden:
+      push:
+        enabled: true
+        installationId: "${VAULTWARDEN_PUSH_INSTALLATION_ID}"
+        installationKey: "${VAULTWARDEN_PUSH_INSTALLATION_KEY}"
+      signupDomains:
+        - bahuma.io
+        - seitz-web.de
+      smtp:
+        enabled: true
+        host: server4.bahuma.io
+        port: 465
+        security: force_tls
+        authMechanism: Plain
+        user: vaultwarden@noitl.space
+        password: "${VAULTWARDEN_SMTP_PASSWORD}"
+        from: vaultwarden@noitl.space
+        fromName: Vaultwarden
+      verifySignup: true

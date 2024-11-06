@@ -11,4 +11,4 @@ resources:
   - paperless-ngx/ks.yaml
 #  - tailscale/ks.yaml
 #  - truenas/ks.yaml
-#  - vaultwarden/ks.yaml
+  - vaultwarden/ks.yaml
