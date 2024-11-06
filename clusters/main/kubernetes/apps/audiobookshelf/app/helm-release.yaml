@@ -62,7 +62,6 @@ spec:
         enabled: true
         mountPath: /config
         readOnly: false
-        storageClass: '"
         volsync:
           - credentials: storj
             dest:
