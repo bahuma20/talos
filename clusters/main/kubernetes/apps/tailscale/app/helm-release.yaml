@@ -23,3 +23,4 @@ spec:
       accept_dns: true
       routes:
         - 192.168.188.0/24
+    hostNetwork: false
