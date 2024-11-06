@@ -47,7 +47,7 @@ spec:
             widget:
               custom:
                 key: "${AUDIOBOOKSHELF_HOMEPAGE_API_KEY}"
-                fields: ["books", "booksDuration"]
+                fields: "books,booksDuration"
     persistence:
       audiobooks:
         autoPermissions:
