@@ -45,9 +45,9 @@ spec:
             group: Medien
             description: "Hörbücher anhören und tracken"
             widget:
-              fields: ["books", "booksDuration"]
               custom:
                 key: "${AUDIOBOOKSHELF_HOMEPAGE_API_KEY}"
+                fields: ["books", "booksDuration"]
     persistence:
       audiobooks:
         autoPermissions:
