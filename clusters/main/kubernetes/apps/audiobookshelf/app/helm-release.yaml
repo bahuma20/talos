@@ -43,6 +43,7 @@ spec:
           homepage:
             enabled: true
             group: Medien
+            description: "Hörbücher anhören und tracken"
     persistence:
       audiobooks:
         autoPermissions:

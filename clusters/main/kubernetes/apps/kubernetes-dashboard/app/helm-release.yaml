@@ -50,6 +50,9 @@ spec:
             enabled: true
             group: System
             icon: kubernetes
+            name: "Kubernetes Dashboard"
+            widget:
+              enabled: false
         hosts:
           - host: kubernetes.${BASE_DOMAIN}
             paths:

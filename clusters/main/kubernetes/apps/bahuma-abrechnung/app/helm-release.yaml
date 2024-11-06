@@ -50,6 +50,10 @@ spec:
             enabled: true
             group: Sonstiges
             icon: "mdi-receipt-text-outline-#5bb66f"
+            name: "Bahuma Abrechnung"
+            description: "Erstellung einer Excel-Übersicht für die Steuer aus den Rechnungen in Paperless"
+            widget:
+              enabled: false
     resources: { }
     workload:
       main:

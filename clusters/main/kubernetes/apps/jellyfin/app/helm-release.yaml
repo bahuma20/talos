@@ -52,6 +52,7 @@ spec:
           homepage:
             enabled: true
             group: Medien
+            description: "Filme und Serien streamen"
     persistence:
       config:
         volsync:
