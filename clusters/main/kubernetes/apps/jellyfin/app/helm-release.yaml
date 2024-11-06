@@ -56,7 +56,7 @@ spec:
             widget:
               custom:
                 key: "${JELLYFIN_HOMEPAGE_API_KEY}"
-                enableBlocks: true
+                enableBlocks: 'true'
                 fields: '["movies", "series", "episodes"]'
     persistence:
       config:
