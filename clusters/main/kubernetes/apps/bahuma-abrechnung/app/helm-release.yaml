@@ -49,6 +49,7 @@ spec:
           homepage:
             enabled: true
             group: Sonstiges
+            icon: "mdi-receipt-text-outline-#5bb66f"
     resources: { }
     workload:
       main:

@@ -49,6 +49,7 @@ spec:
           homepage:
             enabled: true
             group: System
+            icon: kubernetes
         hosts:
           - host: kubernetes.${BASE_DOMAIN}
             paths:
