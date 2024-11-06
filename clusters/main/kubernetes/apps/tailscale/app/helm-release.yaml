@@ -21,6 +21,5 @@ spec:
       authkey: "${TAILSCALE_AUTH_KEY}"
       auth_once: false
       accept_dns: true
-      routes:
-        - 192.168.188.0/24
+      routes: "192.168.188.0/24"
     hostNetwork: false
