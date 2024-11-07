@@ -76,6 +76,6 @@ spec:
       kubeProxyReplacementHealthzBindAddr: 0.0.0.0:10256
       localRedirectPolicy: true
       operator:
-        replicas: 1
+        replicas: 1 # Overrriden explicitly to not prevent helm release installs (Default: 2. Causes pods not to start because port is already in use on single-node cluster)
         rollOutPods: true
       rollOutCiliumPods: true

@@ -1,85 +1,53 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-    name: traefik
-    namespace: traefik
+  name: traefik
+  namespace: traefik
 spec:
-    interval: 15m
-    chart:
-        spec:
-            chart: traefik
-            version: 29.4.0
-            sourceRef:
-                kind: HelmRepository
-                name: truecharts
-                namespace: flux-system
-    install:
-        createNamespace: true
-        crds: CreateReplace
-        remediation:
-            retries: 3
-    upgrade:
-        cleanupOnFail: true
-        crds: CreateReplace
-        remediation:
-            retries: 3
-    uninstall:
-        keepHistory: false
-    values:
-        TZ: Europe/Berlin
-        logs:
-            access:
-                enabled: false
-                fields:
-                    general:
-                        defaultmode: keep
-                    headers:
-                        defaultmode: drop
-                filters:
-                    minduration: 10ms
-                    retryattempts: true
-                    statuscodes: 200,300-302
-                format: common
-            general:
-                format: common
-                level: ERROR
-        defaultCertificate: ""
-        service:
-            main:
-                type: ClusterIP
-            tcp:
-                loadBalancerIP: ${TRAEFIK_IP}
-                externalTrafficPolicy: Local
-                ports:
-                    web:
-                        enabled: true
-                        port: 80
-                        protocol: http
-                        redirectTo: websecure
-                    websecure:
-                        enabled: true
-                        port: 443
-                        protocol: https
-                        forwardedHeaders:
-                            enabled: false
-                            insecureMode: false
-                        proxyProtocol:
-                            enabled: false
-                            insecureMode: false
-        ingress:
-            main:
-                enabled: true
-                integrations:
-                    traefik:
-                        enabled: true
-                    certManager:
-                        enabled: true
-                        certificateIssuer: ${CERTMANAGER_ISSUER}
-                    homepage:
-                        enabled: true
-                        group: System
-                hosts:
-                    - host: traefik.${BASE_DOMAIN}
-                      paths:
-                        - path: /
-                          pathType: Prefix
+  interval: 15m
+  chart:
+    spec:
+      chart: traefik
+      version: 29.4.0
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+      interval: 15m
+  timeout: 20m
+  maxHistory: 3
+  driftDetection:
+    mode: warn
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    TZ: Europe/Berlin
+    defaultCertificate: ""
+    service:
+      tcp:
+        loadBalancerIP: ${TRAEFIK_IP}
+    ingress:
+      main:
+        enabled: true
+        integrations:
+          traefik:
+            enabled: true
+          certManager:
+            enabled: true
+            certificateIssuer: ${CERTMANAGER_ISSUER}
+          homepage:
+            enabled: true
+            group: System
+        hosts:
+          - host: traefik.${BASE_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
