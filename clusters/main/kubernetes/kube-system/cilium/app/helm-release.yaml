@@ -76,5 +76,6 @@ spec:
       kubeProxyReplacementHealthzBindAddr: 0.0.0.0:10256
       localRedirectPolicy: true
       operator:
+        hostNetwork: false # Manuell hinzugefügt um Fehler mit mehreren Pods zu vermeiden.
         rollOutPods: true
       rollOutCiliumPods: true
