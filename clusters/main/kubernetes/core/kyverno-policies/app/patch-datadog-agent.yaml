@@ -1,0 +1,47 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: patch-datadog-agent
+  annotations:
+    policies.kyverno.io/title: Patch Datadog Agent
+    policies.kyverno.io/category: Other
+    policies.kyverno.io/severity: medium
+    kyverno.io/kyverno-version: 1.6.0
+    policies.kyverno.io/minversion: 1.6.0
+    kyverno.io/kubernetes-version: "1.23"
+#    policies.kyverno.io/subject: Pod
+    policies.kyverno.io/description: >-
+      Removes /passwd and systemprobe mounts from datadog agent pods, so they can start correctly on readonly file system
+spec:
+  background: false
+  rules:
+    - name: remove-passwd
+      match:
+        any:
+          - resources:
+              kinds:
+                - DaemonSet
+              names:
+                - datadog-agent
+      mutate:
+        patchesJson6902: |-
+          - op: remove
+            path: "/spec/template/metadata/annotations/container.seccomp.security.alpha.kubernetes.io~1system-probe"
+            value: "localhost/system-probe"
+          - op: remove
+            path: "/spec/template/metadata/annotations/container.apparmor.security.beta.kubernetes.io~1system-probe"
+            value: unconfined
+        patchStrategicMerge:
+          spec:
+            template:
+              spec:
+                volumes:
+                  - $patch: delete
+                    name: passwd
+                containers:
+                  - name: process-agent
+                    volumeMounts:
+                      - $patch: delete
+                        mountPath: /etc/passwd
+                  - $patch: delete
+                    name: system-probe

@@ -1,8 +1,0 @@
-[
-  {"op": "remove",
-    "path": "/spec/template/metadata/annotations/container.seccomp.security.alpha.kubernetes.io~1system-probe",
-    "value": "localhost/system-probe"},
-  {"op": "remove",
-    "path": "/spec/template/metadata/annotations/container.apparmor.security.beta.kubernetes.io~1system-probe",
-    "value": "unconfined"}
-]
