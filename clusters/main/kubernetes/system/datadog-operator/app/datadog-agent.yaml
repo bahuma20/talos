@@ -3,6 +3,7 @@ apiVersion: datadoghq.com/v2alpha1
 kind: DatadogAgent
 metadata:
   name: datadog
+  namespace: datadog-operator
 spec:
   global:
     clusterName: Talos
