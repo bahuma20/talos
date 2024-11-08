@@ -3,10 +3,10 @@ apiVersion: datadoghq.com/v2alpha1
 kind: DatadogAgent
 metadata:
   name: datadog
-  namespace: datadog-operator
+  namespace: datadog
 spec:
   global:
-    clusterName: Talos
+    clusterName: talos
     site: datadoghq.eu
     credentials:
       apiSecret:
