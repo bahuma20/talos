@@ -51,5 +51,3 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
-    metrics:
-      datadog: {}
