@@ -5,7 +5,7 @@ metadata:
   namespace: datadog
 spec:
   interval: 10m
-  path: clusters/main/kubernetes/system/datadog-operator/app
+  path: clusters/main/kubernetes/core/datadog/app
   prune: true
   sourceRef:
     kind: GitRepository
