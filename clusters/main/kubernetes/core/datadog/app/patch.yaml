@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: datadog
+spec:
+  template:
+    spec:
+      volumes:
+        - $patch: delete
+          name: passwd
+      containers:
+        - name: process-agent
+          volumeMounts:
+            - $patch: delete
+              mountPath: /etc/passwd
+        - $patch: delete
+          name: system-probe
