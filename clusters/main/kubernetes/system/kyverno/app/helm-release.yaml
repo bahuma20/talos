@@ -39,6 +39,18 @@ spec:
       annotations:
         grafana_folder: System
     backgroundController:
+      podAnnotations: # Manually added for Datadog integration
+        ad.datadoghq.com/controller.checks: |
+          {
+            "kyverno": {
+              "init_config": {},
+              "instances": [
+                {
+                  "openmetrics_endpoint": "http://%%host%%:8000/metrics"
+                }
+              ]
+            }
+          }
       serviceMonitor:
         enabled: true
       rbac:
@@ -58,12 +70,48 @@ spec:
                 - get
                 - list
     cleanupController:
+      podAnnotations: # Manually added for Datadog integration
+        ad.datadoghq.com/controller.checks: |
+          {
+            "kyverno": {
+              "init_config": {},
+              "instances": [
+                {
+                  "openmetrics_endpoint": "http://%%host%%:8000/metrics"
+                }
+              ]
+            }
+          }
       serviceMonitor:
         enabled: true
     reportsController:
+      podAnnotations: # Manually added for Datadog integration
+        ad.datadoghq.com/controller.checks: |
+          {
+            "kyverno": {
+              "init_config": {},
+              "instances": [
+                {
+                  "openmetrics_endpoint": "http://%%host%%:8000/metrics"
+                }
+              ]
+            }
+          }
       serviceMonitor:
         enabled: true
     admissionController:
+      podAnnotations: # Manually added for Datadog integration
+        ad.datadoghq.com/controller.checks: |
+          {
+            "kyverno": {
+              "init_config": {},
+              "instances": [
+                {
+                  "openmetrics_endpoint": "http://%%host%%:8000/metrics"
+                }
+              ]
+            }
+          }
       replicas: 3
       serviceMonitor:
         enabled: true
