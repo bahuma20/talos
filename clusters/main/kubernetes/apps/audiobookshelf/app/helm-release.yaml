@@ -15,6 +15,10 @@ spec:
         namespace: flux-system
   releaseName: audiobookshelf
   values:
+    labels:
+      tags.datadoghq.com/env: prd
+      tags.datadoghq.com/service: audiobookshelf
+      tags.datadoghq.com/version: 11.8.2
     TZ: Europe/Berlin
     credentials:
       storj:
