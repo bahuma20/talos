@@ -12,3 +12,10 @@ spec:
       apiSecret:
         secretName: datadog-secret
         keyName: api-key
+
+
+
+
+        helm repo add datadog https://helm.datadoghq.com
+        helm install datadog-operator datadog/datadog-operator
+
