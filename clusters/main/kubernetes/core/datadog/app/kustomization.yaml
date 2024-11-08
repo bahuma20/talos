@@ -9,7 +9,7 @@ patches:
       group: apps
       version: v1
       kind: DaemonSet
-      name: datadog
+      name: datadog-agent
       namespace: datadog
 patchesStrategicMerge:
   - patch.yaml
