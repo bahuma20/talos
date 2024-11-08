@@ -3,13 +3,3 @@ kind: Kustomization
 resources:
   - datadog-secret.secret.yaml
   - datadog-agent.yaml
-patches:
-  - path: patch.json
-    target:
-      group: apps
-      version: v1
-      kind: DaemonSet
-      name: datadog-agent
-      namespace: datadog
-patchesStrategicMerge:
-  - patch.yaml

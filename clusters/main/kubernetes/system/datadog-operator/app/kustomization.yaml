@@ -3,3 +3,13 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - helm-release.yaml
+patches:
+  - path: patch.json
+    target:
+      group: apps
+      version: v1
+      kind: DaemonSet
+      name: datadog-agent
+      namespace: datadog
+patchesStrategicMerge:
+  - patch.yaml
