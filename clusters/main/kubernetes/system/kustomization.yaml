@@ -4,6 +4,7 @@ resources:
   - cert-manager/ks.yaml
   - cert-manager-webhook-hetzner/ks.yaml
   - cloudnative-pg/ks.yaml
+  - datadog-operator/ks.yaml
   - kubernetes-reflector/ks.yaml
   - kyverno/ks.yaml
   - longhorn/ks.yaml
