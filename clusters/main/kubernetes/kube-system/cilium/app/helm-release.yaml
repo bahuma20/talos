@@ -78,4 +78,8 @@ spec:
       operator:
         replicas: 1 # Overrriden explicitly to not prevent helm release installs (Default: 2. Causes pods not to start because port is already in use on single-node cluster)
         rollOutPods: true
+        prometheus: # Manually added for datadog
+          enabled: true # Manually added for datadog
       rollOutCiliumPods: true
+      prometheus: # Manually added for datadog
+        enabled: true # Manually added for datadog
