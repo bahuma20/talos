@@ -10,5 +10,6 @@ patches:
       version: v1
       kind: DaemonSet
       name: datadog
+      namespace: datadog
 patchesStrategicMerge:
   - patch.yaml
