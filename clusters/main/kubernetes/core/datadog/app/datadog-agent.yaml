@@ -20,22 +20,7 @@ spec:
       unixDomainSocketConfig:
         enabled: false
       instrumentation:
-        enabled: true
-        enabledNamespaces:
-          - audiobookshelf
-          - bahuma-abrechnung
-          - homepage
-          - jellyfin
-          - nextcloud
-          - paperless-ngx
-          - tailscale
-          - vaultwarden
-        libVersions:
-          java: "1"
-          python: "2"
-          js: "5"
-          dotnet: "3"
-          ruby: "2"
+        enabled: false
     logCollection:
       enabled: true
       containerCollectAll: true
