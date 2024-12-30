@@ -20,9 +20,8 @@
     {
       "description": ["Auto-merge minor and patch helm-chart updates"],
       "matchManagers": ["flux"],
-      "matchDatasources": ["helm"],
       "automerge": true,
-      "automergeType": "branch",
+      "automergeType": "pr",
       "matchUpdateTypes": ["minor", "patch"]
     }
   ]
