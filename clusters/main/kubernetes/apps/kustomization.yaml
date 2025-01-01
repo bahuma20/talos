@@ -13,3 +13,4 @@ resources:
   - tailscale/ks.yaml
   - truenas/ks.yaml
   - vaultwarden/ks.yaml
+  - odoo/ks.yaml
