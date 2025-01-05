@@ -35,6 +35,10 @@ spec:
               enabled: true
             dest:
               enabled: false
+    service:
+      main:
+        type: LoadBalancer
+        loadBalancerIP: ${MINECRAFT_IP}
     workload:
       main:
         podSpec:
