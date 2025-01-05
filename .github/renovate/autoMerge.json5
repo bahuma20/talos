@@ -18,6 +18,10 @@
     //   "matchUpdateTypes": ["minor", "patch"]
     // }
     {
+      "matchDepNames": "**minecraft**",
+      "automerge": false
+    },
+    {
       "description": ["Auto-merge minor and patch helm-chart updates"],
       "matchManagers": ["flux"],
       "automerge": true,

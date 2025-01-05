@@ -1,0 +1,55 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: minecraft
+  namespace: minecraft
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: minecraft
+      version: 11.15.0
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  values:
+    TZ: Europe/Berlin
+    credentials:
+      storj:
+        type: s3
+        name: storj
+        url: https://gateway.storjshare.io
+        accessKey: ${STORJ_ACCESS_KEY}
+        secretKey: ${STORJ_SECRET_KEY}
+        bucket: ${STORJ_BUCKET}
+        encrKey: ${STORJ_VOLSYNC_ENCRYPTION_KEY}
+        path: ""
+    persistence:
+      backups:
+        volsync:
+          - name: mcbackup-backups
+            type: restic
+            credentials: storj
+            src:
+              enabled: true
+            dest:
+              enabled: true
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                TYPE: "PAPER"
+                VERSION: "1.21.3"
+                PAPER_BUILD: "82"
+                MOTD: "Happy Noitln"
+                SERVER_NAME: "Noitl.Craft"
+                ENABLE_WHITELIST: true
+                RCON_PASSWORD: ${MINECRAFT_RCON_PASSWORD}
+                PVP: true
+            mcbackup:
+              env:
+                PRUNE_BACKUPS_DAYS: "2"
+    resources: {}
