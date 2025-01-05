@@ -53,6 +53,8 @@ spec:
                 ENABLE_WHITELIST: true
                 RCON_PASSWORD: ${MINECRAFT_RCON_PASSWORD}
                 PVP: true
+                MAX_WORLD_SIZE: ""
+                MEMORY: 4096M
             mcbackup:
               env:
                 PRUNE_BACKUPS_DAYS: "2"
