@@ -46,11 +46,12 @@ spec:
             main:
               probes:
                 liveness:
-                  enabled: false
+                  spec:
+                    initialDelaySeconds: 99999
                 readiness:
-                  enabled: false
+                  spec:
+                    initialDelaySeconds: 99999
                 startup:
-                  enabled: false
               env:
                 TYPE: "PAPER"
                 VERSION: "1.21.3"
