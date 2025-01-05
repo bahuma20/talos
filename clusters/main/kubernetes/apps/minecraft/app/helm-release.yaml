@@ -44,6 +44,13 @@ spec:
         podSpec:
           containers:
             main:
+              probes:
+                liveness:
+                  enabled: false
+                readiness:
+                  enabled: false
+                startup:
+                  enabled: false
               env:
                 TYPE: "PAPER"
                 VERSION: "1.21.3"
