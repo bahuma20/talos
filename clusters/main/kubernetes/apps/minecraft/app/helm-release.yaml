@@ -44,14 +44,6 @@ spec:
         podSpec:
           containers:
             main:
-              probes:
-                liveness:
-                  spec:
-                    initialDelaySeconds: 99999
-                readiness:
-                  spec:
-                    initialDelaySeconds: 99999
-                startup:
               env:
                 TYPE: "PAPER"
                 VERSION: "1.21.3"
@@ -61,7 +53,6 @@ spec:
                 ENABLE_WHITELIST: true
                 RCON_PASSWORD: ${MINECRAFT_RCON_PASSWORD}
                 PVP: true
-                SETUP_ONLY: true
             mcbackup:
               env:
                 PRUNE_BACKUPS_DAYS: "2"
