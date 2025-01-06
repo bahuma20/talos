@@ -15,6 +15,12 @@ spec:
         namespace: flux-system
   values:
     TZ: Europe/Berlin
+    mcbackup:
+      excludes:
+        - "cache"
+        - ".cache"
+        - "logs"
+        - "*.tmp"
     credentials:
       storj:
         type: s3
@@ -27,14 +33,7 @@ spec:
         path: ""
     persistence:
       backups:
-        volsync:
-          - name: mcbackup-backups
-            type: restic
-            credentials: storj
-            src:
-              enabled: true
-            dest:
-              enabled: false
+        enabled: false
     service:
       main:
         type: LoadBalancer
@@ -57,5 +56,14 @@ spec:
                 MEMORY: 4096M
             mcbackup:
               env:
-                PRUNE_BACKUPS_DAYS: "2"
+                BACKUP_METHOD: "restic"
+                RESTIC_HOSTNAME: "minecraft"
+                RESTIC_PASSWORD: ${MINECRAFT_RESTIC_PASSWORD}
+                RESTIC_REPOSITORY: "s3:https://gateway.storjshare.io/backup-minecraft"
+                AWS_ACCESS_KEY_ID: ${STORJ_ACCESS_KEY}
+                AWS_SECRET_ACCESS_KEY:  ${STORJ_SECRET_KEY}
+                PRUNE_RESTIC_RETENTION: "--keep-daily 3 --keep-weekly 4 --keep-monthly 2 --keep-yearly 1"
+                PRUNE_BACKUPS_DAYS: "1"
+                BACKUP_NAME: "minecraft"
+                DEBUG: true
     resources: {}
