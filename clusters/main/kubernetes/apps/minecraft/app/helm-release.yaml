@@ -107,47 +107,13 @@ spec:
                 - "-c"
               args:
                 - |
-                  retry() {
-                    if [ "$#" -lt 3 ]; then
-                    log INTERNALERROR "Wrong number of arguments passed to retry function"
-                    return 1
-                    fi
-
-                    # How many times should we retry?
-                    # Value smaller than zero means infinitely
-                    local retries="${1}"
-                    # Time to sleep between retries
-                    local interval="${2}"
-                    readonly retries interval
-                    shift 2
-
-                    if (( retries < 0 )); then
-                    local retries_msg="infinite"
-                    else
-                    local retries_msg="${retries}"
-                    fi
-
-                    local i=-1 # -1 since we will increment it before printing
-                    while (( retries >= ++i )) || [ "${retries_msg}" != "${retries}" ]; do
-                    # Send SIGINT after 5 minutes. If it doesn't shut down in 30 seconds, kill it.
-                    if output="$(timeout --signal=SIGINT --kill-after=30s 5m "${@}" 2>&1 | tr '\n' '\t')"; then
-                    log INFO "Command executed successfully ${*}"
-                    return 0
-                    else
-                    log ERROR "Unable to execute ${*} - try ${i}/${retries_msg}. Retrying in ${interval}"
-                    if [ -n "${output}" ]; then
-                    log ERROR "Failure reason: ${output}"
-                    fi
-                    fi
-                    # shellcheck disable=SC2086
-                    sleep ${interval}
-                    done
-                    return 2
-                  }
-
-                  echo "Hello Kubernetes"
-                  echo "I bims"
-                  ls -la /backup-source
-                  ls -la /backup-target
-                  retry 5 10 echo "hello"
+                  echo "RCON save-off"
+                  rcon-cli save-off
+                  echo "RCON save-all flush"
+                  rcon-cli save-all flush
+                  echo "Copying files from /backup-source to /backup-target"
+                  cp -r /backup-source/* /backup-target
+                  cp -r /backup-source/.* /backup-target
+                  echo "RCON save-on"
+                  rcon-cli save-on
     resources: {}
