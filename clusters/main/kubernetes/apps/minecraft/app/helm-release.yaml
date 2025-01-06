@@ -87,6 +87,7 @@ spec:
           containers:
             main:
               enabled: true
+              primary: true
               imageSelector: mcBackupImage
               probes:
                 liveness:
