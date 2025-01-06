@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   - schematic-to-pod.yaml
   # - ensure-digest.yaml
-  - patch-datadog-agent.yaml
+  # - patch-datadog-agent.yaml

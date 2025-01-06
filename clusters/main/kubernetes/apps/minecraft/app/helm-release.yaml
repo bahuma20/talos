@@ -80,7 +80,7 @@ spec:
         enabled: true
         primary: false
         type: CronJob
-        schedule: "0 12 * * *"
+        schedule: "0 3 * * *"
         concurrentPolicy:
         podSpec:
           restartPolicy: Never
@@ -112,8 +112,7 @@ spec:
                   echo "RCON save-all flush"
                   rcon-cli save-all flush
                   echo "Copying files from /backup-source to /backup-target"
-                  cp -r /backup-source/* /backup-target
-                  cp -r /backup-source/.* /backup-target
+                  rsync -av --delete /backup-source /backup-target
                   echo "RCON save-on"
                   rcon-cli save-on
     resources: {}
