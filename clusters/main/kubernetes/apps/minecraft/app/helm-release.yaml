@@ -86,6 +86,7 @@ spec:
           restartPolicy: Never
           containers:
             main:
+              enabled: true
               imageSelector: mcBackupImage
               probes:
                 liveness:
