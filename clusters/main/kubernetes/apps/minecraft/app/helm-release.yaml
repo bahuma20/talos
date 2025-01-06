@@ -43,6 +43,7 @@ spec:
             main:
               mountPath: /backup-source
       backup-target:
+        enabled: true
         type: nfs
         server: ${NFS_HOST}
         path: /mnt/pool1/backup/backup-minecraft
