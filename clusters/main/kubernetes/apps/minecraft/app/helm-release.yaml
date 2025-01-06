@@ -42,6 +42,7 @@ spec:
           backup:
             main:
               mountPath: /backup-source
+              readOnly: true
       backup-target:
         enabled: true
         type: nfs
