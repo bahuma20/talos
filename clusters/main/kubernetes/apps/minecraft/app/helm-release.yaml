@@ -113,7 +113,7 @@ spec:
                   echo "RCON save-all flush"
                   rcon-cli save-all flush
                   echo "Copying files from /backup-source to /backup-target"
-                  rsync -avP --delete --exclude=logs /backup-source/ /backup-target
+                  rsync -avP --delete --exclude={.cache,cache,logs,*.tmp} /backup-source/ /backup-target
                   echo "RCON save-on"
                   rcon-cli save-on
     resources: {}
