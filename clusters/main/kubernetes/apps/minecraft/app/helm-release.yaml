@@ -34,6 +34,25 @@ spec:
     persistence:
       backups:
         enabled: false
+      data:
+        targetSelector:
+          main:
+            main:
+              mountPath: /data
+          backup:
+            main:
+              mountPath: /backup-source
+      backup-target:
+        type: nfs
+        server: ${NFS_HOST}
+        path: /mnt/pool1/backup/backup-minecraft
+        readOnly: false
+        autoPermissions:
+          enabled: false
+        targetSelector:
+          backup:
+            main:
+              mountPath: /backup-target
     service:
       main:
         type: LoadBalancer
@@ -55,15 +74,39 @@ spec:
                 MAX_WORLD_SIZE: ""
                 MEMORY: 4096M
             mcbackup:
+              enabled: false
+      backup:
+        enabled: true
+        primary: false
+        type: CronJob
+        schedule: "0 12 * * *"
+        concurrentPolicy:
+        podSpec:
+          restartPolicy: Never
+          containers:
+            main:
+              imageSelector: mcBackupImage
+              probes:
+                liveness:
+                  enabled: false
+                readiness:
+                  enabled: false
+                startup:
+                  enabled: false
               env:
-                BACKUP_METHOD: "restic"
-                RESTIC_HOSTNAME: "minecraft"
-                RESTIC_PASSWORD: ${MINECRAFT_RESTIC_PASSWORD}
-                RESTIC_REPOSITORY: "s3:https://gateway.storjshare.io/backup-minecraft"
-                AWS_ACCESS_KEY_ID: ${STORJ_ACCESS_KEY}
-                AWS_SECRET_ACCESS_KEY:  ${STORJ_SECRET_KEY}
-                PRUNE_RESTIC_RETENTION: "--keep-daily 3 --keep-weekly 4 --keep-monthly 2 --keep-yearly 1"
-                PRUNE_BACKUPS_DAYS: "1"
-                BACKUP_NAME: "minecraft"
-                DEBUG: true
+                SERVER_PORT: "{{ .Values.service.main.ports.main.port }}"
+                RCON_HOST: '{{ printf "%s-rcon" (include "tc.v1.common.lib.chart.names.fullname" $) }}'
+                RCON_PORT: "{{ .Values.service.rcon.ports.rcon.port }}"
+                RCON_PASSWORD: "{{ .Values.workload.main.podSpec.containers.main.env.RCON_PASSWORD }}"
+                SERVER_HOST: '{{ include "tc.v1.common.lib.chart.names.fullname" $ }}'
+              command:
+                - "sh"
+                - "-c"
+              args:
+                - |
+                  echo "Hello Kubernetes"
+                  echo "I bims"
+                  ls -la /backup-source
+                  ls -la /backup-target
+                  touch /backup-target/test
     resources: {}
