@@ -61,7 +61,7 @@ spec:
           "mc-router.itzg.me/defaultServer": "true"
     workload:
       main:
-        type: DaemonSet
+        type: StatefulSet
         podSpec:
           containers:
             main:
