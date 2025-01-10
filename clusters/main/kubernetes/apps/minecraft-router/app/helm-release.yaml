@@ -34,7 +34,7 @@ spec:
         enabled: true
         primary: true
     rbac:
-      auto-scale-up:
+      MinecraftAutoScaleUp:
         enabled: true
         primary: true
         clusterWide: true
