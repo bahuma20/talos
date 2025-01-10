@@ -57,10 +57,11 @@ spec:
               mountPath: /backup-target
     service:
       main:
-        type: LoadBalancer
-        loadBalancerIP: ${MINECRAFT_IP}
+        annotations:
+          "mc-router.itzg.me/defaultServer": "true"
     workload:
       main:
+        type: DaemonSet
         podSpec:
           containers:
             main:

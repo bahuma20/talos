@@ -8,6 +8,7 @@ resources:
   - linkwarden/ks.yaml
   - homepage/ks.yaml
   - minecraft/ks.yaml
+  - minecraft-router/ks.yaml
   - nextcloud/ks.yaml
   - paperless-ngx/ks.yaml
   - tailscale/ks.yaml
