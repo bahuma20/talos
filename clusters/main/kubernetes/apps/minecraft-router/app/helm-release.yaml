@@ -25,9 +25,10 @@ spec:
           automountServiceAccountToken: true
           containers:
             main:
-              args:
-                - "--in-kube-cluster"
-                - "--auto-scale-up"
+              env:
+                AUTO_SCALE_UP: "true"
+                IN_KUBE_CLUSTER: "true"
+                DEBUG: "true"
     serviceAccount:
       main:
         enabled: true
