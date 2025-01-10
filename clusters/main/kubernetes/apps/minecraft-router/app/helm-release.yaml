@@ -25,7 +25,7 @@ spec:
           containers:
             main:
               args:
-                - "--in-kubernetes-cluster"
+                - "--in-kube-cluster"
                 - "--auto-scale-up"
     serviceAccount:
       main:
