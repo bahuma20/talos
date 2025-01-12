@@ -1,0 +1,69 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: minecraft-proxy
+  namespace: minecraft-proxy
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 14.4.0
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  values:
+    TZ: Europe/Berlin
+    image:
+      repository: docker pull ghcr.io/bahuma20/lazymc-docker-proxy
+      pullPolicy: IfNotPresent
+      tag: v0.0.2
+    service:
+      main:
+        type: LoadBalancer
+        loadBalancerIP: ${MINECRAFT_PROXY_IP}
+        ports:
+          main:
+            port: 25565
+    workload:
+      main:
+        podSpec:
+          automountServiceAccountToken: true
+          containers:
+            main:
+              probes:
+                liveness:
+                  enabled: false
+                  type: tcp
+                readiness:
+                  enabled: false
+                  type: tcp
+                startup:
+                  enabled: false
+                  type: tcp
+              env:
+                BACKEND_TYPE: kubernetes
+                SERVER_ADDRESS: minecraft-minecraft-java.minecraft.svc.cluster.local
+                STATEFULSET_NAME: minecraft-minecraft-java
+                STATEFULSET_NAMESPACE: minecraft
+                LAZYMC_GROUP: default
+    serviceAccount:
+      main:
+        enabled: true
+        primary: true
+    rbac:
+      main:
+        enabled: true
+        primary: true
+        clusterWide: true
+        serviceAccounts:
+          - main
+        rules:
+          - apiGroups: [ "" ]
+            resources: [ "services" ]
+            verbs: [ "watch","list" ]
+          - apiGroups: [ "apps" ]
+            resources: [ "statefulsets", "statefulsets/scale" ]
+            verbs: [ "watch","list","get","update" ]
+    resources: { }
