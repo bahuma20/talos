@@ -18,7 +18,7 @@ spec:
     image:
       repository: ghcr.io/bahuma20/lazymc-docker-proxy
       pullPolicy: IfNotPresent
-      tag: v0.0.3
+      tag: v0.0.5
     service:
       main:
         type: LoadBalancer
