@@ -48,6 +48,17 @@ spec:
                 LAZYMC_GROUP: default
                 STATEFULSET_NAME: minecraft-minecraft-java
                 STATEFULSET_NAMESPACE: minecraft
+    persistence:
+      configfiles:
+        enabled: true
+        type: "emptyDir"
+        medium: memory
+        size: 20MiB
+        targetSelector:
+          main:
+            main:
+              mountPath: /app/configfiles
+              readOnly: false
     serviceAccount:
       main:
         enabled: true
