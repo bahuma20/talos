@@ -16,7 +16,7 @@ spec:
   values:
     TZ: Europe/Berlin
     image:
-      repository: docker pull ghcr.io/bahuma20/lazymc-docker-proxy
+      repository: ghcr.io/bahuma20/lazymc-docker-proxy
       pullPolicy: IfNotPresent
       tag: v0.0.2
     service:
