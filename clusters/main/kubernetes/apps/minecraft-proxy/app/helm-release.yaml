@@ -18,7 +18,7 @@ spec:
     image:
       repository: ghcr.io/bahuma20/lazymc-docker-proxy
       pullPolicy: IfNotPresent
-      tag: v0.0.2
+      tag: v0.0.3
     service:
       main:
         type: LoadBalancer
@@ -45,9 +45,9 @@ spec:
               env:
                 BACKEND_TYPE: kubernetes
                 SERVER_ADDRESS: minecraft-minecraft-java.minecraft.svc.cluster.local
+                LAZYMC_GROUP: default
                 STATEFULSET_NAME: minecraft-minecraft-java
                 STATEFULSET_NAMESPACE: minecraft
-                LAZYMC_GROUP: default
     serviceAccount:
       main:
         enabled: true
