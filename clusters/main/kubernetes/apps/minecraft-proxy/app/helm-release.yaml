@@ -49,7 +49,7 @@ spec:
                   enabled: false
                   type: tcp
               env:
-                RUST_LOG: RUST_LOG=trace
+                RUST_LOG: trace
                 RUST_BACKTRACE: 1
                 APP_SERVER: minecraft-minecraft-java.minecraft.svc.cluster.local
                 APP_NAMESPACE: minecraft
