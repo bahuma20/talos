@@ -36,7 +36,7 @@ command = "bash /app/start-server.sh"
 
 # Freeze the server process instead of restarting it when no players online, making it resume faster.
 # Only works on Unix (Linux or MacOS), ignored on Windows
-#freeze_process = true
+freeze_process = false
 
 # Immediately wake server when starting lazymc.
 #wake_on_start = false
