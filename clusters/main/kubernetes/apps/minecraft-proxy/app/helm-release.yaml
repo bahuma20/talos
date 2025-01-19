@@ -18,13 +18,19 @@ spec:
     image:
       repository: bahuma20/lazymc-kubernetes
       pullPolicy: IfNotPresent
-      tag: latest@sha256:3ecb7ca39b2fb84244184d8255d36c3040506d541802a18ffee8177645733c1a
+      tag: latest@sha256:bb718116e4db75e8baaa7351e914f51d27f7ecc05ad72f12a8fdc34081af9873
     service:
       main:
         type: LoadBalancer
         loadBalancerIP: ${MINECRAFT_PROXY_IP}
         ports:
           main:
+            enabled: true
+            protocol: tcp
+            port: 25565
+          query:
+            enabled: true
+            protocol: udp
             port: 25565
     workload:
       main:

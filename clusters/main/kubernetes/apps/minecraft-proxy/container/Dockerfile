@@ -1,5 +1,6 @@
 FROM ubuntu:latest
 
+EXPOSE 25565/tcp
 EXPOSE 25565/udp
 
 WORKDIR /app
