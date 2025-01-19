@@ -44,6 +44,7 @@ spec:
                   type: tcp
               env:
                 RUST_LOG: debug
+                RUST_BACKTRACE: 1
                 APP_SERVER: minecraft-minecraft-java.minecraft.svc.cluster.local
                 APP_NAMESPACE: minecraft
                 APP_STATEFULSET_NAME: minecraft-minecraft-java
