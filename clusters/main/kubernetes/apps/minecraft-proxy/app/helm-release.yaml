@@ -16,7 +16,7 @@ spec:
   values:
     TZ: Europe/Berlin
     image:
-      repository: bahuma20/lazymc-kubernetes
+      repository: bahuma20/lazymc-kubernetes@sha256:fc4dd0dc1897e97cc7e1934348167000f6d71bbff07f2f28d52cb4cba3e1f6bd
       pullPolicy: IfNotPresent
       tag: v0.0.4
     service:
