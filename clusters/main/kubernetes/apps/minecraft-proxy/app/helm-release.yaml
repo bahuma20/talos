@@ -16,9 +16,9 @@ spec:
   values:
     TZ: Europe/Berlin
     image:
-      repository: bahuma20/lazymc-kubernetes@sha256:fc4dd0dc1897e97cc7e1934348167000f6d71bbff07f2f28d52cb4cba3e1f6bd
+      repository: bahuma20/lazymc-kubernetes
       pullPolicy: IfNotPresent
-      tag: latest
+      tag: latest@sha256:fc4dd0dc1897e97cc7e1934348167000f6d71bbff07f2f28d52cb4cba3e1f6bd
     service:
       main:
         type: LoadBalancer
