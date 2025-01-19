@@ -55,11 +55,6 @@ spec:
           backup:
             main:
               mountPath: /backup-target
-    service:
-      main:
-        annotations:
-          "mc-router.itzg.me/defaultServer": "true"
-          "mc-router.itzg.me/externalServerName": "craft.base.noitl.space"
     workload:
       main:
         type: StatefulSet
