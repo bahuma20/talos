@@ -52,7 +52,7 @@ spec:
       configfiles:
         enabled: true
         type: "emptyDir"
-        medium: memory
+        medium: Memory
         size: 20Mi
         targetSelector:
           main:
