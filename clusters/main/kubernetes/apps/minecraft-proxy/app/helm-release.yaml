@@ -18,7 +18,7 @@ spec:
     image:
       repository: bahuma20/lazymc-kubernetes
       pullPolicy: IfNotPresent
-      tag: latest@sha256:bb718116e4db75e8baaa7351e914f51d27f7ecc05ad72f12a8fdc34081af9873
+      tag: latest@sha256:24fc2427dd569db9fbabe0ffce8a58396ad630e285b90c4dd68cd63ba74dcd19
     service:
       main:
         type: LoadBalancer
@@ -49,7 +49,7 @@ spec:
                   enabled: false
                   type: tcp
               env:
-                RUST_LOG: RUST_LOG=info,lazymc=trace
+                RUST_LOG: RUST_LOG=info,lazymc=trace,lazymc::monitor=trace
                 RUST_BACKTRACE: 1
                 APP_SERVER: minecraft-minecraft-java.minecraft.svc.cluster.local
                 APP_NAMESPACE: minecraft
