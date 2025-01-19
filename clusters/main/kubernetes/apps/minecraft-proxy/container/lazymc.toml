@@ -46,7 +46,7 @@ command = "bash /app/start-server.sh"
 
 # Probe required server details when starting lazymc, wakes server on start.
 # Improves client compatibility. Automatically enabled if required by other config properties.
-#probe_on_start = false
+probe_on_start = true
 
 # Set to true if this server runs Forge.
 #forge = false
