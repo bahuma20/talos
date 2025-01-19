@@ -16,7 +16,7 @@ spec:
   values:
     TZ: Europe/Berlin
     image:
-      repository: ghcr.io/bahuma20/lazymc-docker-proxy
+      repository: bahuma20/lazymc-kubernetes
       pullPolicy: IfNotPresent
       tag: v0.0.4
     service:
@@ -43,11 +43,9 @@ spec:
                   enabled: false
                   type: tcp
               env:
-                BACKEND_TYPE: kubernetes
-                SERVER_ADDRESS: minecraft-minecraft-java.minecraft.svc.cluster.local
-                LAZYMC_GROUP: default
-                STATEFULSET_NAME: minecraft-minecraft-java
-                STATEFULSET_NAMESPACE: minecraft
+                APP_SERVER: minecraft-minecraft-java.minecraft.svc.cluster.local
+                APP_NAMESPACE: minecraft
+                APP_STATEFULSET_NAME: minecraft-minecraft-java
     persistence:
       configfiles:
         enabled: true
@@ -57,7 +55,7 @@ spec:
         targetSelector:
           main:
             main:
-              mountPath: /app/configfiles
+              mountPath: /app/config
               readOnly: false
     serviceAccount:
       main:
