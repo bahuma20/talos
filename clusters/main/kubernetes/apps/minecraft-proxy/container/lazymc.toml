@@ -90,10 +90,9 @@ send_proxy_v2 = true
 # Methods to use to occupy a client on join while the server is starting.
 # Read about all methods and configure them below.
 # Methods are used in order, if none is set, the client disconnects without a message.
-#methods = [
-#    "hold",
-#    "kick",
-#]
+methods = [
+    "forward"
+]
 
 [join.kick]
 # Kick occupation method.
@@ -122,11 +121,11 @@ send_proxy_v2 = true
 
 # IP and port to forward to.
 # The target server will receive original client handshake and login request as received by lazymc.
-#address = "127.0.0.1:25565"
+address = "__SERVER__:25565"
 
 # Add HAProxy v2 header to forwarded connections.
 # See: https://git.io/J1bYb
-#send_proxy_v2 = false
+send_proxy_v2 = true
 
 [join.lobby]
 # Lobby occupation method.

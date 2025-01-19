@@ -76,5 +76,5 @@ spec:
             verbs: [ "watch","list" ]
           - apiGroups: [ "apps" ]
             resources: [ "statefulsets", "statefulsets/scale" ]
-            verbs: [ "watch","list","get","update" ]
+            verbs: [ "watch","list","get","update","patch" ]
     resources: { }
