@@ -31,6 +31,10 @@ spec:
         bucket: ${STORJ_BUCKET}
         encrKey: ${STORJ_VOLSYNC_ENCRYPTION_KEY}
         path: ""
+    service:
+      main:
+        type: LoadBalancer
+        loadBalancerIP: 192.168.188.211
     persistence:
       backups:
         enabled: false

@@ -51,7 +51,7 @@ spec:
               env:
                 RUST_LOG: trace
                 RUST_BACKTRACE: 1
-                APP_SERVER: minecraft-minecraft-java.minecraft.svc.cluster.local
+                APP_SERVER: 192.168.188.211
                 APP_NAMESPACE: minecraft
                 APP_STATEFULSET_NAME: minecraft-minecraft-java
     persistence:
