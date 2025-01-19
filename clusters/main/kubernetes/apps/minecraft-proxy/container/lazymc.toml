@@ -91,7 +91,7 @@ send_proxy_v2 = true
 # Read about all methods and configure them below.
 # Methods are used in order, if none is set, the client disconnects without a message.
 methods = [
-    "forward"
+    "hold"
 ]
 
 [join.kick]

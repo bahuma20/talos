@@ -18,7 +18,7 @@ spec:
     image:
       repository: bahuma20/lazymc-kubernetes
       pullPolicy: IfNotPresent
-      tag: latest@sha256:3d9c0697924dcaac691fdb33df0517e02145fef7ed8186784ec0d811dacb31b7
+      tag: latest@sha256:ef60022c6c19dae3f7abb08f3d15add5cbbee67f709a51442ec867169da33345
     service:
       main:
         type: LoadBalancer
