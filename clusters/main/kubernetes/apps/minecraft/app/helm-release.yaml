@@ -106,6 +106,16 @@ spec:
             main:
               mountPath: /app/var
               readOnly: false
+      web-symfony:
+        enabled: true
+        type: "emptyDir"
+        medium: Memory
+        size: 150Mi
+        targetSelector:
+          web:
+            main:
+              mountPath: /.symfony5
+              readOnly: false
 
     workload:
       main:
