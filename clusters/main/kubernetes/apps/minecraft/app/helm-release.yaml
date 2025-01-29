@@ -15,6 +15,10 @@ spec:
         namespace: flux-system
   values:
     TZ: Europe/Berlin
+    webImage:
+      repository: ghcr.io/bahuma20/noitl-craft
+      tag: v0.0.4@sha256:9de8fe2f2913f2545ec51884b00bf3e7738094619a4eea17b446ff55a73d41bb
+      pullPolicy: Always
     mcbackup:
       excludes:
         - "cache"
@@ -35,6 +39,39 @@ spec:
       main:
         type: LoadBalancer
         loadBalancerIP: 192.168.188.211
+      web:
+        enabled: true
+        primary: false
+        type: LoadBalancer
+        loadBalancerIP: 192.168.188.212
+        ports:
+          main:
+            enabled: true
+            protocol: tcp
+            port: 80
+            targetPort: 8000
+        targetSelector: web
+
+    serviceAccount:
+      main:
+        enabled: true
+        primary: true
+
+    rbac:
+      main:
+        enabled: true
+        primary: true
+        clusterWide: true
+        serviceAccounts:
+          - main
+        rules:
+          - apiGroups: [ "" ]
+            resources: [ "services" ]
+            verbs: [ "watch","list" ]
+          - apiGroups: [ "apps" ]
+            resources: [ "statefulsets", "statefulsets/scale" ]
+            verbs: [ "watch","list","get","update","patch" ]
+
     persistence:
       backups:
         enabled: false
@@ -59,6 +96,7 @@ spec:
           backup:
             main:
               mountPath: /backup-target
+
     workload:
       main:
         type: StatefulSet
@@ -117,4 +155,26 @@ spec:
                   rsync -avP --delete --exclude='.cache' --exclude='cache' --exclude='logs' --exclude='*.tmp' /backup-source/ /backup-target
                   echo "RCON save-on"
                   rcon-cli save-on
+      web:
+        enabled: true
+        primary: false
+        type: Deployment
+        podSpec:
+          containers:
+            main:
+              enabled: true
+              primary: true
+              imageSelector: webImage
+              probes:
+                liveness:
+                  enabled: false
+                readiness:
+                  enabled: false
+                startup:
+                  enabled: false
+              env:
+                APP_ENV: prod
+                APP_SECRET: ${MINECRAFT_WEB_SECRET}
+                APP_NAMESPACE: minecraft
+                APP_STATEFULSET: minecraft-minecraft-java
     resources: {}
