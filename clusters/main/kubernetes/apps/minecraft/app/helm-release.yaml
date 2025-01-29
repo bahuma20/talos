@@ -181,6 +181,7 @@ spec:
         primary: false
         type: Deployment
         podSpec:
+          automountServiceAccountToken: true
           containers:
             main:
               enabled: true
