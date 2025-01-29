@@ -96,6 +96,16 @@ spec:
           backup:
             main:
               mountPath: /backup-target
+      web-var:
+        enabled: true
+        type: "emptyDir"
+        medium: Memory
+        size: 150Mi
+        targetSelector:
+          web:
+            main:
+              mountPath: /app/var
+              readOnly: false
 
     workload:
       main:
