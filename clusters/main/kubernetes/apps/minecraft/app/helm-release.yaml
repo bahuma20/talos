@@ -17,7 +17,7 @@ spec:
     TZ: Europe/Berlin
     webImage:
       repository: ghcr.io/bahuma20/noitl-craft
-      tag: v0.0.4@sha256:9de8fe2f2913f2545ec51884b00bf3e7738094619a4eea17b446ff55a73d41bb
+      tag: v0.0.5@sha256:c2c7fd0ff8d88da90395f58cc3579986dc505fa3bf0a3bb20a8e5983efa5a34f
       pullPolicy: Always
     mcbackup:
       excludes:
