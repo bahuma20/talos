@@ -4,6 +4,7 @@ resources:
   - kubernetes-dashboard/ks.yaml
   - audiobookshelf/ks.yaml
   - bahuma-abrechnung/ks.yaml
+  - ddns-updater/ks.yaml
   - jellyfin/ks.yaml
   - linkwarden/ks.yaml
   - homepage/ks.yaml
