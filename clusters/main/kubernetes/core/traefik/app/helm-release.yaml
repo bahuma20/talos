@@ -36,6 +36,11 @@ spec:
       tcp:
         type: NodePort
 #        loadBalancerIP: ${TRAEFIK_IP}
+        ports:
+          web:
+            nodePort: 80
+          websecure:
+            nodePort: 443
     middlewares:
       ipWhiteList:
         - name: local
