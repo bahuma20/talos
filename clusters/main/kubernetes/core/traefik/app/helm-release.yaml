@@ -34,7 +34,8 @@ spec:
     defaultCertificate: ""
     service:
       tcp:
-        loadBalancerIP: ${TRAEFIK_IP}
+        type: NodePort
+#        loadBalancerIP: ${TRAEFIK_IP}
     middlewares:
       ipWhiteList:
         - name: local
