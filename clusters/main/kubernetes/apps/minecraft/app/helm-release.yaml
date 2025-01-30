@@ -52,6 +52,24 @@ spec:
             targetPort: 8000
         targetSelector: web
 
+    ingress:
+      main:
+        enabled: true
+        hosts:
+          - host: craft.noitl.space
+            paths:
+              - path: /
+                pathType: Prefix
+        integrations:
+          certManager:
+            enabled: true
+            certificateIssuer: ${CERTMANAGER_ISSUER}
+          traefik:
+            enabled: true
+          homepage:
+            enabled: true
+            group: Sonstiges
+
     serviceAccount:
       main:
         enabled: true
