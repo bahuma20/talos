@@ -35,6 +35,11 @@ spec:
     service:
       tcp:
         loadBalancerIP: ${TRAEFIK_IP}
+    middlewares:
+      ipWhiteList:
+        - name: local
+          sourceRange:
+            - 192.168.188.0/24
     ingress:
       main:
         enabled: true

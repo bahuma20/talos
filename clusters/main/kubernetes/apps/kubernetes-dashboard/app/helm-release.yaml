@@ -46,6 +46,9 @@ spec:
             certificateIssuer: ${CERTMANAGER_ISSUER}
           traefik:
             enabled: true
+            middlewares:
+              - name: local
+                namespace: traefik
           homepage:
             enabled: true
             group: System

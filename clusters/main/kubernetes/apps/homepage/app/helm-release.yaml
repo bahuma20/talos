@@ -29,6 +29,9 @@ spec:
             certificateIssuer: ${CERTMANAGER_ISSUER}
           traefik:
             enabled: true
+            middlewares:
+              - name: local
+                namespace: traefik
     forceConfigFromValues: true
     configmap:
       config:
