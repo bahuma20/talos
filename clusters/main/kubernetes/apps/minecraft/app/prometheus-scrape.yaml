@@ -1,0 +1,12 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: minecraft-monitor
+  namespace: minecraft
+spec:
+  selector:
+    matchLabels:
+      release: minecraft
+      service.name: main
+  endpoints:
+    - port: z-prometheus
