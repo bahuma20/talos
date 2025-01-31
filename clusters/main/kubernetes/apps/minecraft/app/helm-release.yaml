@@ -47,7 +47,7 @@ spec:
         enabled: true
         primary: false
         ports:
-          main:
+          metrics:
             enabled: true
             protocol: tcp
             port: 9940
@@ -238,7 +238,7 @@ spec:
         enabled: true
         type: servicemonitor
         endpoints:
-          - port: main
+          - port: metrics
             path: /metrics
-        targetSelector: metrics
+        targetSelector: main
     resources: {}
