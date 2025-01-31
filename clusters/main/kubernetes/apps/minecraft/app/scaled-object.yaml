@@ -6,7 +6,7 @@ metadata:
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
-    kind: Statefulset
+    kind: StatefulSet
     name: minecraft-minecraft-java
   pollingInterval: 5 # Überprüfe alle 5 Sekunden
   cooldownPeriod: 300 # Warte 5 Minuten, bevor du wieder herunter skalierst
