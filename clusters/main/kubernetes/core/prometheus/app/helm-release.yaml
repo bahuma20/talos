@@ -31,3 +31,27 @@ spec:
     keepHistory: false
   values:
     TZ: Europe/Berlin
+    ingress:
+      main:
+        enabled: true
+        integrations:
+          certManager:
+            enabled: true
+            certificateIssuer: ${CERTMANAGER_ISSUER}
+          traefik:
+            enabled: true
+            middlewares:
+              - name: local
+                namespace: traefik
+          homepage:
+            enabled: true
+            group: System
+            icon: prometheus
+            name: "Prometheus"
+            widget:
+              enabled: false
+        hosts:
+          - host: prometheus.${BASE_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
