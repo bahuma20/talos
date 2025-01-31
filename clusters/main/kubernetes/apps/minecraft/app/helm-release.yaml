@@ -238,7 +238,7 @@ spec:
         enabled: true
         type: servicemonitor
         endpoints:
-          - port: z-prometheus
+          - port: main
             path: /metrics
-        targetSelector: main
+        targetSelector: metrics
     resources: {}
