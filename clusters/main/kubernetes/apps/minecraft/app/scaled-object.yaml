@@ -15,5 +15,5 @@ spec:
       metadata:
         serverAddress: http://prometheus.prometheus.svc.cluster.local:9090
         metricName: mc_players_online_total
-        query: max_over_time(mc_players_online_total[5m]) > 0
+        query: max_over_time(mc_players_online_total[1m]) > 0
         threshold: '1'
