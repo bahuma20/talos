@@ -33,6 +33,65 @@ spec:
     TZ: Europe/Berlin
     defaultCertificate: ""
     service:
+      lb:
+        enabled: true
+        type: LoadBalancer
+        loadBalancerIP: ${TRAEFIK_IP}
+        externalTrafficPolicy: Local
+        ports:
+          web2:
+            enabled: true
+            port: 80
+            protocol: http
+            redirectTo: websecure
+            # Options: Empty, 0 (ingore), or positive int
+            # redirectPort:
+            # -- Configure (Forwarded Headers)[https://doc.traefik.io/traefik/routing/entrypoints/#forwarded-headers] Support
+            forwardedHeaders:
+              enabled: false
+              # -- List of trusted IP and CIDR references
+              trustedIPs: []
+              # -- Trust all forwarded headers
+              insecureMode: false
+            # -- Configure (Proxy Protocol Headers)[https://doc.traefik.io/traefik/routing/entrypoints/#proxyprotocol] Support
+            proxyProtocol:
+              enabled: false
+              # -- Only IPs in trustedIPs will lead to remote client address replacement
+              trustedIPs: []
+              # -- Trust every incoming connection
+              insecureMode: false
+          websecure2:
+            enabled: true
+            port: 443
+            protocol: https
+            # -- Configure (Forwarded Headers)[https://doc.traefik.io/traefik/routing/entrypoints/#forwarded-headers] Support
+            forwardedHeaders:
+              enabled: false
+              # -- List of trusted IP and CIDR references
+              trustedIPs: []
+              # -- Trust all forwarded headers
+              insecureMode: false
+            # -- Configure (Proxy Protocol Headers)[https://doc.traefik.io/traefik/routing/entrypoints/#proxyprotocol] Support
+            proxyProtocol:
+              enabled: false
+              # -- Only IPs in trustedIPs will lead to remote client address replacement
+              trustedIPs: []
+              # -- Trust every incoming connection
+              insecureMode: false
+        #      tcpexample:
+        #        enabled: true
+        #        targetPort: 9443
+        #        protocol: tcp
+        #        tls:
+        #          enabled: false
+        #          # this is the name of a TLSOption definition
+        #          options: ""
+        #          certResolver: ""
+        #          domains: []
+        #          # - main: example.com
+        #          #   sans:
+        #          #     - foo.example.com
+        #          #     - bar.example.com
       tcp:
         type: NodePort
 #        loadBalancerIP: ${TRAEFIK_IP}
