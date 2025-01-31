@@ -5,6 +5,9 @@ metadata:
   namespace: prometheus
 spec:
   serviceAccountName: prometheus
+  serviceMonitorSelector:
+    matchLabels:
+      prometheus: main
   resources:
     requests:
       memory: 400Mi

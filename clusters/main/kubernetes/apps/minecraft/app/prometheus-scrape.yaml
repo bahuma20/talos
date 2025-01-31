@@ -3,6 +3,8 @@ kind: ServiceMonitor
 metadata:
   name: minecraft-monitor
   namespace: minecraft
+  labels:
+    prometheus: main
 spec:
   selector:
     matchLabels:
