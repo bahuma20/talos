@@ -37,12 +37,8 @@ spec:
         path: ""
     service:
       main:
-        type: NodePort
-        ports:
-          main:
-            nodePort: 30001
-          query:
-            nodePort: 30001
+        type: LoadBalancer
+        loadBalancerIP: ${MINECRAFT_IP}
       metrics:
         enabled: true
         primary: false
