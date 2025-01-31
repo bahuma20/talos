@@ -47,7 +47,7 @@ spec:
         enabled: true
         primary: false
         ports:
-          metrics:
+          z-metrics:
             enabled: true
             protocol: tcp
             port: 9940
@@ -238,7 +238,7 @@ spec:
         enabled: true
         type: servicemonitor
         endpoints:
-          - port: metrics
+          - port: z-metrics
             path: /metrics
         targetSelector: main
     resources: {}
