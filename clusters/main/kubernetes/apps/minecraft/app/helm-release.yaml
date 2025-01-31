@@ -43,12 +43,16 @@ spec:
             nodePort: 30001
           query:
             nodePort: 30001
-          z-prometheus:
+      metrics:
+        enabled: true
+        primary: false
+        ports:
+          main:
             enabled: true
             protocol: tcp
             port: 9940
             targetPort: 9940
-            nodePort: 30002
+        targetSelector: main
       web:
         enabled: true
         primary: false
