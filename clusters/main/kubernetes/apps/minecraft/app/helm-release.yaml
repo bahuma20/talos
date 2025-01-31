@@ -43,6 +43,12 @@ spec:
             nodePort: 30001
           query:
             nodePort: 30001
+          prometheus:
+            enabled: true
+            protocol: tcp
+            port: 9940
+            targetPort: 9940
+            nodePort: 30002
       web:
         enabled: true
         primary: false
