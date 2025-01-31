@@ -34,13 +34,14 @@ spec:
     defaultCertificate: ""
     service:
       tcp:
-        type: NodePort
-#        loadBalancerIP: ${TRAEFIK_IP}
-        ports:
-          web:
-            nodePort: 30080
-          websecure:
-            nodePort: 30443
+#        type: NodePort
+        type: LoadBalancer
+        loadBalancerIP: ${TRAEFIK_IP}
+#        ports:
+#          web:
+#            nodePort: 30080
+#          websecure:
+#            nodePort: 30443
     middlewares:
       ipWhiteList:
         - name: local
