@@ -229,4 +229,12 @@ spec:
                 APP_KUBERNETES_STATEFULSET_NAME: minecraft-minecraft-java
                 APP_MINECRAFT_SERVER_ADDRESS: minecraft-minecraft-java.minecraft.svc.cluster.local
                 APP_MINECRAFT_SERVER_PORT: 25565
+    metrics:
+      main:
+        enabled: true
+        type: servicemonitor
+        endpoints:
+          - port: z-prometheus
+            path: /metrics
+        targetSelector: main
     resources: {}
