@@ -42,7 +42,7 @@ spec:
           main:
             nodePort: 30001
           query:
-            nodePort: 30001
+            nodePort: 30002
       web:
         enabled: true
         primary: false
