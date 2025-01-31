@@ -8,4 +8,3 @@ resources:
   - blocky/ks.yaml
   - clusterissuer/ks.yaml
 #  - datadog/ks.yaml
-  - prometheus/ks.yaml
