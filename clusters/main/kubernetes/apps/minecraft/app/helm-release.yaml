@@ -40,9 +40,9 @@ spec:
         type: NodePort
         ports:
           main:
-            nodePort: 25565
+            nodePort: 30001
           query:
-            nodePort: 25565
+            nodePort: 30001
       web:
         enabled: true
         primary: false
