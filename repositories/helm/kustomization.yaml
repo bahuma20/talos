@@ -14,6 +14,7 @@ resources:
   - descheduler.yaml
   - intel.yaml
   - jetstack.yaml
+  - kedacore.yaml
   - kubernetes-sigs-metrics-server.yaml
   - kustomization.yaml
   - kyverno.yaml
