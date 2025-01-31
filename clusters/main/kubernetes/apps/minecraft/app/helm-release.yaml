@@ -43,7 +43,7 @@ spec:
             nodePort: 30001
           query:
             nodePort: 30001
-          z_prometheus:
+          z-prometheus:
             enabled: true
             protocol: tcp
             port: 9940
