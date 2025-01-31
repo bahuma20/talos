@@ -1,0 +1,19 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: minecraft-server
+  namespace: minecraft
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Statefulset
+    name: minecraft-minecraft-java
+  pollingInterval: 5 # Überprüfe alle 5 Sekunden
+  cooldownPeriod: 300 # Warte 5 Minuten, bevor du wieder herunter skalierst
+  triggers:
+    - type: prometheus
+      metadata:
+        serverAddress: http://prometheus.prometheus.svc.cluster.local:9090
+        metricName: mc_players_online_total
+        query: max_over_time(mc_players_online_total[5m]) > 0
+        threshold: '1'
