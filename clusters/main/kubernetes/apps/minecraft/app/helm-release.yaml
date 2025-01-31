@@ -17,7 +17,7 @@ spec:
     TZ: Europe/Berlin
     webImage:
       repository: ghcr.io/bahuma20/noitl-craft
-      tag: v0.0.15@sha256:cb579f4f2576dd3bd9b965255a193e097daed0fec34b5f9bdcd5e09627f9f44c
+      tag: v0.1.0@sha256:fc295616aabba1abb71b5a32b8a05c6a943959e6204bfaf5f6bb8c582d71a593
       pullPolicy: Always
     mcbackup:
       excludes:
@@ -37,8 +37,10 @@ spec:
         path: ""
     service:
       main:
-        type: LoadBalancer
-        loadBalancerIP: 192.168.188.211
+        type: NodePort
+        ports:
+          main:
+            nodePort: 25565
       web:
         enabled: true
         primary: false
@@ -215,6 +217,8 @@ spec:
               env:
                 APP_ENV: prod
                 APP_SECRET: ${MINECRAFT_WEB_SECRET}
-                APP_NAMESPACE: minecraft
-                APP_STATEFULSET: minecraft-minecraft-java
+                APP_KUBERNETES_NAMESPACE: minecraft
+                APP_KUBERNETES_STATEFULSET_NAME: minecraft-minecraft-java
+                APP_MINECRAFT_SERVER_ADDRESS: minecraft-minecraft-java.minecraft.svc.cluster.local
+                APP_MINECRAFT_SERVER_PORT: 25565
     resources: {}
