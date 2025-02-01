@@ -18,7 +18,7 @@ spec:
         serverAddress: http://prometheus.prometheus.svc.cluster.local:9090
         metricName: mc_players_online_total
         query: sum(mc_players_online_total)
-        threshold: 1
+        threshold: '1'
   advanced:
     horizontalPodAutoscalerConfig:
       behavior:
