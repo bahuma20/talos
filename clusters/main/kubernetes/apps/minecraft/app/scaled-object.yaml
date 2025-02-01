@@ -9,11 +9,18 @@ spec:
     kind: StatefulSet
     name: minecraft-minecraft-java
   pollingInterval: 5 # Überprüfe alle 5 Sekunden
-  cooldownPeriod: 60 # Warte 5 Minuten, bevor du wieder herunter skalierst
+  cooldownPeriod: 60
+  minReplicaCount: 0
+  maxReplicaCount: 1
   triggers:
     - type: prometheus
       metadata:
         serverAddress: http://prometheus.prometheus.svc.cluster.local:9090
         metricName: mc_players_online_total
-        query: (time() - kube_pod_start_time{pod="minecraft-minecraft-java-0"} < 60) or (sum(max_over_time(mc_players_online_total[1m])) > 0)
-        threshold: '1'
+        query: sum(mc_players_online_total)
+        threshold: 1
+  advanced:
+    horizontalPodAutoscalerConfig:
+      behavior:
+        scaleDown:
+          stabilizationWindowSeconds: 60
