@@ -10,6 +10,7 @@ spec:
     name: minecraft-minecraft-java
   pollingInterval: 5 # Überprüfe alle 5 Sekunden
   cooldownPeriod: 60
+  initialCooldownPeriod: 60
   minReplicaCount: 0
   maxReplicaCount: 1
   triggers:
@@ -19,8 +20,3 @@ spec:
         metricName: mc_players_online_total
         query: sum(mc_players_online_total)
         threshold: '1'
-  advanced:
-    horizontalPodAutoscalerConfig:
-      behavior:
-        scaleDown:
-          stabilizationWindowSeconds: 60
