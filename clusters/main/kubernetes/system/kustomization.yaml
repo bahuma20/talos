@@ -6,7 +6,6 @@ resources:
   - cloudnative-pg/ks.yaml
   # - datadog-operator/ks.yaml
   - kubernetes-reflector/ks.yaml
-  - keda/ks.yaml
   - kyverno/ks.yaml
   - longhorn/ks.yaml
   - metallb/ks.yaml
