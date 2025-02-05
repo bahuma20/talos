@@ -109,10 +109,16 @@ spec:
             enabled: true
             middlewares:
               - name: livemap-remove-prefix
-                namespace: minecraft
           homepage:
             enabled: false
-
+    ingressMiddlewares:
+      traefik:
+        livemap-remove-prefix:
+          enabled: true
+          type: strip-prefix
+          data:
+            prefix:
+              - /livemap
     serviceAccount:
       main:
         enabled: true
