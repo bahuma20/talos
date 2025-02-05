@@ -25,6 +25,7 @@ spec:
         - ".cache"
         - "logs"
         - "*.tmp"
+        - "plugins/dynmap/web/tiles"
     credentials:
       storj:
         type: s3
