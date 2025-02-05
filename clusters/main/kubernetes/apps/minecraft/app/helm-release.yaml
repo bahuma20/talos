@@ -97,6 +97,8 @@ spec:
             paths:
               - path: /livemap
                 pathType: Prefix
+        annotations:
+          traefik.ingress.kubernetes.io/rewrite-target: /
         targetSelector:
           livemap: livemap
         integrations:
