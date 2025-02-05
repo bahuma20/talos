@@ -106,8 +106,6 @@ spec:
             paths:
               - path: /livemap
                 pathType: Prefix
-        annotations:
-          traefik.ingress.kubernetes.io/rewrite-target: /
         targetSelector:
           livemap: livemap
         integrations:
@@ -116,6 +114,8 @@ spec:
             certificateIssuer: ${CERTMANAGER_ISSUER}
           traefik:
             enabled: true
+            middlewares:
+              - name: remove-livemap-prefix
           homepage:
             enabled: false
     serviceAccount:
