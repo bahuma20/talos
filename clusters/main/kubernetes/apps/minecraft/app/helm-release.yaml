@@ -116,6 +116,7 @@ spec:
             enabled: true
             middlewares:
               - name: remove-livemap-prefix
+                namespace: minecraft
           homepage:
             enabled: false
     serviceAccount:
