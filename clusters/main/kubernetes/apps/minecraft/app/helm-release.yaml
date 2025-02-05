@@ -98,7 +98,7 @@ spec:
               - path: /livemap
                 pathType: Prefix
         targetSelector:
-          main: livemap
+          livemap: livemap
         integrations:
           traefik:
             enabled: true
