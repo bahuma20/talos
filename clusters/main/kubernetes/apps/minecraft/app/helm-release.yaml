@@ -70,6 +70,15 @@ spec:
             targetPort: 8000
         targetSelector: web
 
+    ingressMiddlewares:
+      traefik:
+        livemap-remove-prefix:
+          enabled: true
+          type: strip-prefix
+          data:
+            prefix:
+              - /livemap
+
     ingress:
       main:
         enabled: true
@@ -107,18 +116,8 @@ spec:
             certificateIssuer: ${CERTMANAGER_ISSUER}
           traefik:
             enabled: true
-            middlewares:
-              - name: livemap-remove-prefix
           homepage:
             enabled: false
-    ingressMiddlewares:
-      traefik:
-        livemap-remove-prefix:
-          enabled: true
-          type: strip-prefix
-          data:
-            prefix:
-              - /livemap
     serviceAccount:
       main:
         enabled: true
