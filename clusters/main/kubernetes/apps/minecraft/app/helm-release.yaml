@@ -100,11 +100,12 @@ spec:
         targetSelector:
           livemap: livemap
         integrations:
+          certManager:
+            enabled: true
+            certificateIssuer: ${CERTMANAGER_ISSUER}
           traefik:
             enabled: true
           homepage:
-            enabled: false
-          certManager:
             enabled: false
 
     serviceAccount:
