@@ -107,6 +107,9 @@ spec:
             certificateIssuer: ${CERTMANAGER_ISSUER}
           traefik:
             enabled: true
+            middlewares:
+              - name: livemap-remove-prefix
+                namespace: minecraft
           homepage:
             enabled: false
 
