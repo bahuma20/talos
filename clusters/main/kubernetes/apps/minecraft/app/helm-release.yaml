@@ -39,6 +39,16 @@ spec:
       main:
         type: LoadBalancer
         loadBalancerIP: ${MINECRAFT_IP}
+      livemap:
+        enabled: true
+        primary: false
+        ports:
+          livemap:
+            enabled: true
+            protocol: tcp
+            port: 8123
+            targetPort: 8123
+        targetSelector: main
       metrics:
         enabled: true
         primary: false
@@ -79,6 +89,23 @@ spec:
           homepage:
             enabled: true
             group: Sonstiges
+      livemap:
+        enabled: true
+        primary: false
+        hosts:
+          - host: craft.noitl.space
+            paths:
+              - path: /livemap
+                pathType: Prefix
+        targetSelector:
+          main: livemap
+        integrations:
+          traefik:
+            enabled: true
+          homepage:
+            enabled: false
+          certManager:
+            enabled: false
 
     serviceAccount:
       main:
