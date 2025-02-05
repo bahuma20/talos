@@ -102,9 +102,9 @@ spec:
         enabled: true
         primary: false
         hosts:
-          - host: craft.noitl.space
+          - host: craft-map.noitl.space
             paths:
-              - path: /livemap
+              - path: /
                 pathType: Prefix
         targetSelector:
           livemap: livemap
@@ -114,9 +114,6 @@ spec:
             certificateIssuer: ${CERTMANAGER_ISSUER}
           traefik:
             enabled: true
-            middlewares:
-              - name: remove-livemap-prefix
-                namespace: minecraft
           homepage:
             enabled: false
     serviceAccount:
