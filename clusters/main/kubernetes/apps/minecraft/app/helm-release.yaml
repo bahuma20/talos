@@ -19,13 +19,6 @@ spec:
       repository: ghcr.io/bahuma20/noitl-craft
       tag: v0.2.1@sha256:962a26261d413b67904e5365bc31736d977e25ce006e2011238d6b51369b998b
       pullPolicy: Always
-    mcbackup:
-      excludes:
-        - "cache"
-        - ".cache"
-        - "logs"
-        - "*.tmp"
-        - "plugins/dynmap/web/tiles"
     credentials:
       storj:
         type: s3
@@ -238,7 +231,7 @@ spec:
                   echo "RCON save-all flush"
                   rcon-cli save-all flush
                   echo "Copying files from /backup-source to /backup-target"
-                  rsync -avP --delete --exclude='.cache' --exclude='cache' --exclude='logs' --exclude='*.tmp' /backup-source/ /backup-target
+                  rsync -avP --delete --exclude='.cache' --exclude='cache' --exclude='logs' --exclude='*.tmp' --exclude='plugins/dynmap/web/tiles' /backup-source/ /backup-target
                   echo "RCON save-on"
                   rcon-cli save-on
       web:
