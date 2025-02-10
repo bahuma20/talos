@@ -30,7 +30,7 @@ spec:
       main:
         enabled: true
         hosts:
-          - host: audiobooks.${BASE_DOMAIN}
+          - host: audiobooks.noitl.space
             paths:
               - path: /
                 pathType: Prefix
@@ -40,9 +40,9 @@ spec:
             certificateIssuer: ${CERTMANAGER_ISSUER}
           traefik:
             enabled: true
-            middlewares:
-              - name: local
-                namespace: traefik
+#            middlewares:
+#              - name: local
+#                namespace: traefik
           homepage:
             enabled: true
             group: Medien

@@ -42,6 +42,15 @@ spec:
                         "token": "${DDNS_UPDATER_HETZNER_TOKEN}",
                         "ip_version": "ipv4",
                         "ipv6_suffix": ""
+                      },
+                      {
+                        "provider": "hetzner",
+                        "zone_identifier": "p4SSdMcY5qT2Gx89cgXiyQ",
+                        "domain": "audiobooks.noitl.space",
+                        "ttl": 120,
+                        "token": "${DDNS_UPDATER_HETZNER_TOKEN}",
+                        "ip_version": "ipv4",
+                        "ipv6_suffix": ""
                       }
                     ]
                   }
