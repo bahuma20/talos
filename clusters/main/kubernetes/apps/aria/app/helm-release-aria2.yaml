@@ -25,7 +25,7 @@ spec:
           enabled: false
         enabled: true
         mountPath: /mnt/backup-google-max
-        path: /mnt/pool1/backup-google-max
+        path: /mnt/pool1/backup/backup-google-max
         readOnly: false
         server: ${NFS_HOST}
         type: nfs
