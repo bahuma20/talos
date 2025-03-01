@@ -15,6 +15,25 @@ spec:
         namespace: flux-system
   values:
     TZ: Europe/Berlin
+    ingress:
+      main:
+        enabled: true
+        hosts:
+          - host: aria2.base.noitl.space
+            paths:
+              - path: /
+                pathType: Prefix
+        integrations:
+          certManager:
+            enabled: true
+            certificateIssuer: ${CERTMANAGER_ISSUER}
+          traefik:
+            enabled: true
+            middlewares:
+              - name: local
+                namespace: traefik
+          homepage:
+            enabled: false
     workload:
       main:
         env:
