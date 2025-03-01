@@ -1,0 +1,46 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: ariang
+  namespace: aria
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: ariang
+      version: 10.5.2
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  values:
+    TZ: Europe/Berlin
+    ingress:
+      main:
+        enabled: true
+        hosts:
+          - host: aria.base.noitl.space
+            paths:
+              - path: /
+                pathType: Prefix
+        integrations:
+          certManager:
+            enabled: true
+            certificateIssuer: ${CERTMANAGER_ISSUER}
+          traefik:
+            enabled: true
+            middlewares:
+              - name: local
+                namespace: traefik
+          homepage:
+            enabled: true
+            group: System
+            description: "Downloader"
+    resources: { }
+    securityContext:
+      container:
+        UMASK: "0022"
+        readOnlyRootFilesystem: false
+        runAsGroup: 0
+        runAsNonRoot: false
+        runAsUser: 0
