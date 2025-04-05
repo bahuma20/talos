@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: nextcloud
-      version: 32.10.2
+      version: 33.0.1
       sourceRef:
         kind: HelmRepository
         name: truecharts
@@ -45,7 +45,7 @@ spec:
       main:
         enabled: true
         hosts:
-          - host: cloud.${BASE_DOMAIN}
+          - host: cloud.noitl.space
             paths:
               - path: /
                 pathType: Prefix
@@ -55,9 +55,6 @@ spec:
             certificateIssuer: ${CERTMANAGER_ISSUER}
           traefik:
             enabled: true
-            middlewares:
-              - name: local
-                namespace: traefik
           homepage:
             enabled: true
             group: Dateien
