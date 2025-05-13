@@ -47,6 +47,7 @@ spec:
         - name: local
           sourceRange:
             - 192.168.188.0/24
+            - 100.64.0.0/10
     ingress:
       main:
         enabled: true
