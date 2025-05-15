@@ -68,10 +68,10 @@ spec:
         volsync:
           - credentials: storj
             dest:
-              enabled: true
+              enabled: false
             name: app-config
             src:
-              enabled: false
+              enabled: true
             type: restic
       metadata:
         enabled: true
