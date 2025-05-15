@@ -15,6 +15,8 @@ spec:
         namespace: flux-system
   values:
     TZ: Europe/Berlin
+    podOptions:
+      hostUsers: true
     webImage:
       repository: ghcr.io/bahuma20/noitl-craft
       tag: v0.4.1@sha256:da1537b42f0b75141a4f942b335e4f3614e41553dce175a5676b5f1b166e067d
