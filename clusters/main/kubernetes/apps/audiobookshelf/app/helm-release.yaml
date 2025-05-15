@@ -81,7 +81,7 @@ spec:
         volsync:
           - credentials: storj
             dest:
-              enabled: true
+              enabled: false
             name: metadata
             src:
               enabled: true
