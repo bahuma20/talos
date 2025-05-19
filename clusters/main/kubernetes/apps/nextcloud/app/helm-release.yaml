@@ -54,7 +54,7 @@ spec:
             enabled: true
             certificateIssuer: ${CERTMANAGER_ISSUER}
           traefik:
-            enabled: true
+            enabled: false
           homepage:
             enabled: true
             group: Dateien
