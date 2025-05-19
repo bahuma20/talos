@@ -42,6 +42,8 @@ spec:
          name: ${CLUSTERNAME}
          id: 1
       ipv4NativeRoutingCIDR: ${PODNET}
+      image:
+        useDigest: false # Manually added to fix issue with chart version 1.16.0 (See https://github.com/cilium/cilium/issues/39566)
       securityContext:
         privileged: true
         capabilities:
@@ -80,6 +82,8 @@ spec:
         rollOutPods: true
         prometheus: # Manually added for datadog
           enabled: true # Manually added for datadog
+        image:
+          useDigest: false # Manually added to fix issue with chart version 1.16.0 (See https://github.com/cilium/cilium/issues/39566)
       rollOutCiliumPods: true
       prometheus: # Manually added for datadog
         enabled: true # Manually added for datadog
