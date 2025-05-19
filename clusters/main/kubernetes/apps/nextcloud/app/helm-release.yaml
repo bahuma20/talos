@@ -36,7 +36,7 @@ spec:
         backups:
           enabled: true
           credentials: storj
-          revision: "2"
+          revision: "3"
           retentionPolicy: "2d"
         recovery:
           method: object_store
