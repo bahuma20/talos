@@ -81,9 +81,9 @@ spec:
             type: restic
             credentials: storj
             src:
-              enabled: true
-            dest:
               enabled: false
+            dest:
+              enabled: true
       data:
         type: nfs
         server: ${NFS_HOST}
