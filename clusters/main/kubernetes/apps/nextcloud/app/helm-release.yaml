@@ -82,9 +82,9 @@ spec:
             type: restic
             credentials: storj
             src:
-              enabled: false
-            dest:
               enabled: true
+            dest:
+              enabled: false
       data:
         type: nfs
         server: ${NFS_HOST}
@@ -98,9 +98,9 @@ spec:
             type: restic
             credentials: storj
             src:
-              enabled: false
-            dest:
               enabled: true
+            dest:
+              enabled: false
     resources: {}
     securityContext:
       container:
