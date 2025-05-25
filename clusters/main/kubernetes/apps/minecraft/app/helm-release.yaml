@@ -59,7 +59,7 @@ spec:
         enabled: true
         primary: false
         ports:
-          main:
+          main-b:
             enabled: true
             protocol: tcp
             port: 80
