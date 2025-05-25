@@ -165,7 +165,7 @@ spec:
         targetSelector:
           web:
             main:
-              mountPath: /app/var
+              mountPath: /var/www/html/var
               readOnly: false
       web-symfony:
         enabled: true
