@@ -19,7 +19,7 @@ spec:
       hostUsers: true
     webImage:
       repository: ghcr.io/bahuma20/noitl-craft
-      tag: v0.4.1@sha256:da1537b42f0b75141a4f942b335e4f3614e41553dce175a5676b5f1b166e067d
+      tag: v0.5.0@sha256:d22f148ac9962d30867a8e3e25f29c404642034528287967585b00d76bd95474
       pullPolicy: Always
     credentials:
       storj:
@@ -63,7 +63,7 @@ spec:
             enabled: true
             protocol: tcp
             port: 80
-            targetPort: 8000
+            targetPort: 80
         targetSelector: web
 
     ingressMiddlewares:
