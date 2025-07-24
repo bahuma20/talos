@@ -125,6 +125,13 @@ spec:
               args:
                 - bash
                 - /app/docker/prod/seeder
+              probes:
+                liveness:
+                  enabled: false
+                readiness:
+                  enabled: false
+                startup:
+                  enabled: false
     persistence:
       assets:
         enabled: true
