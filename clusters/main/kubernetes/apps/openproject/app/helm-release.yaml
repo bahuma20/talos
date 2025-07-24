@@ -124,7 +124,7 @@ spec:
         enabled: true
         type: emptyDir
         medium: Memory
-        size: 100Mi
+        size: 90Mi
         targetSelector:
           main:
             wait-for-db:
