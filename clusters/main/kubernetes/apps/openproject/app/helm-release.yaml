@@ -72,7 +72,7 @@ spec:
           initContainers:
             wait-for-db:
               enabled: true
-              name: wait-for-db
+              type: init
               args:
                 - bash
                 - /app/docker/prod/wait-for-db
