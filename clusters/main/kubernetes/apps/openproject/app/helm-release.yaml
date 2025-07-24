@@ -111,15 +111,15 @@ spec:
             src:
               enabled: true
             type: restic
-      init-empty-tmp:
-        enabled: true
-        type: emptyDir
-        medium: Memory
-        size: 100Mi
-        targetSelector:
-          main:
-            wait-for-db:
-              mountPath: /tmp
+#      init-empty-tmp:
+#        enabled: true
+#        type: emptyDir
+#        medium: Memory
+#        size: 100Mi
+#        targetSelector:
+#          main:
+#            wait-for-db:
+#              mountPath: /tmp
       init-empty-app-tmp:
         enabled: true
         type: emptyDir
