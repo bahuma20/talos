@@ -37,6 +37,22 @@ spec:
         bucket: ${STORJ_BUCKET}
         encrKey: ${STORJ_VOLSYNC_ENCRYPTION_KEY}
         path: ""
+    cnpg:
+      main:
+        user: openproject
+        database: openproject
+        password: "${OPENPROJECT_POSTGRES_PASSWORD}"
+        cluster:
+          instances: 1
+          singleNode: true
+        mode: standalone
+        backups:
+          enabled: true
+          credentials: storj
+          retentionPolicy: "2d"
+        recovery:
+          method: object_store
+          credentials: storj
     service:
       main:
         ports:
@@ -84,20 +100,6 @@ spec:
                 - /app/docker/prod/web
               env:
                 DATABASE_URL: postgres://{{ .Values.cnpg.main.user }}:{{ .Values.cnpg.main.password }}@{{ .Values.cnpg.main.creds.host }}/{{ .Values.cnpg.main.database }}
-    cnpg:
-      main:
-        password: "${OPENPROJECT_POSTGRES_PASSWORD}"
-        cluster:
-          instances: 1
-          singleNode: true
-        mode: standalone
-        backups:
-          enabled: true
-          credentials: storj
-          retentionPolicy: "2d"
-        recovery:
-          method: object_store
-          credentials: storj
     persistence:
       assets:
         enabled: true
