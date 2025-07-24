@@ -1,0 +1,131 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: openproject
+  namespace: openproject
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 15.2.5
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  releaseName: openproject
+  values:
+    TZ: Europe/Berlin
+    image:
+      pullPolicy: Always
+      repository: openproject/openproject
+      tag: "16.2.0-slim"
+    securityContext:
+      container:
+        UMASK: "0022"
+        readOnlyRootFilesystem: false
+        runAsGroup: 0
+        runAsNonRoot: false
+        runAsUser: 0
+    credentials:
+      storj:
+        type: s3
+        name: storj
+        url: https://gateway.storjshare.io
+        accessKey: ${STORJ_ACCESS_KEY}
+        secretKey: ${STORJ_SECRET_KEY}
+        bucket: ${STORJ_BUCKET}
+        encrKey: ${STORJ_VOLSYNC_ENCRYPTION_KEY}
+        path: ""
+    service:
+      main:
+        ports:
+          main:
+            port: 8080
+    ingress:
+      main:
+        enabled: true
+        hosts:
+          - host: openproject.${BASE_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+        integrations:
+          certManager:
+            enabled: true
+            certificateIssuer: ${CERTMANAGER_ISSUER}
+          traefik:
+            enabled: true
+            middlewares:
+              - name: local
+                namespace: traefik
+          homepage:
+            enabled: true
+            group: Sonstiges
+            name: "Open Project"
+            widget:
+              enabled: false
+    resources: { }
+    workload:
+      main:
+        podSpec:
+          initContainers:
+            wait-for-db:
+              enabled: true
+              name: wait-for-db
+              args:
+                - bash
+                - /app/docker/prod/wait-for-db
+              env:
+                DATABASE_URL: postgres://{{ .Values.cnpg.main.user }}:{{ .Values.cnpg.main.password }}@{{ .Values.cnpg.main.creds.host }}/{{ .Values.cnpg.main.database }}
+          containers:
+            main:
+              args:
+                - /app/docker/prod/web
+              env:
+                DATABASE_URL: postgres://{{ .Values.cnpg.main.user }}:{{ .Values.cnpg.main.password }}@{{ .Values.cnpg.main.creds.host }}/{{ .Values.cnpg.main.database }}
+    cnpg:
+      main:
+        password: "${OPENPROJECT_POSTGRES_PASSWORD}"
+        cluster:
+          instances: 1
+          singleNode: true
+        mode: standalone
+        backups:
+          enabled: true
+          credentials: storj
+          retentionPolicy: "2d"
+        recovery:
+          method: object_store
+          credentials: storj
+    persistence:
+      assets:
+        enabled: true
+        mountPath: /var/openproject/assets
+        readOnly: false
+        volsync:
+          - credentials: storj
+            dest:
+              enabled: false
+            name: assets
+            src:
+              enabled: true
+            type: restic
+      init-empty-tmp:
+        enabled: true
+        type: emptyDir
+        medium: Memory
+        size: 100Mi
+        targetSelector:
+          main:
+            wait-for-db:
+              mountPath: /tmp
+      init-empty-app-tmp:
+        enabled: true
+        type: emptyDir
+        medium: Memory
+        size: 100Mi
+        targetSelector:
+          main:
+            wait-for-db:
+              mountPath: /app/tmp
