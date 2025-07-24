@@ -125,6 +125,8 @@ spec:
               args:
                 - bash
                 - /app/docker/prod/seeder
+              env:
+                DATABASE_URL: '{{ printf "postgresql://%s:%s@%s:5432/%s" .Values.cnpg.main.user  .Values.cnpg.main.creds.password (.Values.cnpg.main.creds.host | trimAll "\"") .Values.cnpg.main.database }}'
               probes:
                 liveness:
                   enabled: false
