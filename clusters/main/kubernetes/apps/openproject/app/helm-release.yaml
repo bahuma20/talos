@@ -20,6 +20,10 @@ spec:
       pullPolicy: Always
       repository: openproject/openproject
       tag: "16.2.0-slim"
+    dbInitImage:
+      pullPolicy: Always
+      repository: postgres
+      tag: 16
     securityContext:
       container:
         UMASK: "0022"
@@ -101,11 +105,34 @@ spec:
                 - /app/docker/prod/web
               env:
                 DATABASE_URL: '{{ printf "postgresql://%s:%s@%s:5432/%s" .Values.cnpg.main.user  .Values.cnpg.main.creds.password (.Values.cnpg.main.creds.host | trimAll "\"") .Values.cnpg.main.database }}'
+      seeder:
+        enabled: true
+        type: Job
+        podSpec:
+          initContainers:
+            wait-db:
+              enabled: true
+              type: init
+              imageSelector: dbInitImage
+              command:
+                - sh
+                - "-c"
+                - 'until pg_isready -h {{ .Values.cnpg.main.creds.host | trimAll "\"" }} -p 5432 -U {{ .Values.cnpg.main.user }}; do echo "waiting for database {{ .Values.cnpg.main.creds.host | trimAll "\"" }}:5432"; sleep 2; done;'
+          containers:
+            main:
+              enabled: true
+              args:
+                - bash
+                - /app/docker/prod/seeder
     persistence:
       assets:
         enabled: true
         mountPath: /var/openproject/assets
         readOnly: false
+        targetSelector:
+          seeder:
+            main:
+              mountPath: /var/openproject/assets
         volsync:
           - credentials: storj
             dest:
@@ -124,6 +151,15 @@ spec:
 #            wait-for-db:
 #              mountPath: /tmp
       init-empty-app-tmp:
+        enabled: true
+        type: emptyDir
+        medium: Memory
+        size: 90Mi
+        targetSelector:
+          main:
+            wait-for-db:
+              mountPath: /app/tmp
+      init-empty-seeder:
         enabled: true
         type: emptyDir
         medium: Memory
