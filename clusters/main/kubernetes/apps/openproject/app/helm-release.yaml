@@ -39,6 +39,7 @@ spec:
         path: ""
     cnpg:
       main:
+        enabled: true
         user: openproject
         database: openproject
         password: "${OPENPROJECT_POSTGRES_PASSWORD}"
