@@ -109,6 +109,7 @@ spec:
         enabled: true
         type: Job
         podSpec:
+          restartPolicy: OnFailure
           initContainers:
             wait-db:
               enabled: true
