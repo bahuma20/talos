@@ -121,6 +121,7 @@ spec:
           containers:
             main:
               enabled: true
+              primary: true
               args:
                 - bash
                 - /app/docker/prod/seeder
