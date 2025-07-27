@@ -186,7 +186,7 @@ spec:
             main:
               env:
                 TYPE: "PAPER"
-                VERSION: "1.21.4"
+                VERSION: "1.21.8"
                 PAPER_BUILD: "82"
                 MOTD: "Happy Noitln und Craften"
                 SERVER_NAME: "Noitl.Craft"
