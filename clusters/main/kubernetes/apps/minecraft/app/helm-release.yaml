@@ -202,7 +202,7 @@ spec:
                 command:
                   - mc-health
                 spec:
-                  initialDelaySeconds: 20
+                  initialDelaySeconds: 60
                   failureThreshold: 120
             mcbackup:
               enabled: false
