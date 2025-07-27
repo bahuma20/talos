@@ -185,7 +185,6 @@ spec:
           containers:
             main:
               env:
-                DEBUG: true
                 TYPE: "PAPER"
                 VERSION: "1.21.8"
                 PAPER_BUILD: "17"
@@ -208,7 +207,7 @@ spec:
                   command:
                     - mc-health
                 startup:
-                  enabled: true
+                  enabled: false
                   type: exec
                   command:
                     - mc-health
