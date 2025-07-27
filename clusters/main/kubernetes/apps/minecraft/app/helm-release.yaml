@@ -185,6 +185,7 @@ spec:
           containers:
             main:
               env:
+                DEBUG: true
                 TYPE: "PAPER"
                 VERSION: "1.21.8"
                 PAPER_BUILD: "17"
