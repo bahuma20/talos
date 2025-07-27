@@ -181,6 +181,7 @@ spec:
     workload:
       main:
         type: StatefulSet
+        replicas: 0
         podSpec:
           containers:
             main:
