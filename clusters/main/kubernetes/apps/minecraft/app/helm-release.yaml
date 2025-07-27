@@ -197,6 +197,10 @@ spec:
                 MEMORY: 6144M
             probes:
               startup:
+                enabled: true
+                type: exec
+                command:
+                  - mc-health
                 spec:
                   initialDelaySeconds: 20
                   failureThreshold: 120
