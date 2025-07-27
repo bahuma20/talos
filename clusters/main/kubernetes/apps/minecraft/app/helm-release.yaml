@@ -198,12 +198,12 @@ spec:
                 MEMORY: 6144M
               probes:
                 liveness:
-                  enabled: true
+                  enabled: false
                   type: exec
                   command:
                     - mc-health
                 readiness:
-                  enabled: true
+                  enabled: false
                   type: exec
                   command:
                     - mc-health
