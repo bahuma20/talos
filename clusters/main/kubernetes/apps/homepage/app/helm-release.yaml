@@ -32,7 +32,7 @@ spec:
             enabled: false
           nginx:
             enabled: true
-    forceConfigFromValues: true
+    forceConfigFromValues: false
     workload:
       main:
         podSpec:
