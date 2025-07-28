@@ -42,15 +42,13 @@ spec:
     ingress:
       main:
         enabled: true
+        ingressClassName: internal
         integrations:
           certManager:
             enabled: true
             certificateIssuer: ${CERTMANAGER_ISSUER}
-          traefik:
+          nginx:
             enabled: true
-            middlewares:
-              - name: local
-                namespace: traefik
           homepage:
             enabled: true
             group: System

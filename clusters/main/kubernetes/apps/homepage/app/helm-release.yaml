@@ -18,6 +18,7 @@ spec:
     ingress:
       main:
         enabled: true
+        ingressClassName: internal
         hosts:
           - host: ${BASE_DOMAIN}
             paths:
@@ -27,11 +28,8 @@ spec:
           certManager:
             enabled: true
             certificateIssuer: ${CERTMANAGER_ISSUER}
-          traefik:
+          nginx:
             enabled: true
-            middlewares:
-              - name: local
-                namespace: traefik
     forceConfigFromValues: true
     configmap:
       config:

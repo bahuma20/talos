@@ -78,6 +78,7 @@ spec:
     ingress:
       main:
         enabled: true
+        ingressClassName: external
         hosts:
           - host: craft.noitl.space
             paths:
@@ -89,13 +90,14 @@ spec:
           certManager:
             enabled: true
             certificateIssuer: ${CERTMANAGER_ISSUER}
-          traefik:
+          nginx:
             enabled: true
           homepage:
             enabled: true
             group: Sonstiges
       livemap:
         enabled: true
+        ingressClassName: external
         primary: false
         hosts:
           - host: craft-map.noitl.space
@@ -108,7 +110,7 @@ spec:
           certManager:
             enabled: true
             certificateIssuer: ${CERTMANAGER_ISSUER}
-          traefik:
+          nginx:
             enabled: true
           homepage:
             enabled: false

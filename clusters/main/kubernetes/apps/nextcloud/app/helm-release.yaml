@@ -45,6 +45,7 @@ spec:
     ingress:
       main:
         enabled: true
+        ingressClassName: external
         hosts:
           - host: cloud.noitl.space
             paths:
@@ -54,7 +55,7 @@ spec:
           certManager:
             enabled: true
             certificateIssuer: ${CERTMANAGER_ISSUER}
-          traefik:
+          nginx:
             enabled: true
           homepage:
             enabled: true
