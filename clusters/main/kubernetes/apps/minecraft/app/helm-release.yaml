@@ -195,7 +195,7 @@ spec:
                 RCON_PASSWORD: ${MINECRAFT_RCON_PASSWORD}
                 PVP: true
                 MAX_WORLD_SIZE: ""
-                MEMORY: 8G
+                MEMORY: 4G
               probes:
                 liveness:
                   enabled: false
