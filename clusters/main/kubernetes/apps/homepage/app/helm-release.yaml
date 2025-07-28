@@ -31,6 +31,13 @@ spec:
           nginx:
             enabled: true
     forceConfigFromValues: true
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                HOMEPAGE_ALLOWED_HOSTS: ${BASE_DOMAIN}
     configmap:
       config:
         data:
