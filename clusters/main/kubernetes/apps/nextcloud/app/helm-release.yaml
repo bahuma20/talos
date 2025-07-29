@@ -98,6 +98,8 @@ spec:
             dest:
               enabled: false
     resources: {}
+    podOptions:
+      hostUsers: true
     securityContext:
       container:
         UMASK: "0022"
