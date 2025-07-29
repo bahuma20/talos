@@ -28,10 +28,6 @@ spec:
           certManager:
             enabled: true
             certificateIssuer: ${CERTMANAGER_ISSUER}
-          traefik:
-            enabled: false
-          nginx:
-            enabled: true
     forceConfigFromValues: false
     workload:
       main:
