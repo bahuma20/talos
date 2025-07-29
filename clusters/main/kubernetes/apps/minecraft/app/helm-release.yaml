@@ -81,9 +81,6 @@ spec:
         ingressClassName: external
         hosts:
           - host: craft.noitl.space
-            paths:
-              - path: /
-                pathType: Prefix
         targetSelector:
           web: main
         integrations:
@@ -99,9 +96,6 @@ spec:
         primary: false
         hosts:
           - host: craft-map.noitl.space
-            paths:
-              - path: /
-                pathType: Prefix
         targetSelector:
           livemap: livemap
         integrations:

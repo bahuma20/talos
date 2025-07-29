@@ -32,15 +32,10 @@ spec:
         ingressClassName: external
         hosts:
           - host: audiobooks.noitl.space
-            paths:
-              - path: /
-                pathType: Prefix
         integrations:
           certManager:
             enabled: true
             certificateIssuer: ${CERTMANAGER_ISSUER}
-          nginx:
-            enabled: true
           homepage:
             enabled: true
             group: Medien

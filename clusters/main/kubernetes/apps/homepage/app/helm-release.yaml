@@ -21,9 +21,6 @@ spec:
         ingressClassName: internal
         hosts:
           - host: ${BASE_DOMAIN}
-            paths:
-              - path: /
-                pathType: Prefix
         integrations:
           certManager:
             enabled: true

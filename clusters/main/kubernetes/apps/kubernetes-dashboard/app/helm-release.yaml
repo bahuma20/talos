@@ -43,12 +43,12 @@ spec:
       main:
         enabled: true
         ingressClassName: internal
+        hosts:
+          - host: kubernetes.${BASE_DOMAIN}
         integrations:
           certManager:
             enabled: true
             certificateIssuer: ${CERTMANAGER_ISSUER}
-          nginx:
-            enabled: true
           homepage:
             enabled: true
             group: System
@@ -56,8 +56,3 @@ spec:
             name: "Kubernetes Dashboard"
             widget:
               enabled: false
-        hosts:
-          - host: kubernetes.${BASE_DOMAIN}
-            paths:
-              - path: /
-                pathType: Prefix
