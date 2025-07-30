@@ -19,7 +19,7 @@ spec:
     image:
       pullPolicy: Always
       repository: ghcr.io/bahuma20/bahuma-abrechnung
-      tag: latest
+      tag: v1.1.0
     securityContext:
       container:
         UMASK: "0022"
