@@ -16,8 +16,6 @@ spec:
   releaseName: vaultwarden
   values:
     TZ: Europe/Berlin
-    podOptions:
-      hostUsers: true
     credentials:
       storj:
         type: s3
