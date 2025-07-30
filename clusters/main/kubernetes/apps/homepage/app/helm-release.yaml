@@ -17,7 +17,7 @@ spec:
     TZ: Europe/Berlin
     ingress:
       main:
-        enabled: false
+        enabled: true
         ingressClassName: internal
         hosts:
           - host: ${BASE_DOMAIN}
