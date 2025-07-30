@@ -19,7 +19,7 @@ spec:
     image:
       pullPolicy: Always
       repository: ghcr.io/bahuma20/bahuma-abrechnung
-      tag: "1.1.0"
+      tag: "1.2.0"
     securityContext:
       container:
         UMASK: "0022"
@@ -63,3 +63,4 @@ spec:
                 DOCUMENT_TYPE_EINGANGSRECHNUNG: "25"
                 PAPERLESS_URL: https://dok.base.noitl.space
                 PAPERLESS_TOKEN: ${BAHUMA_ABRECHNUNG_PAPERLESS_TOKEN}
+                EXCLUDED_TAGS: "1"
