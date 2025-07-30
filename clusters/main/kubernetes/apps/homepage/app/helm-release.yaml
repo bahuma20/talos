@@ -33,6 +33,7 @@ spec:
             main:
               env:
                 HOMEPAGE_ALLOWED_HOSTS: ${BASE_DOMAIN}
+                TEST: 1
     configmap:
       config:
         data:
