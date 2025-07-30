@@ -16,6 +16,8 @@ spec:
   releaseName: nextcloud
   values:
     TZ: Europe/Berlin
+    podOptions:
+      hostUsers: true
     credentials:
       storj:
         type: s3
