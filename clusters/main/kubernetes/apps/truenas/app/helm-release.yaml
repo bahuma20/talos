@@ -20,8 +20,8 @@ spec:
         externalIP: "192.168.188.58"
         ports:
           main:
-            port: 444
-            protocol: https
+            port: 81
+            protocol: http
     ingress:
       main:
         enabled: true
