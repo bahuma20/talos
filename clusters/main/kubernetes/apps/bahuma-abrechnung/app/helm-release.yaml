@@ -61,6 +61,5 @@ spec:
                 CUSTOM_FIELD_RECHNUNGSNUMMER: "3"
                 DOCUMENT_TYPE_AUSGANGSRECHNUNG: "26"
                 DOCUMENT_TYPE_EINGANGSRECHNUNG: "25"
-                PAPERLESS_PASSWORD: ${BAHUMA_ABRECHNUNG_PAPERLESS_PASSWORD}
                 PAPERLESS_URL: https://dok.base.noitl.space
-                PAPERLESS_USERNAME: bahuma
+                PAPERLESS_TOKEN: ${BAHUMA_ABRECHNUNG_PAPERLESS_TOKEN}
