@@ -26,4 +26,4 @@ spec:
     values:
       groupName: "base.noitl.space"
       certManager:
-        serviceAccountName: cert-manager-certmanager
+        serviceAccountName: cert-manager
