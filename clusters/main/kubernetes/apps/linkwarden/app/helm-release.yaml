@@ -31,8 +31,11 @@ spec:
         cluster:
           instances: 1
           singleNode: true
+        mode: recovery
         backups:
           enabled: true
+          credentials: storj
+        recovery:
           credentials: storj
     ingress:
       main:

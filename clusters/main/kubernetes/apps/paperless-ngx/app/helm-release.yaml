@@ -38,8 +38,8 @@ spec:
           revision: "1"
           retentionPolicy: "2d"
         recovery:
-          method: object_store
           credentials: storj
+          revision: "1"
     ingress:
       main:
         enabled: true
