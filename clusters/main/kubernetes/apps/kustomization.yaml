@@ -10,7 +10,7 @@ resources:
 #  - homepage/ks.yaml
 #  - minecraft/ks.yaml
 #  - nextcloud/ks.yaml
-#  - openproject/ks.yaml
+  - openproject/ks.yaml
 #  - paperless-ngx/ks.yaml
 #  - truenas/ks.yaml
 #  - vaultwarden/ks.yaml
