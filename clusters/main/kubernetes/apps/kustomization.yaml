@@ -7,9 +7,9 @@ resources:
   - ddns-updater/ks.yaml
   - jellyfin/ks.yaml
   - linkwarden/ks.yaml
-#  - homepage/ks.yaml
+  - homepage/ks.yaml
 #  - minecraft/ks.yaml
-#  - nextcloud/ks.yaml
+  - nextcloud/ks.yaml
 #  - openproject/ks.yaml
 #  - paperless-ngx/ks.yaml
 #  - truenas/ks.yaml
