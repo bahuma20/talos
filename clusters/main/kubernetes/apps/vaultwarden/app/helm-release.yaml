@@ -63,7 +63,7 @@ spec:
             src:
               enabled: true
             dest:
-              enabled: false
+              enabled: true
     resources: {}
     vaultwarden:
       push:

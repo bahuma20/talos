@@ -74,7 +74,7 @@ spec:
             src:
               enabled: true
             dest:
-              enabled: false
+              enabled: true
       library-filme:
         enabled: true
         type: nfs

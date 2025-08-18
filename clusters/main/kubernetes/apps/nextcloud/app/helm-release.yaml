@@ -85,7 +85,7 @@ spec:
             src:
               enabled: true
             dest:
-              enabled: false
+              enabled: true
       data:
         type: nfs
         server: ${NFS_HOST}
@@ -101,7 +101,7 @@ spec:
             src:
               enabled: true
             dest:
-              enabled: false
+              enabled: true
     resources: {}
     securityContext:
       container:
