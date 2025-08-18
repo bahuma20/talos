@@ -66,6 +66,7 @@ spec:
               enabled: true
             dest:
               enabled: true
+              restoreAsOf: "2025-08-17T20:01:03+02:00"
       media:
         type: nfs
         server: ${NFS_HOST}
