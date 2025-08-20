@@ -282,4 +282,7 @@ spec:
           - port: z-metrics
             path: /metrics
         targetSelector: main
-    resources: {}
+    resources:
+      limits:
+        cpu: 4
+        memory: 4Gi
