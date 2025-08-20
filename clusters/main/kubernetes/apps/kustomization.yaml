@@ -6,11 +6,11 @@ resources:
   - bahuma-abrechnung/ks.yaml
 #  - ddns-updater/ks.yaml
 #  - jellyfin/ks.yaml
-  - linkwarden/ks.yaml
+#  - linkwarden/ks.yaml
 #  - homepage/ks.yaml
 #  - minecraft/ks.yaml
 #  - nextcloud/ks.yaml
-#  - openproject/ks.yaml
+  - openproject/ks.yaml
 #  - paperless-ngx/ks.yaml
 #  - truenas/ks.yaml
 #  - vaultwarden/ks.yaml
