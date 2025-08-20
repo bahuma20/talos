@@ -26,19 +26,28 @@ spec:
         bucket: ${STORJ_BUCKET}
         encrKey: ${STORJ_VOLSYNC_ENCRYPTION_KEY}
         path: ""
+      aws:
+        type: s3
+        name: aws
+        url: "https://s3.eu-central-1.amazonaws.com"
+        accessKey: ${AWS_ACCESS_KEY}
+        secretKey: ${AWS_SECRET_KEY}
+        bucket: "talos-cnpg-backups"
+        encrKey: ${AWS_ENCRYPTION_KEY}
+        path: ""
     cnpg:
       main:
         cluster:
           instances: 1
           singleNode: true
-        mode: recovery #standalone
+        mode: standalone
         backups:
           enabled: true
-          credentials: storj
-          revision: "1"
+          credentials: aws
+          revision: "2"
         recovery:
           method: object_store
-          credentials: storj
+          credentials: aws
     ingress:
       main:
         enabled: true
