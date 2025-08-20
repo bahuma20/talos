@@ -34,11 +34,11 @@ spec:
         cluster:
           instances: 1
           singleNode: true
-        mode: recovery #standalone
+        mode: standalone #standalone
         backups:
-          enabled: true
+          enabled: false
           credentials: storj
-          revision: "3"
+          revision: "4"
           retentionPolicy: "2d"
         recovery:
           method: object_store
