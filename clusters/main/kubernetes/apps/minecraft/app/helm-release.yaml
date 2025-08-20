@@ -246,13 +246,13 @@ spec:
               args:
                 - |
                   echo "RCON save-off"
-                  rcon-cli save-off
+                  rcon-cli save-off || true
                   echo "RCON save-all flush"
-                  rcon-cli save-all flush
+                  rcon-cli save-all flush || true
                   echo "Copying files from /backup-source to /backup-target"
                   rsync -avP --delete --exclude='.cache' --exclude='cache' --exclude='logs' --exclude='*.tmp' --exclude='plugins/dynmap/web/tiles' /backup-source/ /backup-target
                   echo "RCON save-on"
-                  rcon-cli save-on
+                  rcon-cli save-on || true
       web:
         enabled: true
         primary: false
