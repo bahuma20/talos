@@ -61,7 +61,7 @@ spec:
         volsync:
           - credentials: storj
             dest:
-              enabled: true
+              enabled: false
             name: app-config
             src:
               enabled: true

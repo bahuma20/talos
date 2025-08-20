@@ -140,7 +140,7 @@ spec:
         volsync:
           - credentials: storj
             dest:
-              enabled: true
+              enabled: false
             name: assets
             src:
               enabled: true
