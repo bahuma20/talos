@@ -144,7 +144,7 @@ spec:
         path: /mnt/pool1/backup/backup-minecraft
         readOnly: false
         autoPermissions:
-          enabled: false
+          enabled: true
         targetSelector:
           backup:
             main:
