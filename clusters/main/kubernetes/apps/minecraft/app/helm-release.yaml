@@ -286,3 +286,10 @@ spec:
       limits:
         cpu: 4
         memory: 4Gi
+    securityContext:
+      container:
+        UMASK: "0022"
+        runAsGroup: 568
+        runAsUser: 568
+      pod:
+        fsGroupChangePolicy: OnRootMismatch
