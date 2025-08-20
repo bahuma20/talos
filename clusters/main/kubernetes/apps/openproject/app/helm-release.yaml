@@ -50,12 +50,13 @@ spec:
         cluster:
           instances: 1
           singleNode: true
-        mode: recovery #standalone
+        mode: standalone
         backups:
           enabled: true
           credentials: storj
           retentionPolicy: "2d"
         recovery:
+          method: object_store
           credentials: storj
     service:
       main:

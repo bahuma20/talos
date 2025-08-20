@@ -43,7 +43,7 @@ spec:
         recovery:
           method: object_store
           credentials: storj
-          revision: "3"
+          revision: "1"
     ingress:
       main:
         enabled: true
