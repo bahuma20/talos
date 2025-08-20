@@ -51,7 +51,7 @@ spec:
           retentionPolicy: "2d"
         recovery:
           method: object_store
-          credentials: storj
+          credentials: aws
           revision: "1"
     ingress:
       main:
