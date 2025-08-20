@@ -28,14 +28,15 @@ spec:
         path: ""
     cnpg:
       main:
+        password: "${PAPERLESS_POSTGRES_PASSWORD}"
         cluster:
           instances: 1
           singleNode: true
-        mode: recovery #standalone
+        mode: standalone
         backups:
           enabled: true
           credentials: storj
-          revision: "1"
+          revision: "2"
           retentionPolicy: "2d"
         recovery:
           method: object_store

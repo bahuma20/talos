@@ -36,7 +36,7 @@ spec:
           singleNode: true
         mode: standalone #standalone
         backups:
-          enabled: false
+          enabled: true
           credentials: storj
           revision: "4"
           retentionPolicy: "2d"
