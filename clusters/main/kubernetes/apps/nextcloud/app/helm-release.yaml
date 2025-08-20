@@ -28,6 +28,15 @@ spec:
         bucket: ${STORJ_BUCKET}
         encrKey: ${STORJ_VOLSYNC_ENCRYPTION_KEY}
         path: ""
+      aws:
+        type: s3
+        name: aws
+        url: "https://s3.eu-central-1.amazonaws.com"
+        accessKey: ${AWS_ACCESS_KEY}
+        secretKey: ${AWS_SECRET_KEY}
+        bucket: "talos-cnpg-backups"
+        encrKey: ${AWS_ENCRYPTION_KEY}
+        path: ""
     cnpg:
       main:
         password: "${NEXTCLOUD_POSTGRES_PASSWORD}"
@@ -37,8 +46,8 @@ spec:
         mode: standalone
         backups:
           enabled: true
-          credentials: storj
-          revision: "4"
+          credentials: aws
+          revision: "5"
           retentionPolicy: "2d"
         recovery:
           method: object_store
