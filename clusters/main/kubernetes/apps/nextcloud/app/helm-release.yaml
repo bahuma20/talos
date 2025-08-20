@@ -52,7 +52,6 @@ spec:
         recovery:
           method: object_store
           credentials: aws
-          revision: "1"
     ingress:
       main:
         enabled: true
