@@ -217,6 +217,11 @@ spec:
         concurrentPolicy:
         podSpec:
           restartPolicy: Never
+          securityContext:
+            container:
+              UMASK: "0022"
+              runAsGroup: 568
+              runAsUser: 568
           containers:
             main:
               enabled: true
@@ -286,10 +291,5 @@ spec:
       limits:
         cpu: 4
         memory: 4Gi
-    securityContext:
-      container:
-        UMASK: "0022"
-        runAsGroup: 568
-        runAsUser: 568
       pod:
         fsGroupChangePolicy: OnRootMismatch
