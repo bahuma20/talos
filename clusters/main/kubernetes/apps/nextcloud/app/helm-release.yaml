@@ -27,14 +27,14 @@ spec:
         secretKey: ${STORJ_SECRET_KEY}
         bucket: ${STORJ_BUCKET}
         encrKey: ${STORJ_VOLSYNC_ENCRYPTION_KEY}
-#        path: ""
+        path: ""
     cnpg:
       main:
         password: "${NEXTCLOUD_POSTGRES_PASSWORD}"
         cluster:
           instances: 1
           singleNode: true
-        mode: standalone #standalone
+        mode: standalone
         backups:
           enabled: true
           credentials: storj
