@@ -26,7 +26,7 @@ spec:
           - name: alertname
             value: Watchdog
             matchType: =
-      - receiver: pushover
+      - receiver: signl4
         matchers:
           - name: severity
             value: critical
@@ -48,6 +48,10 @@ spec:
         - urlSecret:
             name: &secret alertmanager-secret
             key: ALERTMANAGER_HEARTBEAT_URL
+    - name: signl4
+      webhookConfigs:
+        - url: https://connect.signl4.com/webhook/{{ALERTMANAGER_SIGNL4_TEAM_SECRET}}?ExtIDParam=groupKey&ExtStatusParam=status&ResolvedStatus=resolved
+          sendResolved: true
     - name: pushover
       pushoverConfigs:
         - html: true
