@@ -50,7 +50,7 @@ spec:
             key: ALERTMANAGER_HEARTBEAT_URL
     - name: signl4
       webhookConfigs:
-        - url: https://connect.signl4.com/webhook/{{ALERTMANAGER_SIGNL4_TEAM_SECRET}}?ExtIDParam=groupKey&ExtStatusParam=status&ResolvedStatus=resolved
+        - url: https://connect.signl4.com/webhook/${ALERTMANAGER_SIGNL4_TEAM_SECRET}?ExtIDParam=groupKey&ExtStatusParam=status&ResolvedStatus=resolved
           sendResolved: true
     - name: pushover
       pushoverConfigs:
