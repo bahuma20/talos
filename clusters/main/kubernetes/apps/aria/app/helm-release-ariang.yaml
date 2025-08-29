@@ -28,11 +28,3 @@ spec:
           homepage:
             enabled: true
             group: Dateien
-    resources: { }
-    securityContext:
-      container:
-        UMASK: "0022"
-        runAsGroup: 568
-        runAsUser: 568
-      pod:
-        fsGroupChangePolicy: OnRootMismatch
