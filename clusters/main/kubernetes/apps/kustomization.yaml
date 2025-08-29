@@ -14,4 +14,4 @@ resources:
   - paperless-ngx/ks.yaml
   - truenas/ks.yaml
   - vaultwarden/ks.yaml
-#  - qbittorrent/ks.yaml
+  - qbittorrent/ks.yaml
