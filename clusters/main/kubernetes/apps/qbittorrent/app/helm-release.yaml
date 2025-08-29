@@ -30,7 +30,8 @@ spec:
             enabled: true
             group: Dateien
     persistence:
-      media:
+      backup-google-max:
+        enabled: true
         type: nfs
         server: ${NFS_HOST}
         path: /mnt/pool1/backup/backup-google-max
