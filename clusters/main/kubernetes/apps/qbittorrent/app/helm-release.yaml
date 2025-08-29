@@ -21,7 +21,7 @@ spec:
         enabled: true
         ingressClassName: internal
         hosts:
-          - host: qbittorrent.${BASE_DOMAIN}
+          - host: download.${BASE_DOMAIN}
         integrations:
           certManager:
             enabled: true
