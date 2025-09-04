@@ -19,7 +19,7 @@ spec:
       hostUsers: true
     webImage:
       repository: ghcr.io/bahuma20/noitl-craft
-      tag: v0.6.3@sha256:1471e27c1e9513e9658843b2a9ce7bbbca5d3f285c213cd6a9fef586be301a27
+      tag: v0.6.4@sha256:386ce683b9d9a5866cdbd7cbcf62fa2edb5f5eb2603b00dc75a2d08ace6b175b
       pullPolicy: Always
     credentials:
       storj:
