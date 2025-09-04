@@ -63,9 +63,10 @@ spec:
             certificateIssuer: ${CERTMANAGER_ISSUER}
           homepage:
             enabled: true
-            group: Media
+            group: Medien
             name: "Trakt Enhanced"
             description: "Dashboard und Statistiken für Trakt"
+            icon: "si-trakt"
             widget:
               enabled: false
     persistence:
