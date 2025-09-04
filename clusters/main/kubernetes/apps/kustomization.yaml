@@ -14,4 +14,5 @@ resources:
   - openproject/ks.yaml
   - paperless-ngx/ks.yaml
   - truenas/ks.yaml
+  - trakt-enhanced/ks.yaml
   - vaultwarden/ks.yaml

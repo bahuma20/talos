@@ -1,0 +1,95 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: trakt-enhanced
+  namespace: trakt-enhanced
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 15.4.16
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  releaseName: trakt-enhanced
+  values:
+    TZ: Europe/Berlin
+    image:
+      pullPolicy: Always
+      repository: diabolino/trakt_enhanced
+      tag: "v5.0.0"
+    credentials:
+      storj:
+        type: s3
+        name: storj
+        url: https://gateway.storjshare.io
+        accessKey: ${STORJ_ACCESS_KEY}
+        secretKey: ${STORJ_SECRET_KEY}
+        bucket: ${STORJ_BUCKET}
+        encrKey: ${STORJ_VOLSYNC_ENCRYPTION_KEY}
+        path: ""
+      aws:
+        type: s3
+        name: aws
+        url: "https://s3.eu-central-1.amazonaws.com"
+        accessKey: ${AWS_ACCESS_KEY}
+        secretKey: ${AWS_SECRET_KEY}
+        bucket: "talos-cnpg-backups"
+        encrKey: ${AWS_ENCRYPTION_KEY}
+        path: ""
+    securityContext:
+      container:
+        UMASK: "0022"
+        readOnlyRootFilesystem: false
+        runAsGroup: 0
+        runAsNonRoot: false
+        runAsUser: 0
+    service:
+      main:
+        ports:
+          main:
+            port: 30009
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: internal
+        hosts:
+          - host: trakt-enhanced.${BASE_DOMAIN}
+        integrations:
+          certManager:
+            enabled: true
+            certificateIssuer: ${CERTMANAGER_ISSUER}
+          homepage:
+            enabled: true
+            group: Media
+            name: "Trakt Enhanced"
+            description: "Dashboard und Statistiken für Trakt"
+            widget:
+              enabled: false
+    persistence:
+      data:
+        enabled: true
+        mountPath: /app/data
+        readOnly: false
+        volsync:
+          - credentials: storj
+            dest:
+              enabled: false
+            name: data
+            src:
+              enabled: true
+            type: restic
+      config:
+        enabled: true
+        mountPath: /app/config
+        readOnly: false
+        volsync:
+          - credentials: storj
+            dest:
+              enabled: false
+            name: config
+            src:
+              enabled: true
+            type: restic
