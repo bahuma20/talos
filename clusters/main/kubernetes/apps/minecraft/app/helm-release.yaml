@@ -187,26 +187,7 @@ spec:
                 RCON_PASSWORD: ${MINECRAFT_RCON_PASSWORD}
                 PVP: true
                 MAX_WORLD_SIZE: ""
-                MEMORY: 4G
-              probes:
-                liveness:
-                  enabled: false
-                  type: exec
-                  command:
-                    - mc-health
-                readiness:
-                  enabled: false
-                  type: exec
-                  command:
-                    - mc-health
-                startup:
-                  enabled: false
-                  type: exec
-                  command:
-                    - mc-health
-                  spec:
-                    initialDelaySeconds: 60
-                    failureThreshold: 120
+                MEMORY: 6G
             mcbackup:
               enabled: false
       backup:
@@ -290,6 +271,6 @@ spec:
     resources:
       limits:
         cpu: 4
-        memory: 4Gi
+        memory: 6Gi
       pod:
         fsGroupChangePolicy: OnRootMismatch
