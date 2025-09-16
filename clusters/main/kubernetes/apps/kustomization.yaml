@@ -9,7 +9,7 @@ resources:
   - jellyfin/ks.yaml
   - linkwarden/ks.yaml
   - homepage/ks.yaml
-  - immich/ks.yaml
+#  - immich/ks.yaml
   - minecraft/ks.yaml
   - nextcloud/ks.yaml
   - openproject/ks.yaml
