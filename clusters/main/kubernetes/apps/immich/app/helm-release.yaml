@@ -62,57 +62,51 @@ spec:
             group: Medien
     persistence:
       library:
-        volsync:
-          - name: library
-            type: restic
-            credentials: storj
-            src:
-              enabled: true
-            dest:
-              enabled: false
+        type: nfs
+        server: ${NFS_HOST}
+        path: /mnt/pool1/immich/library
+        readOnly: false
+        autoPermissions:
+          enabled: false
       uploads:
-        volsync:
-          - name: library
-            type: restic
-            credentials: storj
-            src:
-              enabled: true
-            dest:
-              enabled: false
+        type: nfs
+        server: ${NFS_HOST}
+        path: /mnt/pool1/immich/uploads
+        readOnly: false
+        autoPermissions:
+          enabled: false
       backups:
-        volsync:
-          - name: library
-            type: restic
-            credentials: storj
-            src:
-              enabled: true
-            dest:
-              enabled: false
+        type: nfs
+        server: ${NFS_HOST}
+        path: /mnt/pool1/immich/backups
+        readOnly: false
+        autoPermissions:
+          enabled: false
       thumbs:
-        volsync:
-          - name: library
-            type: restic
-            credentials: storj
-            src:
-              enabled: true
-            dest:
-              enabled: false
+        type: nfs
+        server: ${NFS_HOST}
+        path: /mnt/pool1/immich/thumbs
+        readOnly: false
+        autoPermissions:
+          enabled: false
       profile:
-        volsync:
-          - name: library
-            type: restic
-            credentials: storj
-            src:
-              enabled: true
-            dest:
-              enabled: false
+        type: nfs
+        server: ${NFS_HOST}
+        path: /mnt/pool1/immich/profile
+        readOnly: false
+        autoPermissions:
+          enabled: false
       video:
-        volsync:
-          - name: library
-            type: restic
-            credentials: storj
-            src:
-              enabled: true
-            dest:
-              enabled: false
-    resources: {}
+        type: nfs
+        server: ${NFS_HOST}
+        path: /mnt/pool1/immich/video
+        readOnly: false
+        autoPermissions:
+          enabled: false
+    securityContext:
+      container:
+        UMASK: "0022"
+        runAsGroup: 568
+        runAsUser: 568
+      pod:
+        fsGroupChangePolicy: OnRootMismatch
