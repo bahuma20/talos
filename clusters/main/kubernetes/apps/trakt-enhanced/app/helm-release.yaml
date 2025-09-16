@@ -19,7 +19,7 @@ spec:
     image:
       pullPolicy: Always
       repository: diabolino/trakt_enhanced
-      tag: "v5.0.0"
+      tag: "v5.1.2"
     credentials:
       storj:
         type: s3
