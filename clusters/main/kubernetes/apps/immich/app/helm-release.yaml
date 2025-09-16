@@ -60,6 +60,9 @@ spec:
           homepage:
             enabled: true
             group: Medien
+            widget:
+              custom:
+                key: ${IMMICH_HOMEPAGE_API_KEY}
     persistence:
       library:
         type: nfs
