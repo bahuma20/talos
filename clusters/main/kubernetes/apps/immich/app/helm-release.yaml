@@ -1,0 +1,118 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: immich
+  namespace: immich
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: immich
+      version: 19.39.5
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  releaseName: immich
+  values:
+    TZ: Europe/Berlin
+    credentials:
+      storj:
+        type: s3
+        name: storj
+        url: https://gateway.storjshare.io
+        accessKey: ${STORJ_ACCESS_KEY}
+        secretKey: ${STORJ_SECRET_KEY}
+        bucket: ${STORJ_BUCKET}
+        encrKey: ${STORJ_VOLSYNC_ENCRYPTION_KEY}
+        path: ""
+      aws:
+        type: s3
+        name: aws
+        url: "https://s3.eu-central-1.amazonaws.com"
+        accessKey: ${AWS_ACCESS_KEY}
+        secretKey: ${AWS_SECRET_KEY}
+        bucket: "talos-cnpg-backups"
+        encrKey: ${AWS_ENCRYPTION_KEY}
+        path: ""
+    cnpg:
+      main:
+        cluster:
+          instances: 1
+          singleNode: true
+        mode: standalone
+        backups:
+          enabled: true
+          credentials: aws
+        recovery:
+          method: object_store
+          credentials: aws
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: internal
+        hosts:
+          - host: pics.${BASE_DOMAIN}
+        integrations:
+          certManager:
+            enabled: true
+            certificateIssuer: ${CERTMANAGER_ISSUER}
+          homepage:
+            enabled: true
+            group: Medien
+    persistence:
+      library:
+        volsync:
+          - name: library
+            type: restic
+            credentials: storj
+            src:
+              enabled: true
+            dest:
+              enabled: false
+      uploads:
+        volsync:
+          - name: library
+            type: restic
+            credentials: storj
+            src:
+              enabled: true
+            dest:
+              enabled: false
+      backups:
+        volsync:
+          - name: library
+            type: restic
+            credentials: storj
+            src:
+              enabled: true
+            dest:
+              enabled: false
+      thumbs:
+        volsync:
+          - name: library
+            type: restic
+            credentials: storj
+            src:
+              enabled: true
+            dest:
+              enabled: false
+      profile:
+        volsync:
+          - name: library
+            type: restic
+            credentials: storj
+            src:
+              enabled: true
+            dest:
+              enabled: false
+      video:
+        volsync:
+          - name: library
+            type: restic
+            credentials: storj
+            src:
+              enabled: true
+            dest:
+              enabled: false
+    resources: {}
