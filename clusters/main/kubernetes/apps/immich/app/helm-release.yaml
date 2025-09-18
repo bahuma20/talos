@@ -73,6 +73,13 @@ spec:
           machinelearning:
             machinelearning:
               mountPath: /.config
+      mlothercache:
+        enabled: true
+        type: emptyDir
+        targetSelector:
+          machinelearning:
+            machinelearning:
+              mountPath: /.cache
       library:
         type: nfs
         server: ${NFS_HOST}
