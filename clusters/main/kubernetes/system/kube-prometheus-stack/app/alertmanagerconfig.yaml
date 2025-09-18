@@ -12,7 +12,7 @@ spec:
     groupBy: [ "alertname", "job" ]
     groupInterval: 10m
     groupWait: 1m
-    receiver: pushover
+    receiver: signl4
     repeatInterval: 12h
     routes:
       - receiver: "null"
