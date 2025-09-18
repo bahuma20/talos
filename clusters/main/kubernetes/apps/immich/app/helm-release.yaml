@@ -16,6 +16,8 @@ spec:
   releaseName: immich
   values:
     TZ: Europe/Berlin
+    immich:
+      log_level: debug
     credentials:
       storj:
         type: s3
