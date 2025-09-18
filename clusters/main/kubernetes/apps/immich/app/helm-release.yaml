@@ -64,6 +64,13 @@ spec:
               custom:
                 key: ${IMMICH_HOMEPAGE_API_KEY}
     persistence:
+      mlcache:
+        enabled: true
+        type: emptyDir
+        targetSelector:
+          machinelearning:
+            machinelearning:
+              mountPath: /cache
       library:
         type: nfs
         server: ${NFS_HOST}
