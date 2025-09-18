@@ -5,6 +5,8 @@ kind: AlertmanagerConfig
 metadata:
   name: alertmanager
   namespace: kube-prometheus-stack
+  labels:
+    alertmanager: default
 spec:
   route:
     groupBy: [ "alertname", "job" ]

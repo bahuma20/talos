@@ -37,6 +37,10 @@ spec:
     cleanPrometheusOperatorObjectNames: true
     alertmanager:
       enabled: true
+      alertmanagerSpec:
+        alertmanagerConfigSelector:
+          matchLabels:
+            alertmanager: default
     kubeEtcd:
       service:
         selector:
