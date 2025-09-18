@@ -66,6 +66,13 @@ spec:
               custom:
                 key: ${IMMICH_HOMEPAGE_API_KEY}
     persistence:
+      mlconfig:
+        enabled: true
+        type: emptyDir
+        targetSelector:
+          machinelearning:
+            machinelearning:
+              mountPath: /.config
       library:
         type: nfs
         server: ${NFS_HOST}
