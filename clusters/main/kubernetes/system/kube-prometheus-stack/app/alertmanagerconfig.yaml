@@ -55,7 +55,8 @@ spec:
 
       pagerdutyConfigs:
         - routingKey:
-            key: ${ALERTMANAGER_PAGERDUTY_INTEGRATION_KEY}
+            key: integrationKey
+            name: pagerduty
           sendResolved: true
           url: https://events.eu.pagerduty.com/v2/enqueue
 #    - name: pushover
