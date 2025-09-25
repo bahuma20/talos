@@ -16,7 +16,7 @@ spec:
         name: prometheus-community
         namespace: flux-system
       interval: 15m
-  timeout: 20m
+  timeout: 5m
   maxHistory: 3
   install:
     createNamespace: true
