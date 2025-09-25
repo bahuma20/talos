@@ -5,9 +5,13 @@ metadata:
   name: volsync-out-of-sync
 spec:
   groups:
-    - name: ./example.rules
+    - name: volsync
       rules:
-        - alert: ExampleAlert
-          expr: vector(1)
+        - alert: VolSyncVolumeOutOfSync
+          expr: volsync_volume_out_of_sync == 1
+          for: 5m
           labels:
             severity: critical
+          annotations:
+            summary: "VolSync volume {{ $labels.obj_name }} is out of sync"
+            description: "The VolSync volume {{ $labels.obj_name }} in namespace {{ $labels.obj_namespace }} is currently out of sync for 5 minutes."
