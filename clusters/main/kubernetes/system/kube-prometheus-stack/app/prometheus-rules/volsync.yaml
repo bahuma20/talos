@@ -2,7 +2,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
   namespace: kube-prometheus-stack
-  name: volsync-out-of-sync
+  name: volsync
 spec:
   groups:
     - name: volsync

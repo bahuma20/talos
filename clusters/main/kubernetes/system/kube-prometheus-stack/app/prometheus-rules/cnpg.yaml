@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  namespace: kube-prometheus-stack
+  name: cnpg
+spec:
+  groups:
+    - name: cnpg
+      rules:
+        - alert: CnpgBackupFailed
+          expr: cnpg_backup_status_phase != "completed"
+          for: 10m
+          labels:
+            severity: critical
+          annotations:
+            summary: "CNPG Backup {{ $labels.obj_name }} is not completed"
+            description: "The CNPG Backup {{ $labels.obj_name }} in namespace {{ $labels.obj_namespace }} has not completed for 10 minutes."

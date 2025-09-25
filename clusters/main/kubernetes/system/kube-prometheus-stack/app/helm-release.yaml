@@ -110,6 +110,32 @@ spec:
               replacement: $1
               sourceLabels: ["__meta_kubernetes_pod_node_name"]
               targetLabel: kubernetes_node
+      # Enabling support for customResourceState, will create a configMap including your config that will be read from kube-state-metrics
+      customResourceState:
+        # Whether to enable support for CustomResourceStateMetrics.
+        enabled: true
+        # Definition of the CustomResourceStateMetrics. Add (Cluster)Role permissions to list/watch the resources defined in the config to rbac.extraRules.
+        config: |
+          spec:
+            resources:
+            - groupVersionKind:
+                group: "postgresql.cnpg.io"  # Beispiel: Ihre CNPG-CRD-Gruppe
+                version: "v1"
+                kind: "Backup"    # Beispiel: Der Kind-Name der CRD
+              metrics:
+              - name: "cnpg_backup_status_phase"
+                help: "The current phase of the CNPG Backup resource"
+                each:
+                  type: Gauge
+                  gauge:
+                    valueFrom:
+                      # Pfad zur Status-Phase im CRD-Objekt
+                      path: "{$..status.phase}"
+      rbac:
+        extraRules:
+          - apiGroups: ["postgresql.cnpg.io"]
+            resources: ["Backup"]
+            verbs: ["list", "watch"]
     grafana:
       enabled: true
       forceDeployDashboards: true
