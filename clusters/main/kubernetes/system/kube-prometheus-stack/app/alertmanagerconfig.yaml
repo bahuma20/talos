@@ -25,11 +25,11 @@ spec:
 #          - name: alertname
 #            value: Watchdog
 #            matchType: =
-#      - receiver: signl4
-#        matchers:
-#          - name: severity
-#            value: critical
-#            matchType: =
+      - receiver: pagerduty
+        matchers:
+          - name: severity
+            value: warning
+            matchType: =
   inhibitRules:
     - equal: [ "alertname", "namespace" ]
       sourceMatch:
