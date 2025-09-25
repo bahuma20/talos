@@ -9,7 +9,7 @@ metadata:
     alertmanager: default
 spec:
   route:
-    groupBy: [ "cluster" ]
+    groupBy: [ "alertname", "job" ]
     receiver: pagerduty
     routes:
       - receiver: "null"
