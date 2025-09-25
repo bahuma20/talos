@@ -54,7 +54,7 @@ spec:
     - name: pagerduty
       pagerdutyConfigs:
         - serviceKey:
-            key: "${ALERTMANAGER_PAGERDUTY_INTEGRATION_KEY}"
+            key: ${ALERTMANAGER_PAGERDUTY_INTEGRATION_KEY}
           sendResolved: true
 #    - name: pushover
 #      pushoverConfigs:
