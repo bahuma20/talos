@@ -9,11 +9,8 @@ metadata:
     alertmanager: default
 spec:
   route:
-    groupBy: [ "alertname", "job" ]
-    groupInterval: 10m
-    groupWait: 1m
-    receiver: signl4
-    repeatInterval: 12h
+    groupBy: [ "cluster" ]
+    receiver: pagerduty
     routes:
       - receiver: "null"
         matchers:
@@ -28,11 +25,11 @@ spec:
 #          - name: alertname
 #            value: Watchdog
 #            matchType: =
-      - receiver: signl4
-        matchers:
-          - name: severity
-            value: critical
-            matchType: =
+#      - receiver: signl4
+#        matchers:
+#          - name: severity
+#            value: critical
+#            matchType: =
   inhibitRules:
     - equal: [ "alertname", "namespace" ]
       sourceMatch:
@@ -53,6 +50,11 @@ spec:
     - name: signl4
       webhookConfigs:
         - url: https://connect.signl4.com/webhook/${ALERTMANAGER_SIGNL4_TEAM_SECRET}?ExtIDParam=groupKey&ExtStatusParam=status&ResolvedStatus=resolved
+          sendResolved: true
+    - name: pagerduty
+      pagerdutyConfigs:
+        - serviceKey:
+            key: "${ALERTMANAGER_PAGERDUTY_INTEGRATION_KEY}"
           sendResolved: true
 #    - name: pushover
 #      pushoverConfigs:
