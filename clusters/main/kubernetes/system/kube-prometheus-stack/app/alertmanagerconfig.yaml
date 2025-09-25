@@ -52,10 +52,12 @@ spec:
         - url: https://connect.signl4.com/webhook/${ALERTMANAGER_SIGNL4_TEAM_SECRET}?ExtIDParam=groupKey&ExtStatusParam=status&ResolvedStatus=resolved
           sendResolved: true
     - name: pagerduty
+
       pagerdutyConfigs:
-        - serviceKey:
+        - routingKey:
             key: ${ALERTMANAGER_PAGERDUTY_INTEGRATION_KEY}
           sendResolved: true
+          url: https://events.eu.pagerduty.com/v2/enqueue
 #    - name: pushover
 #      pushoverConfigs:
 #        - html: true
