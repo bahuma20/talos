@@ -69,6 +69,6 @@ spec:
                         "token": "${DDNS_UPDATER_HETZNER_TOKEN}",
                         "ip_version": "ipv4",
                         "ipv6_suffix": ""
-                      },
+                      }
                     ]
                   }
