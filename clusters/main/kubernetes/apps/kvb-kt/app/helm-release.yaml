@@ -28,6 +28,8 @@ spec:
         ingressClassName: external
         hosts:
           - host: kvb-kt.noitl.space
+        annotations:
+          nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
         integrations:
           certManager:
             enabled: true
