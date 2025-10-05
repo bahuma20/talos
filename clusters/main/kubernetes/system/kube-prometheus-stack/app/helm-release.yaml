@@ -129,9 +129,7 @@ spec:
                 each:
                   type: Gauge
                   gauge:
-                    valueFrom:
-                      # Pfad zur Status-Phase im CRD-Objekt
-                      path: "{$..status.phase}"
+                    path: [status, phase]
       rbac:
         extraRules:
           - apiGroups: ["postgresql.cnpg.io"]
