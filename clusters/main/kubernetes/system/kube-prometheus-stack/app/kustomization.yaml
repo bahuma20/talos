@@ -6,4 +6,4 @@ resources:
   - helm-release.yaml
   - alertmanagerconfig.yaml
   - pagerduty-secret.yaml
-  - prometheus-rules/volsync.yaml
+  - prometheus-rules-volsync.yaml

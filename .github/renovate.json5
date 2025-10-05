@@ -1,51 +1,7 @@
 {
-  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
-  extends: [
-    'config:recommended',
-    'docker:enableMajor',
-    'replacements:k8s-registry-move',
-    ':automergeBranch',
-    ':disableRateLimiting',
-    ':dependencyDashboard',
-    ':semanticCommits',
-    ':skipStatusChecks',
-    ':timezone(Europe/Berlin)',
-    'github>bahuma20/talos//.github/renovate/allowedVersions.json5',
-    'github>bahuma20/talos//.github/renovate/autoMerge.json5',
-    'github>bahuma20/talos//.github/renovate/commitMessage.json5',
-    'github>bahuma20/talos//.github/renovate/customManagers.json5',
-    'github>bahuma20/talos//.github/renovate/groups.json5',
-    'github>bahuma20/talos//.github/renovate/labels.json5',
-    'github>bahuma20/talos//.github/renovate/packageRules.json5',
-    'github>bahuma20/talos//.github/renovate/semanticCommits.json5',
-  ],
-  dependencyDashboardTitle: 'Renovate Dashboard 🤖',
-  suppressNotifications: [
-    'prEditedNotification',
-    'prIgnoreNotification',
-  ],
-  onboarding: false,
-  requireConfig: 'ignored',
-  ignorePaths: [
-    '**/*.sops.*',
-    '**/.archive/**',
-    '**/resources/**',
-  ],
-  flux: {
-    managerFilePatterns: [
-      '/(^|/)clusters/main/kubernetes/.+\\.ya?ml$/',
-      '/(^|/)repositories/.+\\.ya?ml$/',
-    ],
-  },
-  'helm-values': {
-    managerFilePatterns: [
-      '/(^|/)clusters/main/kubernetes/.+\\.ya?ml$/',
-    ],
-  },
-  kubernetes: {
-    managerFilePatterns: [
-      '/(^|/)\\.taskfiles/.+\\.ya?ml$/',
-      '/(^|/)clusters/main/kubernetes/.+\\.ya?ml$/',
-    ],
-  },
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    "github>trueforge-org/truecharts//.github/renovate/main.json5"
+  ]
 }
