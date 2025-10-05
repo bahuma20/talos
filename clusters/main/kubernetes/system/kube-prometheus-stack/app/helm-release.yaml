@@ -128,6 +128,7 @@ spec:
                 help: "The current phase of the CNPG Backup resource"
                 labelsFromPath:
                   name: [metadata, name]
+                  namespace: [metadata, namespace]
                 each:
                   type: StateSet
                   stateSet:

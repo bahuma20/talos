@@ -14,7 +14,7 @@ spec:
             severity: critical
           annotations:
             summary: "CloudNativePG Backup ist fehlgeschlagen"
-            description: "Mindestens ein CloudNativePG Backup (CustomResource 'Backup') befindet sich seit > 5m im Status 'failed'."
+            description: "Das CloudNativePG Backup **{{ $labels.name }}** im Namespace **{{ $labels.namespace }}** ist seit > 5m im Status 'failed'."
         - alert: CNPGWalArchivingFailed
           expr: kube_customresource_cnpg_backup_status_phase{phase="walArchivingFailing"} > 0
           for: 5m
@@ -22,4 +22,4 @@ spec:
             severity: critical
           annotations:
             summary: "CloudNativePG WAL Archiving ist fehlgeschlagen"
-            description: "Mindestens ein CloudNativePG Backup (CustomResource 'Backup') befindet sich seit > 5m im Status 'walArchivingFailing'."
+            description: "Das CloudNativePG Backup **{{ $labels.name }}** im Namespace **{{ $labels.namespace }}** ist seit > 5m im Status 'walArchivingFailing'."
