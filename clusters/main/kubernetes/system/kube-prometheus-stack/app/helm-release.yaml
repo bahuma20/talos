@@ -133,7 +133,7 @@ spec:
       rbac:
         extraRules:
           - apiGroups: ["postgresql.cnpg.io"]
-            resources: ["Backup"]
+            resources: ["backups"]
             verbs: ["list", "watch"]
     grafana:
       enabled: true
