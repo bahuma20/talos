@@ -115,7 +115,7 @@ spec:
         # Whether to enable support for CustomResourceStateMetrics.
         enabled: true
         # Definition of the CustomResourceStateMetrics. Add (Cluster)Role permissions to list/watch the resources defined in the config to rbac.extraRules.
-        config: |
+        config:
           kind: CustomResourceStateMetrics
           spec:
             resources:
