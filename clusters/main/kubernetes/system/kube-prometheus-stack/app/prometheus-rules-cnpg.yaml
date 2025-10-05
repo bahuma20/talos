@@ -5,13 +5,21 @@ metadata:
   name: cnpg
 spec:
   groups:
-    - name: cnpg
+    - name: cnpg-alerts
       rules:
-        - alert: CnpgBackupFailed
-          expr: cnpg_backup_status_phase != "completed"
-          for: 10m
+        - alert: CNPGBackupFailed
+          expr: kube_customresource_cnpg_backup_status_phase{phase="failed"} > 0
+          for: 5m
           labels:
             severity: critical
           annotations:
-            summary: "CNPG Backup {{ $labels.obj_name }} is not completed"
-            description: "The CNPG Backup {{ $labels.obj_name }} in namespace {{ $labels.obj_namespace }} has not completed for 10 minutes."
+            summary: "CloudNativePG Backup ist fehlgeschlagen"
+            description: "Mindestens ein CloudNativePG Backup (CustomResource 'Backup') befindet sich seit > 5m im Status 'failed'."
+        - alert: CNPGWalArchivingFailed
+          expr: kube_customresource_cnpg_backup_status_phase{phase="walArchivingFailing"} > 0
+          for: 5m
+          labels:
+            severity: critical
+          annotations:
+            summary: "CloudNativePG WAL Archiving ist fehlgeschlagen"
+            description: "Mindestens ein CloudNativePG Backup (CustomResource 'Backup') befindet sich seit > 5m im Status 'walArchivingFailing'."
