@@ -7,4 +7,4 @@ resources:
   - alertmanagerconfig.yaml
   - pagerduty-secret.yaml
   - prometheus-rules-volsync.yaml
-  - prometheus-rules-cnpg.yaml
+#  - prometheus-rules-cnpg.yaml
