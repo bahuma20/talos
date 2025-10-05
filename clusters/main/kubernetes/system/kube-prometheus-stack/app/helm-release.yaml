@@ -126,6 +126,8 @@ spec:
               metrics:
               - name: "cnpg_backup_status_phase"
                 help: "The current phase of the CNPG Backup resource"
+                labelsFromPath:
+                  name: [metadata, name]
                 each:
                   type: StateSet
                   stateSet:
