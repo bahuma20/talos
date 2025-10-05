@@ -127,9 +127,11 @@ spec:
               - name: "cnpg_backup_status_phase"
                 help: "The current phase of the CNPG Backup resource"
                 each:
-                  type: Gauge
-                  gauge:
+                  type: StateSet
+                  stateSet:
+                    labelName: phase
                     path: [status, phase]
+                    list: [pending, started, running, finalizing, completed, failed, walArchivingFailing]
       rbac:
         extraRules:
           - apiGroups: ["postgresql.cnpg.io"]
