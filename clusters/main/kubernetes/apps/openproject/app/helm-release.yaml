@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 15.13.7
+      version: 15.16.3
       sourceRef:
         kind: HelmRepository
         name: truecharts
@@ -19,7 +19,7 @@ spec:
     image:
       pullPolicy: Always
       repository: openproject/openproject
-      tag: "16.4.1-slim"
+      tag: "16.5.0-slim"
     dbInitImage:
       pullPolicy: Always
       repository: postgres

@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 15.13.7
+      version: 15.16.3
       sourceRef:
         kind: HelmRepository
         name: truecharts
@@ -19,7 +19,7 @@ spec:
     image:
       pullPolicy: Always
       repository: ghcr.io/bahuma20/bahuma-abrechnung
-      tag: "1.2.0"
+      tag: "1.3.0"
     securityContext:
       container:
         UMASK: "0022"
@@ -57,8 +57,9 @@ spec:
           containers:
             main:
               env:
-                CUSTOM_FIELD_BETRAG: "4"
-                CUSTOM_FIELD_RECHNUNGSNUMMER: "3"
+                CUSTOM_FIELD_BETRAG: "5"
+                CUSTOM_FIELD_RECHNUNGSNUMMER_EINGANGSRECHNUNG: "3"
+                CUSTOM_FIELD_RECHNUNGSNUMMER_AUSGANGSRECHNUNG: "6"
                 DOCUMENT_TYPE_AUSGANGSRECHNUNG: "26"
                 DOCUMENT_TYPE_EINGANGSRECHNUNG: "25"
                 PAPERLESS_URL: https://dok.base.noitl.space
