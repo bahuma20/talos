@@ -50,6 +50,9 @@ spec:
         recovery:
           method: object_store
           credentials: aws
+    workload:
+      main:
+        replicas: 0
     ingress:
       main:
         enabled: true
