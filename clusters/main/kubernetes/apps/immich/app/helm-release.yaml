@@ -46,7 +46,7 @@ spec:
         backups:
           enabled: true
           credentials: aws
-          revision: 1
+          revision: "1"
         recovery:
           method: object_store
           credentials: aws
