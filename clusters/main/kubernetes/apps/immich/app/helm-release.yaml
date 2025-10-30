@@ -42,7 +42,7 @@ spec:
         cluster:
           instances: 1
           singleNode: true
-        mode: standalone
+        mode: restore
         backups:
           enabled: true
           credentials: aws
