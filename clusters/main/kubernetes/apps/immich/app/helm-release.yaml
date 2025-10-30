@@ -39,6 +39,7 @@ spec:
         path: ""
     cnpg:
       main:
+        type: vectorcord
         cluster:
           instances: 1
           singleNode: true
