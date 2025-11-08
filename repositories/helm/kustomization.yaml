@@ -7,6 +7,7 @@ resources:
   - cert-manager-webhook-hetzner.yaml
   - bjw-s.yaml
   - cloudnative-pg.yaml
+  - hcloud.yaml
   - home-ops-mirror.yaml
   - jetstack.yaml
   - kustomization.yaml
