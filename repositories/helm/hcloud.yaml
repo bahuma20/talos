@@ -6,6 +6,5 @@ metadata:
   name: hcloud
   namespace: flux-system
 spec:
-  type: oci
   interval: 2h
   url: https://charts.hetzner.cloud
