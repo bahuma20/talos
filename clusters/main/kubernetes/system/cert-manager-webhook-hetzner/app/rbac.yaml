@@ -9,7 +9,7 @@ rules:
 - apiGroups:
   - ""
   resourceNames:
-  - hetzner-secret
+  - hetzner
   resources:
   - secrets
   verbs:

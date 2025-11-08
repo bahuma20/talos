@@ -22,8 +22,9 @@ spec:
             groupName: base.noitl.space
             solverName: hetzner
             config:
-              secretName: hetzner-secret
-              apiUrl: https://dns.hetzner.com/api/v1
+              tokenSecretKeyRef:
+                name: hetzner
+                key: token
 
 ---
 
@@ -51,5 +52,6 @@ spec:
             groupName: base.noitl.space
             solverName: hetzner
             config:
-              secretName: hetzner-secret
-              apiUrl: https://dns.hetzner.com/api/v1
+              tokenSecretKeyRef:
+                name: hetzner
+                key: token

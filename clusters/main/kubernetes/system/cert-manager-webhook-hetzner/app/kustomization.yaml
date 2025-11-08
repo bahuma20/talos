@@ -1,8 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
+  - secret.yaml
   - helm-release.yaml
   - cluster-issuer.yaml
-  - hetzner-secret.secret.yaml
   - serviceaccount.yaml
-  - rbac.yaml
+  #- rbac.yaml
