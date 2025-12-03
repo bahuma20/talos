@@ -19,7 +19,7 @@ spec:
     image:
       pullPolicy: Always
       repository: openproject/openproject
-      tag: "16.6.1-slim"
+      tag: "16.6.2-slim"
     dbInitImage:
       pullPolicy: Always
       repository: postgres
