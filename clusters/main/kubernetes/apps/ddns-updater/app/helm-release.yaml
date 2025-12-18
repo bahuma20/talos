@@ -14,6 +14,9 @@ spec:
         name: truecharts
         namespace: flux-system
   values:
+    image:
+      repository: suntorytimed/ddns-updater:hetzner-cloud-dns
+      tag: hetzner-cloud-dns@sha256:d967479028332ddce6dac73dd95a78466aa629b8f43cc3ff7f3293cc5a3135f8
     TZ: Europe/Berlin
     resources: { }
     workload:
@@ -26,8 +29,8 @@ spec:
                   {
                     "settings": [
                       {
-                        "provider": "hetzner",
-                        "zone_identifier": "p4SSdMcY5qT2Gx89cgXiyQ",
+                        "provider": "hetznernetworking",
+                        "zone_identifier": "noitl.space",
                         "domain": "craft.noitl.space",
                         "ttl": 120,
                         "token": "${DDNS_UPDATER_HETZNER_TOKEN}",
@@ -35,8 +38,8 @@ spec:
                         "ipv6_suffix": ""
                       },
                       {
-                        "provider": "hetzner",
-                        "zone_identifier": "p4SSdMcY5qT2Gx89cgXiyQ",
+                        "provider": "hetznernetworking",
+                        "zone_identifier": "noitl.space",
                         "domain": "craft-map.noitl.space",
                         "ttl": 120,
                         "token": "${DDNS_UPDATER_HETZNER_TOKEN}",
@@ -44,8 +47,8 @@ spec:
                         "ipv6_suffix": ""
                       },
                       {
-                        "provider": "hetzner",
-                        "zone_identifier": "p4SSdMcY5qT2Gx89cgXiyQ",
+                        "provider": "hetznernetworking",
+                        "zone_identifier": "noitl.space",
                         "domain": "audiobooks.noitl.space",
                         "ttl": 120,
                         "token": "${DDNS_UPDATER_HETZNER_TOKEN}",
@@ -53,8 +56,8 @@ spec:
                         "ipv6_suffix": ""
                       },
                       {
-                        "provider": "hetzner",
-                        "zone_identifier": "p4SSdMcY5qT2Gx89cgXiyQ",
+                        "provider": "hetznernetworking",
+                        "zone_identifier": "noitl.space",
                         "domain": "cloud.noitl.space",
                         "ttl": 120,
                         "token": "${DDNS_UPDATER_HETZNER_TOKEN}",
@@ -62,8 +65,8 @@ spec:
                         "ipv6_suffix": ""
                       },
                       {
-                        "provider": "hetzner",
-                        "zone_identifier": "p4SSdMcY5qT2Gx89cgXiyQ",
+                        "provider": "hetznernetworking",
+                        "zone_identifier": "noitl.space",
                         "domain": "kvb-kt.noitl.space",
                         "ttl": 120,
                         "token": "${DDNS_UPDATER_HETZNER_TOKEN}",
