@@ -15,7 +15,7 @@ spec:
         namespace: flux-system
   values:
     image:
-      repository: suntorytimed/ddns-updater:hetzner-cloud-dns
+      repository: suntorytimed/ddns-updater
       tag: hetzner-cloud-dns@sha256:d967479028332ddce6dac73dd95a78466aa629b8f43cc3ff7f3293cc5a3135f8
     TZ: Europe/Berlin
     resources: { }
