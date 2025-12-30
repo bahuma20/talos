@@ -110,7 +110,10 @@ spec:
               enabled: true
             dest:
               enabled: false
-    resources: {}
+    resources:
+      limits:
+        cpu: 4
+        memory: 3Gi
     securityContext:
       container:
         UMASK: "0022"
