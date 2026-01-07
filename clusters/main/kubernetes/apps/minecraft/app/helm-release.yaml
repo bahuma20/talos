@@ -187,7 +187,7 @@ spec:
                 RCON_PASSWORD: ${MINECRAFT_RCON_PASSWORD}
                 PVP: true
                 MAX_WORLD_SIZE: ""
-                MEMORY: 6G
+                MEMORY: 8G
             mcbackup:
               enabled: false
       backup:
@@ -271,6 +271,6 @@ spec:
     resources:
       limits:
         cpu: 4
-        memory: 6Gi
+        memory: 8Gi
       pod:
         fsGroupChangePolicy: OnRootMismatch
