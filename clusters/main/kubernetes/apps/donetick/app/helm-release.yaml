@@ -99,7 +99,7 @@ spec:
                 DT_OAUTH2_AUTH_URL: https://cloud.noitl.space/apps/oidc/authorize
                 DT_OAUTH2_TOKEN_URL: https://cloud.noitl.space/apps/oidc/token
                 DT_OAUTH2_USER_INFO_URL: https://cloud.noitl.space/apps/oidc/userinfo
-                DT_OAUTH2_NAME: "Noitl.Cloud"
+                DT_OAUTH2_NAME: "Noitl Cloud"
               envFrom:
                 - secretRef:
                     name: environment
