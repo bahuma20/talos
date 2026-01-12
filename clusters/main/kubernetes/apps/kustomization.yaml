@@ -5,7 +5,7 @@ resources:
   - audiobookshelf/ks.yaml
   - bahuma-abrechnung/ks.yaml
   - ddns-updater/ks.yaml
-  - donetick/ks.yaml
+#  - donetick/ks.yaml
   - jellyfin/ks.yaml
   - homepage/ks.yaml
   - immich/ks.yaml
