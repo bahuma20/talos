@@ -56,8 +56,16 @@ spec:
             description: Aufgaben im Haushalt tracken
             widget:
               enabled: false
+    service:
+      main:
+        ports:
+          main:
+            port: 2021
+            protocol: tcp
+            targetPort: 2021
     persistence:
       data:
+        enabled: true
         mountPath: /donetick-data
         volsync:
           - name: data
