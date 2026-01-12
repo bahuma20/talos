@@ -103,3 +103,4 @@ spec:
               envFrom:
                 - secretRef:
                     name: environment
+                    expandObjectName: false
