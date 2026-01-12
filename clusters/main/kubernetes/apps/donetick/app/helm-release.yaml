@@ -75,6 +75,17 @@ spec:
               enabled: true
             dest:
               enabled: false
+      assets:
+        enabled: true
+        mountPath: /app/assets
+        volsync:
+          - name: assets
+            type: restic
+            credentials: storj
+            src:
+              enabled: true
+            dest:
+              enabled: false
     workload:
       main:
         podSpec:
