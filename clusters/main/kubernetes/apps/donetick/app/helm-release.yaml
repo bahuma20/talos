@@ -1,0 +1,93 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: donetick
+  namespace: donetick
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 15.29.54
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  releaseName: donetick
+  values:
+    TZ: Europe/Berlin
+    image:
+      repository: donetick/donetick
+      tag: v0.1.64@sha256:e2474d903a60df7d15142e89acc04f8ef32347bc13c3c6f47750f7f14c6dae34
+    credentials:
+      storj:
+        type: s3
+        name: storj
+        url: https://gateway.storjshare.io
+        accessKey: ${STORJ_ACCESS_KEY}
+        secretKey: ${STORJ_SECRET_KEY}
+        bucket: ${STORJ_BUCKET}
+        encrKey: ${STORJ_VOLSYNC_ENCRYPTION_KEY}
+        path: ""
+      aws:
+        type: s3
+        name: aws
+        url: "https://s3.eu-central-1.amazonaws.com"
+        accessKey: ${AWS_ACCESS_KEY}
+        secretKey: ${AWS_SECRET_KEY}
+        bucket: "talos-cnpg-backups"
+        encrKey: ${AWS_ENCRYPTION_KEY}
+        path: ""
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: internal
+        hosts:
+          - host: donetick.base.noitl.space
+        integrations:
+          certManager:
+            enabled: true
+            certificateIssuer: ${CERTMANAGER_ISSUER}
+          homepage:
+            enabled: true
+            group: Sonstige
+            name: Donetick
+            icon: mdi-format-list-checks
+            description: Aufgaben im Haushalt tracken
+            widget:
+              enabled: false
+    persistence:
+      data:
+        mountPath: /donetick-data
+        volsync:
+          - name: data
+            type: restic
+            credentials: storj
+            src:
+              enabled: true
+            dest:
+              enabled: false
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                DT_ENV: selfhosted
+                DT_SQLITE_PATH: /donetick-data/donetick.db
+                DT_IS_USER_CREATION_DISABLED: true
+                DT_OAUTH2_REDIRECT_URL: "https://donetick.base.noitl.space/auth/oauth2"
+                DT_OAUTH2_AUTH_URL: https://cloud.noitl.space/apps/oidc/authorize
+                DT_OAUTH2_TOKEN_URL: https://cloud.noitl.space/apps/oidc/token
+                DT_OAUTH2_USER_INFO_URL: https://cloud.noitl.space/apps/oidc/userinfo
+                DT_OAUTH2_NAME: "Noitl.Cloud"
+              envFrom:
+                - secretRef: environment
+    secret:
+      environment:
+        enabled: true
+        namespace: donetick
+        data:
+          DT_JWT_SECRET: changeme
+          DT_OAUTH2_CLIENT_ID: changeme
+          DT_OAUTH2_CLIENT_SECRET: changeme
