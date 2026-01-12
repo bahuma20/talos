@@ -103,13 +103,3 @@ spec:
               envFrom:
                 - secretRef:
                     name: environment
-    secret:
-      environment:
-        enabled: true
-        namespace: donetick
-        annotations:
-          kustomize.toolkit.fluxcd.io/ssa: "Merge"
-        data:
-          DT_JWT_SECRET: changeme
-          DT_OAUTH2_CLIENT_ID: changeme
-          DT_OAUTH2_CLIENT_SECRET: changeme
