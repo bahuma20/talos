@@ -68,7 +68,16 @@ spec:
     persistence:
       config:
         volsync:
-          - name: app-config
+          - name: config
+            type: restic
+            credentials: storj
+            src:
+              enabled: true
+            dest:
+              enabled: false
+      data:
+        volsync:
+          - name: data
             type: restic
             credentials: storj
             src:
