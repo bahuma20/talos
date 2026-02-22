@@ -10,13 +10,13 @@ spec:
   chart:
     spec:
       chart: kube-prometheus-stack
-      version: 80.14.4
+      version: 81.2.2
       sourceRef:
         kind: HelmRepository
         name: prometheus-community
         namespace: flux-system
       interval: 15m
-  timeout: 5m
+  timeout: 20m
   maxHistory: 3
   install:
     createNamespace: true

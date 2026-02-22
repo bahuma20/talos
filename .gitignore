@@ -1,11 +1,11 @@
 .idea
 age.agekey
-^clustertool.exe
-^clustertool*
-^clustertool
-*clustertool.exe
-clustertool.exe
-clustertool
+^forgetool.exe
+^forgetool*
+^forgetool
+*forgetool.exe
+forgetool.exe
+forgetool
 sopssecret.yaml
 sopssecret*
 *sopssecret*
