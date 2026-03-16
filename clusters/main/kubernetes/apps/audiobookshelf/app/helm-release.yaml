@@ -81,7 +81,7 @@ spec:
             type: restic
     resources:
       limits:
-        cpu: 1.5
+        cpu: 4
         memory: 2Gi
     securityContext:
       container:
