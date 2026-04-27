@@ -3,6 +3,6 @@
   "extends": [
     "config:recommended",
     "github>trueforge-org/renovate-config",
-    "github>trueforge-org/renovate-config:autoMergeLabels.json5"
+    "github>bahuma20/talos//.github/renovate/autoMerge.json5"
   ]
 }
