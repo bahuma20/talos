@@ -5,7 +5,7 @@ resources:
   - cert-manager/ks.yaml
   - cert-manager-webhook-hetzner/ks.yaml
   - cloudnative-pg/ks.yaml
-  - kubernetes-reflector/ks.yaml
+#  - kubernetes-reflector/ks.yaml
   - longhorn/ks.yaml
   - metallb/ks.yaml
   - openebs/ks.yaml
