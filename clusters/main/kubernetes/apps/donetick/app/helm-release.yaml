@@ -20,14 +20,14 @@ spec:
       repository: donetick/donetick
       tag: v0.1.75@sha256:5c207a86e5425052e9ffe5286f96f71babfe57337760d303a5fb56a856790d11
     credentials:
-      storj:
+      b2:
         type: s3
-        name: storj
-        url: https://gateway.storjshare.io
-        accessKey: ${STORJ_ACCESS_KEY}
-        secretKey: ${STORJ_SECRET_KEY}
-        bucket: ${STORJ_BUCKET}
-        encrKey: ${STORJ_VOLSYNC_ENCRYPTION_KEY}
+        name: b2
+        url: ${VOLSYNC_B2_URL}
+        accessKey: ${VOLSYNC_B2_ACCESS_KEY}
+        secretKey: ${VOLSYNC_B2_SECRET_KEY}
+        bucket: ${VOLSYNC_B2_BUCKET}
+        encrKey: ${VOLSYNC_ENCRYPTION_KEY}
         path: ""
       aws:
         type: s3
@@ -70,7 +70,7 @@ spec:
         volsync:
           - name: data
             type: restic
-            credentials: storj
+            credentials: b2
             src:
               enabled: true
             dest:
@@ -81,7 +81,7 @@ spec:
         volsync:
           - name: assets
             type: restic
-            credentials: storj
+            credentials: b2
             src:
               enabled: true
             dest:
