@@ -17,14 +17,14 @@ spec:
   values:
     TZ: Europe/Berlin
     credentials:
-      storj:
+      b2:
         type: s3
-        name: storj
-        url: https://gateway.storjshare.io
-        accessKey: ${STORJ_ACCESS_KEY}
-        secretKey: ${STORJ_SECRET_KEY}
-        bucket: ${STORJ_BUCKET}
-        encrKey: ${STORJ_VOLSYNC_ENCRYPTION_KEY}
+        name: b2
+        url: ${VOLSYNC_B2_URL}
+        accessKey: ${VOLSYNC_B2_ACCESS_KEY}
+        secretKey: ${VOLSYNC_B2_SECRET_KEY}
+        bucket: ${VOLSYNC_B2_BUCKET}
+        encrKey: ${VOLSYNC_ENCRYPTION_KEY}
         path: ""
     ingress:
       main:
@@ -59,7 +59,7 @@ spec:
         mountPath: /config
         readOnly: false
         volsync:
-          - credentials: storj
+          - credentials: b2
             dest:
               enabled: false
             name: app-config
@@ -72,7 +72,7 @@ spec:
         readOnly: false
         storageClass: ""
         volsync:
-          - credentials: storj
+          - credentials: b2
             dest:
               enabled: false
             name: metadata
