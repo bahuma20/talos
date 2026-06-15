@@ -4,5 +4,6 @@
     "config:recommended",
     "github>trueforge-org/renovate-config",
     "github>bahuma20/talos//.github/renovate/autoMerge.json5"
-  ]
+  ],
+  "fetchChangeLogs": "pr"
 }
