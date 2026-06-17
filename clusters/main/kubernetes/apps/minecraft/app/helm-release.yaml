@@ -122,6 +122,14 @@ spec:
           main:
             main:
               mountPath: /data
+      volsync:
+        - name: data
+          type: restic
+          credentials: b2
+          src:
+            enabled: true
+          dest:
+            enabled: false
       web-var:
         enabled: true
         type: "emptyDir"
