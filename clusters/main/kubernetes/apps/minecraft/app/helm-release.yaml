@@ -66,15 +66,6 @@ spec:
             targetPort: 8080
         targetSelector: web
 
-#    ingressMiddlewares:
-#      traefik:
-#        livemap-remove-prefix:
-#          enabled: true
-#          type: strip-prefix
-#          data:
-#            prefix:
-#              - /livemap
-
     ingress:
       main:
         enabled: true
@@ -126,29 +117,11 @@ spec:
             verbs: [ "watch","list","get","update","patch" ]
 
     persistence:
-      backups:
-        enabled: false
       data:
         targetSelector:
           main:
             main:
               mountPath: /data
-          backup:
-            main:
-              mountPath: /backup-source
-              readOnly: true
-      backup-target:
-        enabled: true
-        type: nfs
-        server: ${NFS_HOST}
-        path: /mnt/pool1/backup/backup-minecraft
-        readOnly: false
-        autoPermissions:
-          enabled: true
-        targetSelector:
-          backup:
-            main:
-              mountPath: /backup-target
       web-var:
         enabled: true
         type: "emptyDir"
@@ -188,52 +161,6 @@ spec:
                 PVP: true
                 MAX_WORLD_SIZE: ""
                 MEMORY: 6G
-            mcbackup:
-              enabled: false
-      backup:
-        enabled: true
-        primary: false
-        type: CronJob
-        schedule: "0 3 * * *"
-        concurrentPolicy:
-        podSpec:
-          restartPolicy: Never
-          securityContext:
-            container:
-              UMASK: "0022"
-              runAsGroup: 568
-              runAsUser: 568
-          containers:
-            main:
-              enabled: true
-              primary: true
-              imageSelector: mcBackupImage
-              probes:
-                liveness:
-                  enabled: false
-                readiness:
-                  enabled: false
-                startup:
-                  enabled: false
-              env:
-                SERVER_PORT: "{{ .Values.service.main.ports.main.port }}"
-                RCON_HOST: '{{ printf "%s-rcon" (include "tc.v1.common.lib.chart.names.fullname" $) }}'
-                RCON_PORT: "{{ .Values.service.rcon.ports.rcon.port }}"
-                RCON_PASSWORD: "{{ .Values.workload.main.podSpec.containers.main.env.RCON_PASSWORD }}"
-                SERVER_HOST: '{{ include "tc.v1.common.lib.chart.names.fullname" $ }}'
-              command:
-                - "sh"
-                - "-c"
-              args:
-                - |
-                  echo "RCON save-off"
-                  rcon-cli save-off || true
-                  echo "RCON save-all flush"
-                  rcon-cli save-all flush || true
-                  echo "Copying files from /backup-source to /backup-target"
-                  rsync -avP --delete --exclude='.cache' --exclude='cache' --exclude='logs' --exclude='*.tmp' --exclude='bluemap' /backup-source/ /backup-target
-                  echo "RCON save-on"
-                  rcon-cli save-on || true
       web:
         enabled: true
         primary: false
