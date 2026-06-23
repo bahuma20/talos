@@ -113,13 +113,18 @@ spec:
                 PAPERLESS_APPS: 'allauth.socialaccount.providers.openid_connect'
                 PAPERLESS_SOCIALACCOUNT_PROVIDERS: |
                   {
-                    "nextcloud": {
+                    "openid_connect": {
+                      "OAUTH_PKCE_ENABLED": true,
                       "APPS": [
                         {
+                          "provider_id": "nextcloud",
+                          "name": "Noitl.Cloud",
                           "client_id": "MdRBRwjVt3fQFOVGhM2fLBxpOJh1a09ZzuQJNnNwqUzZFRY14WxJMhhYV3M5lkl6",
                           "secret": "${PAPERLESS_OIDC_NEXTCLOUD_CLIENT_SECRET}",
                           "settings": {
-                            "server": "https://cloud.noitl.space"
+                            "server_url": "https://cloud.noitl.space",
+                            "fetch_userinfo": true,
+                            "token_auth_method": "client_secret_basic"
                           }
                         }
                       ]
