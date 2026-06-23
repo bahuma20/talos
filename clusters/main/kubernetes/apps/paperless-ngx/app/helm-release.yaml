@@ -130,3 +130,6 @@ spec:
                       ]
                     }
                   }
+                PAPERLESS_SOCIAL_AUTO_SIGNUP: true
+                PAPERLESS_DISABLE_REGULAR_LOGIN: false
+                PAPERLESS_REDIRECT_LOGIN_TO_SSO: false
