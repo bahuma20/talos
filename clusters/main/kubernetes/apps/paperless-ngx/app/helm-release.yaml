@@ -110,3 +110,17 @@ spec:
                 PAPERLESS_OCR_LANGUAGES: eng deu
                 PAPERLESS_URL: https://dok.${BASE_DOMAIN}
                 PAPERLESS_OCR_USER_ARGS: '{"invalidate_digital_signatures": true}'
+                PAPERLESS_SOCIALACCOUNT_PROVIDERS: |
+                  {
+                    "nextcloud": {
+                      "APPS": [
+                        {
+                          "client_id": "MdRBRwjVt3fQFOVGhM2fLBxpOJh1a09ZzuQJNnNwqUzZFRY14WxJMhhYV3M5lkl6",
+                          "secret": "${PAPERLESS_OIDC_NEXTCLOUD_CLIENT_SECRET}",
+                          "settings": {
+                            "server": "https://cloud.noitl.space",
+                          }
+                        }
+                      ]
+                    }
+                }
