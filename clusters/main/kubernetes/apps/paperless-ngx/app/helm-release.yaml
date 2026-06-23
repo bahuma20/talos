@@ -118,7 +118,7 @@ spec:
                           "client_id": "MdRBRwjVt3fQFOVGhM2fLBxpOJh1a09ZzuQJNnNwqUzZFRY14WxJMhhYV3M5lkl6",
                           "secret": "${PAPERLESS_OIDC_NEXTCLOUD_CLIENT_SECRET}",
                           "settings": {
-                            "server": "https://cloud.noitl.space",
+                            "server": "https://cloud.noitl.space"
                           }
                         }
                       ]
