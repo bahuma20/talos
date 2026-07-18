@@ -113,6 +113,20 @@ spec:
             dest:
               enabled: false
     cronjobs:
+      - name: nextcloud-cron
+        enabled: true
+        schedule: "*/5 * * * *"
+        cmd:
+          - echo "Running [php -f /var/www/html/cron.php] ..."
+          - php -f /var/www/html/cron.php
+          - echo "Finished [php -f /var/www/html/cron.php]"
+      - name: preview-cron
+        enabled: "{{ .Values.nextcloud.previews.cron }}"
+        schedule: "{{ .Values.nextcloud.previews.schedule }}"
+        cmd:
+          - echo "Running [occ preview:pre-generate] ..."
+          - occ preview:pre-generate
+          - echo "Finished [occ preview:pre-generate]"
       - name: delete-signal-in-trash
         enabled: true
         schedule: "30 * * * *"
