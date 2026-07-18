@@ -119,7 +119,7 @@ spec:
         cmd:
           - 'URL="https://cloud.noitl.space"'
           - 'USER="bahuma20"'
-          - 'PASS="${NEXTCLOUD_APP_PASSWORD}"'
+          - PASS="${NEXTCLOUD_APP_PASSWORD}"
           - 'TRASH_URL="$URL/remote.php/dav/trashbin/$USER/trash"'
           - 'curl -s -u "$USER:$PASS" -X PROPFIND "$TRASH_URL" | \'
           - grep -o '<d:href>[^<]*signal-[^<]*</d:href>' | \
