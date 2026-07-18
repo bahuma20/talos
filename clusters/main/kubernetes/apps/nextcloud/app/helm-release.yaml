@@ -112,6 +112,21 @@ spec:
               enabled: true
             dest:
               enabled: false
+    cronjobs:
+      - name: delete-signal-in-trash
+        enabled: true
+        schedule: "30 * * * *"
+        cmd:
+          - 'URL="https://cloud.noitl.space"'
+          - 'USER="bahuma20"'
+          - 'PASS="${NEXTCLOUD_APP_PASSWORD}"'
+          - 'TRASH_URL="$URL/remote.php/dav/trashbin/$USER/trash"'
+          - 'curl -s -u "$USER:$PASS" -X PROPFIND "$TRASH_URL" | \'
+          - grep -o '<d:href>[^<]*signal-[^<]*</d:href>' | \
+          - sed 's/<d:href>\(.*\)<\/d:href>/\1/' | \
+          - while read -r href; do
+          - curl -s -u "$USER:$PASS" -X DELETE "$URL$href"
+          - done
     resources:
       limits:
         cpu: 4
