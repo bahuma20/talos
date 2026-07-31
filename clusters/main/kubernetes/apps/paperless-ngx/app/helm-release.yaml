@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: paperless-ngx
-      version: 15.2.2
+      version: 15.2.1
       sourceRef:
         kind: HelmRepository
         name: truecharts
@@ -133,3 +133,4 @@ spec:
                 PAPERLESS_SOCIAL_AUTO_SIGNUP: true
                 PAPERLESS_DISABLE_REGULAR_LOGIN: false
                 PAPERLESS_REDIRECT_LOGIN_TO_SSO: false
+                PAPERLESS_DBENGINE: postgresql
