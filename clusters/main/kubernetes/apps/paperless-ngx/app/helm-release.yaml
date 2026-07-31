@@ -45,7 +45,7 @@ spec:
         backups:
           enabled: true
           credentials: aws
-          revision: "3"
+          revision: "4"
           retentionPolicy: "2d"
         recovery:
           method: object_store
