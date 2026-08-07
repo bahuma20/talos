@@ -12,5 +12,6 @@ resources:
   - minecraft/ks.yaml
   - nextcloud/ks.yaml
   - paperless-ngx/ks.yaml
+  - scrunity/ks.yaml
   - truenas/ks.yaml
   - vaultwarden/ks.yaml
