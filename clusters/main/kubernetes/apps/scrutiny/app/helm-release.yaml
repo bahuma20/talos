@@ -15,4 +15,3 @@ spec:
         namespace: flux-system
   releaseName: scrutiny
   values:
-    foo: bar
