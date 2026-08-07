@@ -41,6 +41,9 @@ spec:
         alertmanagerConfigSelector:
           matchLabels:
             alertmanager: default
+        alertmanagerConfigNamespaceSelector: { }
+        alertmanagerConfigMatcherStrategy:
+          type: None
     kubeEtcd:
       service:
         selector:

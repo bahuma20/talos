@@ -30,6 +30,9 @@ spec:
           - name: severity
             value: warning
             matchType: =
+          - name: severity
+            value: critical
+            matchType: =
   inhibitRules:
     - equal: [ "alertname", "namespace" ]
       sourceMatch:
