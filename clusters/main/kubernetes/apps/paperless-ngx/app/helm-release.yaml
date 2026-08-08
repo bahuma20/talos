@@ -84,6 +84,14 @@ spec:
         autoPermissions:
           enabled: false
         readOnly: false
+      consume:
+        type: nfs
+        server: ${NFS_HOST}
+        path: /mnt/pool1/Paperless/consume
+        mountPath: /consume
+        autoPermissions:
+          enabled: false
+        readOnly: false
     resources:
       limits:
         cpu: 4
