@@ -119,6 +119,7 @@ spec:
                 PAPERLESS_URL: https://dok.${BASE_DOMAIN}
                 PAPERLESS_OCR_USER_ARGS: '{"invalidate_digital_signatures": true}'
                 PAPERLESS_CONSUMER_POLLING_INTERVAL: 10
+                PAPERLESS_CONSUMER_RECURSIVE: true
                 PAPERLESS_APPS: 'allauth.socialaccount.providers.openid_connect'
                 PAPERLESS_SOCIALACCOUNT_PROVIDERS: |
                   {
