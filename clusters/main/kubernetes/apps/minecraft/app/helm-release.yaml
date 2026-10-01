@@ -160,8 +160,8 @@ spec:
             main:
               env:
                 TYPE: "PAPER"
-                VERSION: "1.21.11"
-                PAPER_BUILD: "88"
+                VERSION: "26.2"
+                PAPER_BUILD: "129"
                 MOTD: "Happy Noitln und Craften"
                 SERVER_NAME: "Noitl.Craft"
                 ENABLE_WHITELIST: true
