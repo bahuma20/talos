@@ -171,6 +171,7 @@ spec:
                 MEMORY: 6G
       web:
         enabled: true
+        replicas: 0
         primary: false
         type: Deployment
         podSpec:
