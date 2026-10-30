@@ -8,18 +8,24 @@ spec:
     - name: cnpg-alerts
       rules:
         - alert: CNPGBackupFailed
-          expr: kube_customresource_cnpg_backup_status_phase{phase="failed"} > 0
+          # Prüft: Ist der Zeitstempel des neuesten fehlgeschlagenen Backups größer (jünger)
+          # als der Zeitstempel des neuesten erfolgreichen Backups?
+          expr: |
+            max by (namespace) (
+              kube_customresource_cnpg_backup_created 
+              and on(name, namespace) kube_customresource_cnpg_backup_status_phase{phase="failed"} == 1
+            ) 
+            > 
+            (
+              max by (namespace) (
+                kube_customresource_cnpg_backup_created 
+                and on(name, namespace) kube_customresource_cnpg_backup_status_phase{phase="completed"} == 1
+              ) 
+              or on(namespace) max by (namespace) (kube_customresource_cnpg_backup_created) * 0
+            )
           for: 5m
           labels:
             severity: critical
           annotations:
             summary: "CloudNativePG Backup ist fehlgeschlagen"
-            description: "Das CloudNativePG Backup **{{ $labels.name }}** im Namespace **{{ $labels.namespace }}** ist seit > 5m im Status 'failed'."
-        - alert: CNPGWalArchivingFailed
-          expr: kube_customresource_cnpg_backup_status_phase{phase="walArchivingFailing"} > 0
-          for: 5m
-          labels:
-            severity: critical
-          annotations:
-            summary: "CloudNativePG WAL Archiving ist fehlgeschlagen"
-            description: "Das CloudNativePG Backup **{{ $labels.name }}** im Namespace **{{ $labels.namespace }}** ist seit > 5m im Status 'walArchivingFailing'."
+            description: "Das aktuellste CloudNativePG Backup im Namespace **{{ $labels.namespace }}** ist fehlgeschlagen und es gibt kein neueres erfolgreiches Backup."

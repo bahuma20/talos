@@ -138,6 +138,15 @@ spec:
                     labelName: phase
                     path: [status, phase]
                     list: [pending, started, running, finalizing, completed, failed, walArchivingFailing]
+              - name: "cnpg_backup_created"
+                help: "Creation timestamp of the CNPG Backup"
+                labelsFromPath:
+                  name: [ metadata, name ]
+                  namespace: [ metadata, namespace ]
+                each:
+                  type: Gauge
+                  gauge:
+                    path: [ metadata, creationTimestamp ]
       rbac:
         extraRules:
           - apiGroups: ["postgresql.cnpg.io"]
