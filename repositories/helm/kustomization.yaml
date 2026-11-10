@@ -9,6 +9,7 @@ resources:
   - cloudnative-pg.yaml
   - hcloud.yaml
   - home-ops-mirror.yaml
+  - ingress-nginx
   - jetstack.yaml
   - kustomization.yaml
   - metallb.yaml
