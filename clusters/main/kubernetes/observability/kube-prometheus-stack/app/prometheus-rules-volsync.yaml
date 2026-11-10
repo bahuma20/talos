@@ -9,9 +9,9 @@ spec:
       rules:
         - alert: VolSyncVolumeOutOfSync
           expr: volsync_volume_out_of_sync == 1
-          for: 5m
+          for: 25h
           labels:
             severity: critical
           annotations:
             summary: "VolSync volume {{ $labels.obj_name }} is out of sync"
-            description: "The VolSync volume {{ $labels.obj_name }} in namespace {{ $labels.obj_namespace }} is currently out of sync for 5 minutes."
+            description: "The VolSync volume {{ $labels.obj_name }} in namespace {{ $labels.obj_namespace }} is currently out of sync for 25 hours."
