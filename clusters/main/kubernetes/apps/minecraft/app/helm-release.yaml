@@ -24,7 +24,6 @@ spec:
     credentials:
       b2:
         type: s3
-        name: b2
         url: ${VOLSYNC_B2_URL}
         accessKey: ${VOLSYNC_B2_ACCESS_KEY}
         secretKey: ${VOLSYNC_B2_SECRET_KEY}
