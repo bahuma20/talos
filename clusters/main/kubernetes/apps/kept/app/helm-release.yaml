@@ -1,0 +1,93 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kept
+  namespace: kept
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: app-template
+      version: 21.3.4
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  releaseName: kept
+  values:
+    TZ: Europe/Berlin
+    image:
+      repository: ghcr.io/ericerkz/kept
+      tag: 1.9.5@sha256:363df940ff23b6bc83f5c2b37d64f6c401f0fa0034c0d3783e07db6f16417d6b
+    credentials:
+      b2:
+        type: s3
+        name: b2
+        url: ${VOLSYNC_B2_URL}
+        accessKey: ${VOLSYNC_B2_ACCESS_KEY}
+        secretKey: ${VOLSYNC_B2_SECRET_KEY}
+        bucket: ${VOLSYNC_B2_BUCKET}
+        encrKey: ${VOLSYNC_ENCRYPTION_KEY}
+        path: ""
+      aws:
+        type: s3
+        name: aws
+        url: "https://s3.eu-central-1.amazonaws.com"
+        accessKey: ${AWS_ACCESS_KEY}
+        secretKey: ${AWS_SECRET_KEY}
+        bucket: "talos-cnpg-backups"
+        encrKey: ${AWS_ENCRYPTION_KEY}
+        path: ""
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: internal
+        hosts:
+          - host: kept.base.noitl.space
+        integrations:
+          certManager:
+            enabled: true
+            certificateIssuer: ${CERTMANAGER_ISSUER}
+          homepage:
+            enabled: true
+            group: Sonstige
+            name: kept
+            icon: mdi-note-text-outline
+            description: Sowas wie Google Keep
+            widget:
+              enabled: false
+    service:
+      main:
+        ports:
+          main:
+            port: 6767
+            protocol: tcp
+            targetPort: 6767
+    persistence:
+      data:
+        enabled: true
+        mountPath: /app/data
+        volsync:
+          - name: data
+            type: restic
+            credentials: b2
+            src:
+              enabled: true
+            dest:
+              enabled: false
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                NODE_ENV: production
+                PORT: 6767
+                SQLITE_PATH: /app/data/kept.sqlite
+                PUID: 568
+                PGID: 568
+                KEPT_CORS_ORIGINS: "https://kept.base.noitl.space"
+              envFrom:
+                - secretRef:
+                    name: environment
+                    expandObjectName: false
