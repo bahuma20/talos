@@ -41,7 +41,7 @@ spec:
         enabled: true
         ingressClassName: internal
         hosts:
-          - host: kept.base.noitl.space
+          - host: notizen.base.noitl.space
         integrations:
           certManager:
             enabled: true
@@ -82,14 +82,17 @@ spec:
                 NODE_ENV: production
                 PORT: 6767
                 SQLITE_PATH: /app/data/kept.sqlite
-#                PUID: 568
-#                PGID: 568
                 KEPT_SKIP_CHOWN: "1"
-                KEPT_CORS_ORIGINS: "https://kept.base.noitl.space"
-#              envFrom:
-#                - secretRef:
-#                    name: environment
-#                    expandObjectName: false
+                KEPT_CORS_ORIGINS: "https://notizen.base.noitl.space"
+                BASE_URL: "https://notizen.base.noitl.space"
+                KEPT_OIDC_ISSUER: "https://cloud.noitl.space/index.php/.well-known/openid-configuration"
+                KEPT_OIDC_CLIENT_ID: "4Rc1fNnErdttivZiDoKRiPZxiFv1jvT3Rh5okZZ2tatlX4mkdWtAWHa3mgk1JBe6"
+                KEPT_OIDC_NAME: "Login mit Noitl.Cloud"
+#                KEPT_DISABLE_PASSWORD_LOGIN: 1
+              envFrom:
+                - secretRef:
+                    name: environment
+                    expandObjectName: false
     securityContext:
       container:
         UMASK: "0022"
