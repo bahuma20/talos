@@ -88,7 +88,7 @@ spec:
                 KEPT_OIDC_ISSUER: "https://cloud.noitl.space/index.php/.well-known/openid-configuration"
                 KEPT_OIDC_CLIENT_ID: "4Rc1fNnErdttivZiDoKRiPZxiFv1jvT3Rh5okZZ2tatlX4mkdWtAWHa3mgk1JBe6"
                 KEPT_OIDC_NAME: "Login mit Noitl.Cloud"
-#                KEPT_DISABLE_PASSWORD_LOGIN: 1
+                KEPT_DISABLE_PASSWORD_LOGIN: 1
               envFrom:
                 - secretRef:
                     name: environment
