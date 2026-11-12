@@ -84,6 +84,7 @@ spec:
                 SQLITE_PATH: /app/data/kept.sqlite
 #                PUID: 568
 #                PGID: 568
+                KEPT_SKIP_CHOWN: true
                 KEPT_CORS_ORIGINS: "https://kept.base.noitl.space"
 #              envFrom:
 #                - secretRef:
