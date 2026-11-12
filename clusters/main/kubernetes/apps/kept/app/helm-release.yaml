@@ -94,5 +94,6 @@ spec:
       container:
         UMASK: "0022"
         readOnlyRootFilesystem: false
-        runAsGroup: 568
-        runAsUser: 568
+        runAsGroup: 0
+        runAsNonRoot: false
+        runAsUser: 0
