@@ -6,7 +6,7 @@ resources:
   - ddns-updater/ks.yaml
   - donetick/ks.yaml
   - jellyfin/ks.yaml
-  - kept/ks.yaml
+#  - kept/ks.yaml
   - homepage/ks.yaml
   - immich/ks.yaml
   - kvb-kt/ks.yaml
