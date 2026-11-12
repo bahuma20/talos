@@ -90,3 +90,9 @@ spec:
 #                - secretRef:
 #                    name: environment
 #                    expandObjectName: false
+    securityContext:
+      container:
+        UMASK: "0022"
+        readOnlyRootFilesystem: false
+        runAsGroup: 568
+        runAsUser: 568
