@@ -128,3 +128,7 @@ spec:
         runAsUser: 568
       pod:
         fsGroupChangePolicy: OnRootMismatch
+    resources:
+      limits:
+        cpu: 4000m
+        memory: 4G
