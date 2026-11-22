@@ -19,7 +19,7 @@ spec:
       hostUsers: true
     webImage:
       repository: ghcr.io/bahuma20/noitl-craft
-      tag: v0.7.1@sha256:ff2ed21b7655a9d9ab23377a11dc27b876d993644af8084bf8126d11d7a78a44
+      tag: v0.8.1@sha256:e59e2323ca3bd452121a5d18f3ad7f34e9215e4e09a20643e2f66f5b8d0374f4
       pullPolicy: Always
     credentials:
       b2:
@@ -62,7 +62,7 @@ spec:
             enabled: true
             protocol: tcp
             port: 80
-            targetPort: 8080
+            targetPort: 80
         targetSelector: web
 
     ingress:
@@ -170,7 +170,6 @@ spec:
                 MEMORY: 6G
       web:
         enabled: true
-        replicas: 0
         primary: false
         type: Deployment
         podSpec:
