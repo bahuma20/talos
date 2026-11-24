@@ -18,7 +18,7 @@ spec:
     TZ: Europe/Berlin
     image:
       repository: ghcr.io/ericerkz/kept
-      tag: 1.9.7@sha256:44bbf3142690344a63ef38a3081e132986356b14419c65bbdb2aefad66a6fea9
+      tag: 1.9.8@sha256:eb405f090bc3a5d04ee747f058ea2c9d6dcb6510ecb247a1ef8b3b0a33abb4a8
     credentials:
       b2:
         type: s3
